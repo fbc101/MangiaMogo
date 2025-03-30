@@ -15,7 +15,10 @@ export default function SearchPage() {
                 {searchText && <p>You searched for: {searchText}</p>} 
             </div>
             {searchText && (searchText.toLowerCase().startsWith('c') || searchText.toLowerCase().contains('chicken')) && (
-                <Recipe name="Chicken Burger" ingredients="ground chicken, lettuce, tomato" description="Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid." />
+                <Recipe name="Chicken Burger" 
+                    ingredients="ground chicken, lettuce, tomato" 
+                    description="Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid." 
+                    username="Gordon Ramsay"/>
             )}
         </div>
     );
