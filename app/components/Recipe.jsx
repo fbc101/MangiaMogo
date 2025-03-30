@@ -1,8 +1,7 @@
-import burger from "../assets/Burger.svg";
 import Link from "next/link"; 
 import Image from "next/image";
 
-export default function Recipe({ name, ingredients, description, username }) {
+export default function Recipe({ name, ingredients, description, username, image }) {
     const sanitizedUsername = username.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
     const sanitizedRecipe = name.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
 
@@ -10,7 +9,7 @@ export default function Recipe({ name, ingredients, description, username }) {
     return (
         <div className="flex flex-row justify-center p-5">
             <Link href={`/search/${sanitizedUsername}/${sanitizedRecipe}`}>
-                <Image src={burger} alt="recipe" className="w-35 h-35 cursor-pointer" />
+                <Image src={image} alt="recipe" className="w-35 h-35 cursor-pointer" />
             </Link>
             <div className="justify-self-start pl-10 max-w-xl">
                 <Link href={`/search/${sanitizedUsername}/${sanitizedRecipe}`}>

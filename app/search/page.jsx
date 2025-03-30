@@ -3,6 +3,7 @@
 import { useState } from 'react'; 
 import SearchBar from "../components/SearchBar";
 import Recipe from "../components/Recipe";
+import burger from "../assets/Burger.svg";
 
 export default function SearchPage() {
     const [searchText, setSearchText] = useState(''); 
@@ -18,7 +19,8 @@ export default function SearchPage() {
                 <Recipe name="Chicken Burger" 
                     ingredients="ground chicken, lettuce, tomato" 
                     description="Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid." 
-                    username="Gordon Ramsay"/>
+                    username="Gordon Ramsay"
+                    image={burger}/>
             )}
         </div>
     );
