@@ -13,6 +13,7 @@
   --font-italianno: var(--font-italianno);
   --color-title: #0009BB;
   --color-nav: #FEE7C8;
+  --color-search: #F1F0F0;
 }
 
 @media (prefers-color-scheme: dark) {
