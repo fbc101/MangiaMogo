@@ -1,8 +1,7 @@
-// app/page.jsx (or app/home/page.jsx)
-export default function Home() {
+export default function MessagePage() {
   return (
     <div className="flex flex-col items-center justify-center flex-grow text-black font-bold">
-      Home page
+      <h1>Message page</h1>
     </div>
   );
 }
