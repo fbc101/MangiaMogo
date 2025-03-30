@@ -14,7 +14,7 @@ export default function SearchPage() {
             <div className="flex items-center justify-center flex-grow">
                 {searchText && <p>You searched for: {searchText}</p>} 
             </div>
-            {searchText && (searchText.toLowerCase().startsWith('c') || searchText.toLowerCase().contains('chicken')) && (
+            {searchText && (searchText.toLowerCase().startsWith('c') || searchText.toLowerCase().includes('chicken')) && (
                 <Recipe name="Chicken Burger" 
                     ingredients="ground chicken, lettuce, tomato" 
                     description="Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid." 
