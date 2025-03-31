@@ -15,7 +15,7 @@ export default function Recipe({ name, ingredients, description, username, image
                 <Link href={`/search/${sanitizedUsername}/${sanitizedRecipe}`}>
                     <h1 className="text-2xl font-bold cursor-pointer">{name}</h1>
                 </Link>
-                <Link href={`/search/${sanitizedUsername}`}>
+                <Link href={`/${sanitizedUsername}`}>
                     <p className="text-sm pb-4">by {username}</p>
                 </Link>
                 <p>Ingredients: {ingredients}</p>
