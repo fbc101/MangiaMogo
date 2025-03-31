@@ -20,7 +20,11 @@ export default function SearchPage() {
                     ingredients="ground chicken, lettuce, tomato" 
                     description="Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid." 
                     username="Gordon Ramsay"
-                    image={burger}/>
+                    image={burger}
+                    price={10}
+                    difficulty="easy"
+                    country="USA"
+                />
             )}
         </div>
     );
