@@ -8,6 +8,8 @@ import cookie from "../assets/Choco_cookie.jpg";
 
 export default function SearchPage() {
     const [searchText, setSearchText] = useState(''); 
+    const chickenRecipe = ['chicken', 'burger', 'chicken burger'];
+    const cookieRecipe = ['cookie', 'chocolate cookie', 'chocolate'];
 
     return (
         <div className="flex flex-col items-center justify-center flex-grow text-black text-2xl">
@@ -17,7 +19,8 @@ export default function SearchPage() {
                 {searchText && <p>You searched for: {searchText}</p>} 
             </div>
             <div className="flex flex-col items-center justify-center flex-grow">
-                {searchText && (searchText.toLowerCase().startsWith('c') || searchText.toLowerCase().includes('chicken')) && (
+                {searchText && (chickenRecipe.some(recipe => recipe.includes(searchText)) ||
+                chickenRecipe.some(recipe => searchText.includes(recipe))) && (
                     <div className="flex flex-row items-center justify-center flex-grow">
                         <Recipe name="Chicken Burger" 
                             ingredients="ground chicken, lettuce, tomato" 
@@ -30,7 +33,8 @@ export default function SearchPage() {
                         />
                     </div>
                 )}
-                {searchText && (searchText.toLowerCase().startsWith('c') || searchText.toLowerCase().includes('cookie')) && (
+                {searchText && (cookieRecipe.some(recipe => recipe.includes(searchText)) ||
+                cookieRecipe.some(recipe => searchText.includes(recipe))) && (
                     <div className="flex flex-row items-center justify-center flex-grow">
                         <Recipe name="Chocolate Cookie" 
                         ingredients="milk, flour, eggs, sugar, cocoa" 
