@@ -232,18 +232,21 @@ export default function RecipePage({ params }) {
             {/* Recipe Title */}
             <h1 className="text-2xl font-bold mb-2">{cleanedRecipe}</h1>
 
-            {/* Rating Stars */}
-            <div className="flex mb-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                        key={star}
-                        onClick={() => setRating(star)}
-                        className="text-3xl focus:outline-none text-yellow-400"
-                    >
-                        {star <= rating ? '★' : '☆'}
-                    </button>
-                ))}
-            </div>
+            {/* Rating Stars Read Only*/}
+            {cleanedRecipe === "Chicken Burger" && <div className="flex justify-start items-center gap-2"> 
+                    <div className="text-lg font-bold">4.5</div>
+                    <Box>
+                        <Rating name="size-large" defaultValue={4.5} precision={0.5} size="large" readOnly />
+                    </Box>
+                    <div className="text-2xl font-bold">(283)</div>
+                </div>}
+                {cleanedRecipe === "Chocolate Cookie" && <div className="flex justify-start items-center gap-2"> 
+                    <div className="text-lg font-bold">4.8</div>
+                    <Box>
+                        <Rating name="size-large" defaultValue={4.5} precision={0.5} size="large" readOnly />
+                    </Box>
+                    <div className="text-2xl font-bold">(567)</div>
+                </div>}
 
             {/* Description */}
             <div className="mb-6">
@@ -309,6 +312,22 @@ export default function RecipePage({ params }) {
                             </span>
                             <p className="text-gray-700">{instruction.substring(instruction.indexOf(' ') + 1)}</p>
                         </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Rating Stars */}
+            <div className="flex mb-4">
+                <div className="text-2xl flex-col items-center">
+                    <div className="text-2xl font-bold">Rate this recipe</div>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                            key={star}
+                            onClick={() => setRating(star)}
+                            className="text-3xl focus:outline-none text-yellow-400"
+                        >
+                            {star <= rating ? '★' : '☆'}
+                        </button>
                     ))}
                 </div>
             </div>
