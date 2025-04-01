@@ -8,7 +8,9 @@ import cookie from "../assets/Choco_cookie.jpg";
 import { useRouter } from 'next/navigation';
 
 export default function SearchPage() {
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState(''); 
+    const chickenRecipe = ['chicken', 'burger', 'chicken burger'];
+    const cookieRecipe = ['cookie', 'chocolate cookie', 'chocolate'];
     const [allergens, setAllergens] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [country, setCountry] = useState('');
@@ -47,8 +49,13 @@ export default function SearchPage() {
 
     const filteredRecipes = recipes.filter(recipe => {
         const matchesSearch = !searchText || 
-            recipe.name.toLowerCase().startsWith(searchText.toLowerCase()) ||
-            recipe.name.toLowerCase().includes(searchText.toLowerCase());
+            recipe.name.toLowerCase().startsWith(searchText.trim().toLowerCase()) ||
+            recipe.name.toLowerCase().includes(searchText.trim().toLowerCase()) ||
+            recipe.name.split(' ').some(word => {
+                return searchText.trim().split(' ').some(searchWord => {
+                  return word.toLowerCase().includes(searchWord.toLowerCase()) || searchWord.toLowerCase().includes(word.toLowerCase());
+                });
+              });
         
         const matchesAllergens = !allergens || !recipe.allergens.includes(allergens);
         const matchesDifficulty = !difficulty || recipe.difficulty === difficulty;

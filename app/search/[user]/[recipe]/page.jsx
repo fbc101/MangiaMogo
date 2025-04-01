@@ -1,22 +1,47 @@
 'use client';
 
-import { useState } from 'react';
+import { use, useState } from 'react';
 import Avatar from "../../../components/Avatar";
 import gordon from "../../../assets/Gordon_Ramsay.png";
+import granny from "../../../assets/grandma.jpg";
 import julia from "../../../assets/JuliaChild.jpg";
 import burger from "../../../assets/Burger.svg";
 import cookie from "../../../assets/Choco_cookie.jpg";
 import Image from "next/image";
+import Rating from "@mui/material/Rating";
+import Box from "@mui/material/Box";
+import Dropdown from "../../../components/Dropdown";
+import { fraction } from 'mathjs';
 
+// app/search/[recipe]/page.jsx
 export default function RecipePage({ params }) {
+    const unwrappedParams = use(params); // Unwrap params
+    const { user,recipe } = unwrappedParams;
+    const [serving, setServing] = useState(1);
     const [selectedDiet, setSelectedDiet] = useState(null);
     const [showSubstitutions, setShowSubstitutions] = useState(false);
     const [rating, setRating] = useState(0);
     const [showProfile, setShowProfile] = useState(false);
-    const { user, recipe } = params;
+    
     // Replace hyphens with spaces and capitalize the first letter of each word
     const cleanedRecipe = recipe.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
     const cleanedUser = user.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+
+    const handleServingChange = (serving) => {
+        let numericValue;
+
+        if (serving.includes('/')) {
+            const [numerator, denominator] = serving.split('/').map(Number);
+            if (denominator !== 0) {
+                numericValue = numerator / denominator;
+            } else {
+                numericValue = 0; 
+            }
+        } else {
+            numericValue = parseFloat(serving);
+        }
+        setServing(numericValue);
+    }
 
     const profiles = {
         'Gordon Ramsay': {
@@ -44,36 +69,36 @@ export default function RecipePage({ params }) {
             avatar: gordon,
             ingredients: {
                 default: [
-                    "1 pound ground chicken",
-                    "2 large lettuce leaves",
-                    "2 thick tomato slices",
-                    "1 burger bun",
-                    "2 tbsp mayonnaise",
-                    "Salt and pepper to taste"
+                    {amount: 1, name: "pound ground chicken"},
+                    {amount: 2, name: "large lettuce leaves"},
+                    {amount: 2, name: "thick tomato slices"},
+                    {amount: 1, name: "burger bun"},
+                    {amount: 2, name: "tbsp mayonnaise"},
+                    {amount: null, name: "Salt and pepper to taste"}
                 ],
                 vegetarian: [
-                    "1 pound plant-based ground meat",
-                    "2 large lettuce leaves",
-                    "2 thick tomato slices",
-                    "1 burger bun",
-                    "2 tbsp vegan mayonnaise",
-                    "Salt and pepper to taste"
+                    {amount: 1, name: "pound plant-based ground meat"},
+                    {amount: 2, name: "large lettuce leaves"},
+                    {amount: 2, name: "thick tomato slices"},
+                    {amount: 1, name: "burger bun"},
+                    {amount: 2, name: "tbsp vegan mayonnaise"},
+                    {amount: null, name: "Salt and pepper to taste"}
                 ],
                 vegan: [
-                    "1 pound plant-based ground meat",
-                    "2 large lettuce leaves",
-                    "2 thick tomato slices",
-                    "1 vegan burger bun",
-                    "2 tbsp vegan mayonnaise",
-                    "Salt and pepper to taste"
+                    {amount: 1, name: "pound plant-based ground meat"},
+                    {amount: 2, name: "large lettuce leaves"},
+                    {amount: 2, name: "thick tomato slices"},
+                    {amount: 1, name: "vegan burger bun"},
+                    {amount: 2, name: "tbsp vegan mayonnaise"},
+                    {amount: null, name: "Salt and pepper to taste"}
                 ],
                 dairyFree: [
-                    "1 pound ground chicken",
-                    "2 large lettuce leaves",
-                    "2 thick tomato slices",
-                    "1 burger bun",
-                    "2 tbsp dairy-free mayonnaise",
-                    "Salt and pepper to taste"
+                    {amount: 1, name: "pound ground chicken"},
+                    {amount: 2, name: "large lettuce leaves"},
+                    {amount: 2, name: "thick tomato slices"},
+                    {amount: 1, name: "burger bun"},
+                    {amount: 2, name: "tbsp dairy-free mayonnaise"},
+                    {amount: null, name: "Salt and pepper to taste"}
                 ]
             },
             description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
@@ -90,40 +115,40 @@ export default function RecipePage({ params }) {
             avatar: julia,
             ingredients: {
                 default: [
-                    "2 cups all-purpose flour",
-                    "1 cup whole milk",
-                    "2 large eggs",
-                    "1½ cups granulated sugar",
-                    "½ cup cocoa powder",
-                    "1 tsp vanilla extract",
-                    "1 tsp baking soda"
+                    {amount: 2, name: "cups all-purpose flour"},
+                    {amount: 1, name: "cup whole milk"},
+                    {amount: 2, name: "large eggs"},
+                    {amount: 1.5, name: "cups granulated sugar"},
+                    {amount: 0.5, name: "cup cocoa powder"},
+                    {amount: 1, name: "tsp vanilla extract"},
+                    {amount: 1, name: "tsp baking soda"}
                 ],
                 vegetarian: [
-                    "2 cups all-purpose flour",
-                    "1 cup whole milk",
-                    "2 large eggs",
-                    "1½ cups granulated sugar",
-                    "½ cup cocoa powder",
-                    "1 tsp vanilla extract",
-                    "1 tsp baking soda"
+                    {amount: 2, name: "cups all-purpose flour"},
+                    {amount: 1, name: "cup whole milk"},
+                    {amount: 2, name: "large eggs"},
+                    {amount: 1.5, name: "cups granulated sugar"},
+                    {amount: 0.5, name: "cup cocoa powder"},
+                    {amount: 1, name: "tsp vanilla extract"},
+                    {amount: 1, name: "tsp baking soda"}
                 ],
                 vegan: [
-                    "2 cups all-purpose flour",
-                    "1 cup almond milk",
-                    "2 flax eggs (2 tbsp ground flaxseed + 6 tbsp water)",
-                    "1½ cups granulated sugar",
-                    "½ cup cocoa powder",
-                    "1 tsp vanilla extract",
-                    "1 tsp baking soda"
+                    {amount: 2, name: "cups all-purpose flour"},
+                    {amount: 1, name: "cup almond milk"},
+                    {amount: 2, name: "flax eggs (2 tbsp ground flaxseed + 6 tbsp water)"},
+                    {amount: 1.5, name: "cups granulated sugar"},
+                    {amount: 0.5, name: "cup cocoa powder"},
+                    {amount: 1, name: "tsp vanilla extract"},
+                    {amount: 1, name: "tsp baking soda"}
                 ],
                 dairyFree: [
-                    "2 cups all-purpose flour",
-                    "1 cup almond milk",
-                    "2 large eggs",
-                    "1½ cups granulated sugar",
-                    "½ cup cocoa powder",
-                    "1 tsp vanilla extract",
-                    "1 tsp baking soda"
+                    {amount: 2, name: "cups all-purpose flour"},
+                    {amount: 1, name: "cup almond milk"},
+                    {amount: 2, name: "large eggs"},
+                    {amount: 1.5, name: "cups granulated sugar"},
+                    {amount: 0.5, name: "cup cocoa powder"},
+                    {amount: 1, name: "tsp vanilla extract"},
+                    {amount: 1, name: "tsp baking soda"}
                 ]
             },
             description: "A classic chocolate cookie recipe perfected over decades. Rich, chewy, and absolutely delightful.",
@@ -207,18 +232,21 @@ export default function RecipePage({ params }) {
             {/* Recipe Title */}
             <h1 className="text-2xl font-bold mb-2">{cleanedRecipe}</h1>
 
-            {/* Rating Stars */}
-            <div className="flex mb-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                        key={star}
-                        onClick={() => setRating(star)}
-                        className="text-3xl focus:outline-none text-yellow-400"
-                    >
-                        {star <= rating ? '★' : '☆'}
-                    </button>
-                ))}
-            </div>
+            {/* Rating Stars Read Only*/}
+            {cleanedRecipe === "Chicken Burger" && <div className="flex justify-start items-center gap-2"> 
+                    <div className="text-lg font-bold">4.5</div>
+                    <Box>
+                        <Rating name="size-large" defaultValue={4.5} precision={0.5} size="large" readOnly />
+                    </Box>
+                    <div className="text-2xl font-bold">(283)</div>
+                </div>}
+                {cleanedRecipe === "Chocolate Cookie" && <div className="flex justify-start items-center gap-2"> 
+                    <div className="text-lg font-bold">4.8</div>
+                    <Box>
+                        <Rating name="size-large" defaultValue={4.5} precision={0.5} size="large" readOnly />
+                    </Box>
+                    <div className="text-2xl font-bold">(567)</div>
+                </div>}
 
             {/* Description */}
             <div className="mb-6">
@@ -263,10 +291,14 @@ export default function RecipePage({ params }) {
                     {currentIngredients.map((ingredient, index) => (
                         <li key={index} className="flex items-center gap-2">
                             <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                            {ingredient}
+                            {fraction(serving * ingredient.amount).toFraction() == "0" ? "" : fraction(serving * ingredient.amount).toFraction()} {ingredient.name}
                         </li>
                     ))}
                 </ul>
+                <div className="flex items-center gap-2">
+                    <div className="text-2xl">serving size</div>
+                    <Dropdown options={['1', '2', '3', '1/2', '1/3', '2/3', '3/4']} onChange={handleServingChange} />
+                </div>
             </div>
 
             {/* Instructions Section */}
@@ -280,6 +312,22 @@ export default function RecipePage({ params }) {
                             </span>
                             <p className="text-gray-700">{instruction.substring(instruction.indexOf(' ') + 1)}</p>
                         </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Rating Stars */}
+            <div className="flex mb-4">
+                <div className="text-2xl flex-col items-center">
+                    <div className="text-2xl font-bold">Rate this recipe</div>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                            key={star}
+                            onClick={() => setRating(star)}
+                            className="text-3xl focus:outline-none text-yellow-400"
+                        >
+                            {star <= rating ? '★' : '☆'}
+                        </button>
                     ))}
                 </div>
             </div>
