@@ -6,6 +6,7 @@ import { useState } from 'react';
 import gordon from '../assets/Gordon_Ramsay.png';
 import jamie from '../assets/JamieOliver.jpg';
 import julia from '../assets/JuliaChild.jpg';
+import { turnUsernameToUrl, getUserImage } from '../utils/utils';
 
 export default function MessagePage() {
   const router = useRouter();
@@ -49,17 +50,8 @@ export default function MessagePage() {
   };
 
   const handleChatClick = (username) => {
-    router.push(`/chat/${username}`);
-  };
-
-  const getUserImage = (username) => {
-    if (username === 'Gordon Ramsay') {
-      return gordon;
-    } else if (username === 'Jamie Oliver') {
-      return jamie;
-    } else if (username === 'Julia Child') {
-      return julia;
-    }
+    const urlUsername = turnUsernameToUrl(username);
+    router.push(`/message/chat/${urlUsername}`);
   };
 
   return (
@@ -70,15 +62,21 @@ export default function MessagePage() {
           {Object.keys(profiles).map((username) => (
             <div key={username} 
               className="flex items-start space-x-4 p-4 bg-gray-100 rounded-lg w-full text-left hover:bg-gray-200 transition-colors" 
-              onClick={() => handleChatClick(username)}>
+              onClick={()=> handleChatClick(username)}>
               <Image
                 src={getUserImage(username)}
                 alt="Jamie Oliver avatar"
                 className="w-12 h-12 rounded-full object-cover flex-shrink-0 cursor-pointer"
-                onClick={() => handleProfileClick(username)}
+                onClick={(e) => {
+                  e.stopPropagation(); 
+                  handleProfileClick(username);
+                }}
               />
               <div>
-                <p className="font-bold w-35" onClick={() => handleProfileClick(username)}>{username}</p>
+                <p className="font-bold w-35" onClick={(e) => {
+                  e.stopPropagation();
+                  handleProfileClick(username);
+                }}>{username}</p>
                 <p className="text-gray-600">{profiles[username].lastMessage}</p>
                 <p className="text-xs text-gray-400">{profiles[username].lastMessageTime}</p>
               </div>
