@@ -10,7 +10,6 @@ import julia from '../assets/JuliaChild.jpg';
 export default function MessagePage() {
   const router = useRouter();
   const [selectedProfile, setSelectedProfile] = useState(null);
-  const [chatOpened, setChatOpened] = useState({ user: ''});
 
   const profiles = {
     'Gordon Ramsay': {
@@ -50,7 +49,7 @@ export default function MessagePage() {
   };
 
   const handleChatClick = (username) => {
-    setChatOpened({ user: username });
+    router.push(`/chat/${username}`);
   };
 
   const getUserImage = (username) => {
@@ -66,24 +65,26 @@ export default function MessagePage() {
   return (
     <div className="flex flex-col w-full max-w-4xl mx-auto p-4 text-black">
       <h1 className="text-2xl font-bold mb-6">Messages</h1>
-      <div className="flex flex-col space-y-4">
-        {Object.keys(profiles).map((username) => (
-          <div key={username} className="flex items-start space-x-4 p-4 bg-gray-100 rounded-lg w-full text-left hover:bg-gray-200 transition-colors">
-          <Image
-            src={getUserImage(username)}
-            alt="Jamie Oliver avatar"
-            className="w-12 h-12 rounded-full object-cover flex-shrink-0 cursor-pointer"
-            onClick={() => handleProfileClick(username)}
-          />
-          <div>
-            <p className="font-bold w-35" onClick={() => handleProfileClick(username)}>{username}</p>
-            <p className="text-gray-600">{profiles[username].lastMessage}</p>
-            <p className="text-xs text-gray-400">{profiles[username].lastMessageTime}</p>
-          </div>
+      <div className="flex flex-col space-y-4 w-full min-w-50">
+          {/* Chat list */}
+          {Object.keys(profiles).map((username) => (
+            <div key={username} 
+              className="flex items-start space-x-4 p-4 bg-gray-100 rounded-lg w-full text-left hover:bg-gray-200 transition-colors" 
+              onClick={() => handleChatClick(username)}>
+              <Image
+                src={getUserImage(username)}
+                alt="Jamie Oliver avatar"
+                className="w-12 h-12 rounded-full object-cover flex-shrink-0 cursor-pointer"
+                onClick={() => handleProfileClick(username)}
+              />
+              <div>
+                <p className="font-bold w-35" onClick={() => handleProfileClick(username)}>{username}</p>
+                <p className="text-gray-600">{profiles[username].lastMessage}</p>
+                <p className="text-xs text-gray-400">{profiles[username].lastMessageTime}</p>
+              </div>
+            </div>
+          ))}
         </div>
-        ))}
-
-      </div>
 
       {/* Profile Modal */}
       {selectedProfile && (
@@ -122,14 +123,6 @@ export default function MessagePage() {
             >
               Close
             </button>
-          </div>
-        </div>
-      )}
-
-      {chatOpened.user && (
-        <div className="fixed inset-0 bg-black/75 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-96">
-            <h2 className="text-2xl font-bold">Chat with {chatOpened.user}</h2>
           </div>
         </div>
       )}
