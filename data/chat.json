@@ -1,0 +1,31 @@
+{
+    "Gordon Ramsay": [
+        { "type": "bot", "content": "Hello there!" },
+        { "type": "user", "content": "Hi!" },
+        { "type": "bot", "content": "I love your cooking!" },
+        { "type": "user", "content": "I love your cooking too!" },
+        { "type": "bot", "content": "Your recipe looks absolutely fantastic! The presentation is spot on." }
+    ],
+    "Jamie Oliver": [
+        { "type": "bot", "content": "Hey mate! Would love to collaborate on a new recipe together.!" }
+    ],
+    "Julia Child": [
+        { "type": "bot", "content": "Hi sweetie!" },
+        { "type": "user", "content": "Hi Julia!" },
+        { "type": "bot", "content": "Wanna learn how to make some chocolate chip cookies?" },
+        { "type": "user", "content": "Umm, no thanks!" },
+        { "type": "bot", "content": "Ok sweetie, how about some macarons?" },
+        { "type": "user", "content": "I think I'll pass!" },
+        { "type": "bot", "content": "If you change your mind, just let me know!" },
+        { "type": "user", "content": "Ok, I'll let you know!" },
+        { "type": "bot", "content": "Your chocolate soufflé technique is impressive! Let&apos;s chat about it." },
+        { "type": "user", "content": "Ok, I'll let you know!" },
+        { "type": "user", "content": "I love your cooking!" },
+        { "type": "bot", "content": "I love your cooking too!" },
+        { "type": "user", "content": "I love your cooking too!" },
+        { "type": "bot", "content": "I love your cooking too!" },
+        { "type": "user", "content": "I love your cooking too!" },
+        { "type": "bot", "content": "I love your cooking too!" },
+        { "type": "bot", "content": "I'm so glad you're here! Let's chat about your favorite recipes." }
+    ]
+}
