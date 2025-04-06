@@ -18,14 +18,16 @@
         { "type": "user", "content": "I think I'll pass!" },
         { "type": "bot", "content": "If you change your mind, just let me know!" },
         { "type": "user", "content": "Ok, I'll let you know!" },
-        { "type": "bot", "content": "Your chocolate soufflé technique is impressive! Let&apos;s chat about it." },
-        { "type": "user", "content": "Ok, I'll let you know!" },
-        { "type": "user", "content": "I love your cooking!" },
-        { "type": "bot", "content": "I love your cooking too!" },
-        { "type": "user", "content": "I love your cooking too!" },
-        { "type": "bot", "content": "I love your cooking too!" },
-        { "type": "user", "content": "I love your cooking too!" },
-        { "type": "bot", "content": "I love your cooking too!" },
-        { "type": "bot", "content": "I'm so glad you're here! Let's chat about your favorite recipes." }
+        { "type": "bot", "content": "Okay, let's talk about food! Since you were thinking about warm beach destinations, how about we explore some Caribbean islands known for their amazing food scenes?" },
+        { "type": "user", "content": "Oh, that sounds interesting!" },
+        { "type": "bot", "content": "Great! Are you interested in a specific type of cuisine, or are you open to anything?" },
+        { "type": "user", "content": "Hmm, I'm pretty open. What are some of the highlights?" },
+        { "type": "bot", "content": "Well, Jamaica is famous for its jerk seasoning and vibrant street food. Barbados is often called the culinary capital of the Caribbean, with amazing seafood and the Oistins Fish Fry. Then there's Curaçao with a blend of Dutch and Caribbean flavors..." },
+        { "type": "user", "content": "Ooh, jerk chicken sounds good!" },
+        { "type": "bot", "content": "It is! The smoky, spicy flavor is fantastic. Would you like to hear more about Jamaican cuisine or perhaps some other islands?" },
+        { "type": "user", "content": "Tell me more about Jamaican food!" },
+        { "type": "bot", "content": "Absolutely! Besides jerk chicken and pork, they have delicious dishes like ackee and saltfish, which is their national dish, and flavorful beef patties. They also use a lot of fresh, local ingredients..." },
+        { "type": "user", "content": "That all sounds really tasty!" },
+        { "type": "bot", "content": "Your chocolate soufflé technique is impressive! Let's chat about it." }
     ]
 }

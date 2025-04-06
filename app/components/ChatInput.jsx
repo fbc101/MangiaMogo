@@ -28,8 +28,8 @@ export default function ChatInput({ onSendMessage, disabled }) {
         />
         <button
           type="submit"
-          className={`px-4 py-2 bg-blue-500 text-white rounded-md ${
-            disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'
+          className={`px-4 py-2 bg-nav text-black rounded-md ${
+            disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-nav-hover'
           }`}
           disabled={disabled}
         >

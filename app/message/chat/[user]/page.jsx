@@ -10,7 +10,7 @@ export default function ChatPage({ params }) {
     const userCleaned = cleanUsername(user);
 
     return (
-        <div className="flex flex-col justify-center items-center space-y-4 w-full min-w-50">
+        <div className="flex flex-col justify-center items-center space-y-4 h-full ">
             <ChatInterface username={userCleaned} />
         </div>
     )

@@ -38,13 +38,13 @@ export default function ChatInterface({ username }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden max-h-254"> {/* Make the main container take full viewport height and hide overflow */}
+    <div className="flex flex-col h-screen overflow-hidden max-w-xl"> {/* Make the main container take full viewport height and hide overflow */}
       <div className="bg-nav rounded-lg p-4 flex justify-between items-center shadow-md z-10"> {/* Added shadow and z-index for header */}
         <div className="flex justify-start items-center">
           <Image src={getUserImage(username)} alt={username} className="w-12 h-12 rounded-full mr-4" />
           <h1 className="text-xl font-bold text-gray-800">{username}</h1>
         </div>
-        <button className="bg-nav rounded-lg p-2" onClick={() => router.back()}>
+        <button className="bg-nav rounded-lg p-2 hover:bg-nav-hover cursor-pointer" onClick={() => router.back()}>
           <Image src={reject} alt="reject" className="w-6 h-6 rounded-full " />
         </button>
       </div>

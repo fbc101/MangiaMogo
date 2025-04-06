@@ -40,7 +40,7 @@ export default function MessagePage() {
       followers: 800,
       following: 200,
       friends: 275,
-      lastMessage: 'Your chocolate soufflé technique is impressive! Let&apos;s chat about it.',
+      lastMessage: "Your chocolate soufflé technique is impressive! Let's chat about it.",
       lastMessageTime: '1 day ago'
     }
   };
@@ -57,7 +57,7 @@ export default function MessagePage() {
   return (
     <div className="flex flex-col w-full max-w-4xl mx-auto p-4 text-black">
       <h1 className="text-2xl font-bold mb-6">Messages</h1>
-      <div className="flex flex-col space-y-4 w-full min-w-50">
+      <div className="flex flex-col space-y-4 w-full min-w-50 cursor-pointer">
           {/* Chat list */}
           {Object.keys(profiles).map((username) => (
             <div key={username} 
@@ -73,7 +73,7 @@ export default function MessagePage() {
                 }}
               />
               <div>
-                <p className="font-bold w-35" onClick={(e) => {
+                <p className="font-bold w-35 cursor-pointer" onClick={(e) => {
                   e.stopPropagation();
                   handleProfileClick(username);
                 }}>{username}</p>

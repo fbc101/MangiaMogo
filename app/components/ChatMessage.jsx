@@ -6,7 +6,7 @@ export default function ChatMessage({ message }) {
         <div 
           className={`p-3 rounded-lg max-w-[80%] ${
             type === 'user' 
-              ? 'bg-blue-500 text-white' 
+              ? 'bg-nav text-black' 
               : 'bg-gray-200 text-gray-800'
           }`}
         >
