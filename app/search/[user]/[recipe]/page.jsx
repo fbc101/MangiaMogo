@@ -11,7 +11,7 @@ import Image from "next/image";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Dropdown from "../../../components/Dropdown";
-import { fraction } from 'mathjs';
+import { fraction, floor } from 'mathjs';
 
 // app/search/[recipe]/page.jsx
 export default function RecipePage({ params }) {
@@ -171,6 +171,27 @@ export default function RecipePage({ params }) {
 
     const currentIngredients = selectedDiet ? recipeDetails.ingredients[selectedDiet] : recipeDetails.ingredients.default;
 
+    const handleFraction = (amount) => {
+        const fract = fraction(amount).toFraction();
+        console.log(fract);
+        const [numerator, denominator] = fract.split('/').map(Number);
+        console.log(numerator, denominator);
+
+        if (denominator) {
+            if (fract === "0") {
+                return "";
+            } else if (numerator < denominator) {
+                return fract;
+            } else {
+                const remainder = numerator % denominator;
+                const quotient = floor(numerator / denominator);
+                return `${quotient} ${remainder}/${denominator}`;
+            }
+        } else {
+            return amount == 0 ? "" : amount;
+        }
+    };
+
     return (
         <div className="flex flex-col w-full min-h-screen bg-white p-4">
             {/* Header with Avatar and User */}
@@ -256,26 +277,27 @@ export default function RecipePage({ params }) {
 
             {/* Ingredients Section */}
             <div className="mb-6">
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex-row items-center justify-start mb-3">
                     <h2 className="text-lg font-semibold">Ingredients</h2>
-                    <button 
-                        className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm"
-                        onClick={() => setShowSubstitutions(!showSubstitutions)}
-                    >
-                        Dietary Options
-                    </button>
                 </div>
 
                 {/* Diet Selection Modal */}
                 {showSubstitutions && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                        <div className="bg-white rounded-lg p-4 w-80">
+                    <div
+                        className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+                        onClick={() => setShowSubstitutions(false)} 
+                    >
+                        <div
+                            className="bg-white rounded-lg p-4 w-80"
+                            onClick={(e) => e.stopPropagation()} 
+                        >
                             <h3 className="text-lg font-semibold mb-3">Choose Diet Type</h3>
                             {['default', 'vegetarian', 'vegan', 'dairyFree'].map((diet) => (
-                                <button 
+                                <button
                                     key={diet}
                                     className="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-md capitalize"
-                                    onClick={() => {
+                                    onClick={(e) => {
+                                        e.stopPropagation();
                                         setSelectedDiet(diet === 'default' ? null : diet);
                                         setShowSubstitutions(false);
                                     }}
@@ -291,7 +313,7 @@ export default function RecipePage({ params }) {
                     {currentIngredients.map((ingredient, index) => (
                         <li key={index} className="flex items-center gap-2">
                             <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                            {fraction(serving * ingredient.amount).toFraction() == "0" ? "" : fraction(serving * ingredient.amount).toFraction()} {ingredient.name}
+                            {handleFraction(serving * ingredient.amount)} {ingredient.name}
                         </li>
                     ))}
                 </ul>
@@ -299,6 +321,12 @@ export default function RecipePage({ params }) {
                     <div className="text-2xl">serving size</div>
                     <Dropdown options={['1', '2', '3', '1/2', '1/3', '2/3', '3/4']} onChange={handleServingChange} />
                 </div>
+                <button 
+                    className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600"
+                    onClick={() => setShowSubstitutions(!showSubstitutions)}
+                >
+                    Dietary Options
+                </button>
             </div>
 
             {/* Instructions Section */}
