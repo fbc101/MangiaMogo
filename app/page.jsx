@@ -2,6 +2,8 @@
 
 // app/page.jsx (or app/home/page.jsx)
 import { useRouter } from 'next/navigation';
+import home from "./assets/home-img.jpeg";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
@@ -14,7 +16,13 @@ export default function Home() {
         <p className="text-lg">
           Your place to discover, share and connect over amazing recipes
         </p>
+      </div>
 
+      <div className="w-full h-full mt-6 mb-6">
+        <Image src={home} alt="home" className="rounded-lg w-full h-full object-cover" />
+      </div>
+
+      <div className="max-w-md text-center space-y-6">
         <div className="bg-white rounded-lg p-6 shadow-md">
           <h2 className="text-xl font-semibold mb-4">Get Started</h2>
           <div className="space-y-3 text-left">
