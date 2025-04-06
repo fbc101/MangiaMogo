@@ -5,6 +5,10 @@ import SearchBar from "../components/SearchBar";
 import Recipe from "../components/Recipe";
 import burger from "../assets/Burger.svg";
 import cookie from "../assets/Choco_cookie.jpg";
+import curry from "../assets/jap-curry.png";
+import friedChicken from "../assets/korean-fried-chicken.png";
+import lamb from "../assets/lamb-skewer.png";
+
 import { useRouter } from 'next/navigation';
 
 export default function SearchPage() {
@@ -44,6 +48,39 @@ export default function SearchPage() {
             difficulty: "medium",
             country: "France",
             allergens: ["eggs", "milk"]
+        },
+        {
+            name: "Japanese Curry",
+            ingredients: "curry, rice, chicken",
+            description: "Japanese curry is different from Indian or Thai curries. It is more of a brown stew and it can be mild or spicy, depending on your...",
+            username: "Julia Child",
+            image: curry,
+            price: 12,
+            difficulty: "medium",
+            country: "Japan",
+            allergens: ["milk"]
+        },
+        {
+            name: "Korean Fried Chicken",
+            ingredients: "chicken, flour, eggs, sugar, cocoa",
+            description: "This Korean fried chicken recipe is officially my favorite. I've had every style of fried chicken known to man, so I've always considered myself an expert...",
+            username: "Gordon Ramsay",
+            image: friedChicken,
+            price: 15,
+            difficulty: "hard",
+            country: "Korea",
+            allergens: ["eggs"]
+        },
+        {
+            name: "Lamb Skewer",
+            ingredients: "lamb, skewers, spices",
+            description: "Lamb souvlaki with marinated pieces of lamb, threaded on skewers, and char-grilled to perfection...",
+            username: "Gordon Ramsay",
+            image: lamb,
+            price: 20,
+            difficulty: "hard",
+            country: "Greece",
+            allergens: []
         }
     ];
 

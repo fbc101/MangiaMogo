@@ -7,6 +7,9 @@ import granny from "../../../assets/grandma.jpg";
 import julia from "../../../assets/JuliaChild.jpg";
 import burger from "../../../assets/Burger.svg";
 import cookie from "../../../assets/Choco_cookie.jpg";
+import curry from "../../../assets/jap-curry.png";
+import friedChicken from "../../../assets/korean-fried-chicken.png";
+import lamb from "../../../assets/lamb-skewer.png";
 import Image from "next/image";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
@@ -159,6 +162,198 @@ export default function RecipePage({ params }) {
                 "4. Combine wet and dry ingredients until well incorporated",
                 "5. Drop spoonfuls onto baking sheet",
                 "6. Bake for 12-15 minutes until edges are set"
+            ]
+        },
+        'Japanese Curry': {
+            image: curry,
+            avatar: julia,
+            ingredients: {
+                default: [
+                    {amount: 2, name: "tablespoon vegetable oil, or more as needed"},
+                    {amount: 1.75, name: "pounds beef chuck, cut into 2-inch cubes"},
+                    {amount: 3, name: "onions, quartered"},
+                    {amount: 1, name: "tablespoon ketchup"},
+                    {amount: 1.5, name: "teaspoons Worcestershire sauce"},
+                    {amount: 1, name: "pinch cayenne pepper, or to taste (Optional)"},
+                    {amount: null, name: "water to cover"},
+                    {amount: 4, name: "carrots, cut into 2-inch pieces"},
+                    {amount: 1, name: "cube chicken bouillon (Optional)"},
+                    {amount: 3, name: "medium potatoes, cut into 3-inch chunks"},
+                    {amount: 1.5, name: "containers Japanese curry roux, or more to taste"},
+                ],
+                vegetarian: [
+                    {amount: 2, name: "tablespoon vegetable oil, or more as needed"},
+                    {amount: 1.75, name: "pounds plant-based ground chicken, cut into 2-inch cubes"},
+                    {amount: 3, name: "onions, quartered"},
+                    {amount: 1, name: "tablespoon ketchup"},
+                    {amount: 1.5, name: "teaspoons Worcestershire sauce"},
+                    {amount: 1, name: "pinch cayenne pepper, or to taste (Optional)"},
+                    {amount: null, name: "water to cover"},
+                    {amount: 4, name: "carrots, cut into 2-inch pieces"},
+                    {amount: 1, name: "cube chicken bouillon (Optional)"},
+                    {amount: 3, name: "medium potatoes, cut into 3-inch chunks"},
+                    {amount: 1.5, name: "containers Japanese curry roux, or more to taste"},
+                ],
+                vegan: [
+                    {amount: 2, name: "tablespoon vegetable oil, or more as needed"},
+                    {amount: 1.75, name: "pounds plant-based ground chicken, cut into 2-inch cubes"},
+                    {amount: 3, name: "onions, quartered"},
+                    {amount: 1, name: "tablespoon ketchup"},
+                    {amount: 1.5, name: "teaspoons Worcestershire sauce"},
+                    {amount: 1, name: "pinch cayenne pepper, or to taste (Optional)"},
+                    {amount: null, name: "water to cover"},
+                    {amount: 4, name: "carrots, cut into 2-inch pieces"},
+                    {amount: 1, name: "cube chicken bouillon (Optional)"},
+                    {amount: 3, name: "medium potatoes, cut into 3-inch chunks"},
+                    {amount: 1.5, name: "containers Japanese curry roux, or more to taste"},
+                ],
+                dairyFree: [
+                    {amount: 2, name: "tablespoon vegetable oil, or more as needed"},
+                    {amount: 1.75, name: "pounds plant-based ground chicken, cut into 2-inch cubes"},
+                    {amount: 3, name: "onions, quartered"},
+                    {amount: 1, name: "tablespoon ketchup"},
+                    {amount: 1.5, name: "teaspoons Worcestershire sauce"},
+                    {amount: 1, name: "pinch cayenne pepper, or to taste (Optional)"},
+                    {amount: null, name: "water to cover"},
+                    {amount: 4, name: "carrots, cut into 2-inch pieces"},
+                    {amount: 1, name: "cube chicken bouillon (Optional)"},
+                    {amount: 3, name: "medium potatoes, cut into 3-inch chunks"},
+                    {amount: 1.5, name: "containers Japanese curry roux, or more to taste"},
+                ]
+            },
+            description: "Japanese curry is different from Indian or Thai curries. It is more of a brown stew and it can be mild or spicy, depending on your tastes. It can be served over white rice or with udon noodles. This recipe is very flexible; it can easily be made for more or less people.",
+            instructions: [
+                "1. Heat oil in a 6-quart pot over medium-high heat. Add beef and saute until brown, 5 to 7 minutes. ",
+                "2. Add onions and cook until starting to soften, about 3 minutes. Add ketchup and Worcestershire sauce. Stir to coat. Add cayenne pepper. Pour in water to cover mixture by 1 or 2 inches. Add carrots and bouillon.",
+                "3. Simmer, skimming fat off the surface of the broth as needed, for 30 minutes. Add potatoes. Stir in 1 package of curry roux and let dissolve; add remaining curry as needed to achieve desired thickness. Continue simmering until beef and vegetables are tender, about 30 minutes more.",
+                "4. Remove beef and vegetables to a bowl. Stir remaining curry roux into broth until thickened. Return beef and vegetables to the pot. Simmer until heated through, about 5 minutes more.",
+                "5. Serve hot, garnished with green onions and cilantro."
+            ]
+        },
+        'Korean Fried Chicken': {
+            image: friedChicken,
+            avatar: gordon,
+            ingredients: {
+                default: [
+                    {amount: 1, name: "pound skinless, boneless chicken thighs, quartered"},
+                    {amount: .5, name: "yellow onion, grated"},
+                    {amount: 4, name: "cloves garlic, minced"},
+                    {amount: 1, name: "teaspoon fine salt"},
+                    {amount: .5, name: "teaspoon freshly ground black pepper"},
+                    {amount: 4, name: "cups oil for frying, or as needed"},
+                    {amount: .75, name: "cup cornstarch"},
+                    {amount: .5, name: "cup self-rising flour"},
+                    {amount: 1, name: "teaspoon white sugar"},
+                    {amount: .5, name: "teaspoon ground black pepper"},
+                    {amount: .25, name: "teaspoon salt"},
+                    {amount: 1, name: "cup very cold water, or as needed"},
+                ],
+                vegetarian: [
+                    {amount: 1, name: "pound skinless, boneless chicken thighs, quartered"},
+                    {amount: .5, name: "yellow onion, grated"},
+                    {amount: 4, name: "cloves garlic, minced"},
+                    {amount: 1, name: "teaspoon fine salt"},
+                    {amount: .5, name: "teaspoon freshly ground black pepper"},
+                    {amount: 4, name: "cups oil for frying, or as needed"},
+                    {amount: .75, name: "cup cornstarch"},
+                    {amount: .5, name: "cup self-rising flour"},
+                    {amount: 1, name: "teaspoon white sugar"},
+                    {amount: .5, name: "teaspoon ground black pepper"},
+                    {amount: .25, name: "teaspoon salt"},
+                    {amount: 1, name: "cup very cold water, or as needed"}
+                ],
+                vegan: [
+                    {amount: 1, name: "pound skinless, boneless chicken thighs, quartered"},
+                    {amount: .5, name: "yellow onion, grated"},
+                    {amount: 4, name: "cloves garlic, minced"},
+                    {amount: 1, name: "teaspoon fine salt"},
+                    {amount: .5, name: "teaspoon freshly ground black pepper"},
+                    {amount: 4, name: "cups oil for frying, or as needed"},
+                    {amount: .75, name: "cup cornstarch"},
+                    {amount: .5, name: "cup self-rising flour"},
+                    {amount: 1, name: "teaspoon white sugar"},
+                    {amount: .5, name: "teaspoon ground black pepper"},
+                    {amount: .25, name: "teaspoon salt"},
+                    {amount: 1, name: "cup very cold water, or as needed"},
+                ],
+                dairyFree: [
+                    {amount: 1, name: "pound skinless, boneless chicken thighs, quartered"},
+                    {amount: .5, name: "yellow onion, grated"},
+                    {amount: 4, name: "cloves garlic, minced"},
+                    {amount: 1, name: "teaspoon fine salt"},
+                    {amount: .5, name: "teaspoon freshly ground black pepper"},
+                    {amount: 4, name: "cups oil for frying, or as needed"},
+                    {amount: .75, name: "cup cornstarch"},
+                    {amount: .5, name: "cup self-rising flour"},
+                    {amount: 1, name: "teaspoon white sugar"},
+                    {amount: .5, name: "teaspoon ground black pepper"},
+                    {amount: .25, name: "teaspoon salt"},
+                    {amount: 1, name: "cup very cold water, or as needed"}
+                ]
+            },
+            description: "This Korean fried chicken recipe is officially my favorite. I've had every style of fried chicken known to man, so I've always considered myself an expert. No other method I've come across has the same combination of tender, juicy, flavorful chicken and plate-scratching crispiness as this recipe does. It's simply a must-try!",
+            instructions: [
+                "1. Gather all ingredients.",
+                "2. Make marinade: Stir together chicken, onion, garlic, salt, and pepper in a medium bowl until chicken is coated. Cover the bowl with plastic wrap and refrigerate, 4 hours to overnight.",
+                "3. Heat oil in a deep fryer or large saucepan to 340 degrees F (171 degrees C).",
+                "4. While oil is heating, make the batter: Whisk cornstarch, flour, sugar, pepper, and salt together in a large bowl. Gradually whisk in cold water until mixture resembles a smooth batter. Use tongs to remove chicken from marinade to batter; stir to coat chicken completely. Discard marinade.",
+                "5. Working in batches, fry chicken in hot oil for 4 minutes. Transfer chicken to a cooling rack.",
+                "6. Increase oil temperature to 375 degrees F (190 degrees C).",
+                "7. Working in batches, fry chicken again in hot oil until golden brown and crispy, 3 to 4 minutes. Transfer to a wire rack to drain.",
+                "8. Enjoy!"
+            ]
+        },
+        'Lamb Skewer': {
+            image: lamb,
+            avatar: gordon,
+            ingredients: {
+                default: [
+                    {amount: .33, name: "cup olive oil"},
+                    {amount: 1.5, name: "tablespoons freshly squeezed lemon juice"},
+                    {amount: 1.5, name: "tablespoons red wine vinegar"},
+                    {amount: 1.5, name: "tablespoons chopped fresh oregano"},
+                    {amount: 2, name: "cloves garlic, minced"},
+                    {amount: .5, name: "teaspoon salt"},
+                    {amount: .25, name: "teaspoon ground black pepper"},
+                    {amount: 1.5, name: "pounds boneless leg of lamb, trimmed of all fat and cut into 1-inch cubes"},
+                ],
+                vegetarian: [
+                    {amount: .33, name: "cup olive oil"},
+                    {amount: 1.5, name: "tablespoons freshly squeezed lemon juice"},
+                    {amount: 1.5, name: "tablespoons red wine vinegar"},
+                    {amount: 1.5, name: "tablespoons chopped fresh oregano"},
+                    {amount: 2, name: "cloves garlic, minced"},
+                    {amount: .5, name: "teaspoon salt"},
+                    {amount: .25, name: "teaspoon ground black pepper"},
+                    {amount: 1.5, name: "pounds boneless leg of plant-based ground lamb, trimmed of all fat and cut into 1-inch cubes"},
+                ],
+                vegan: [
+                    {amount: .33, name: "cup olive oil"},
+                    {amount: 1.5, name: "tablespoons freshly squeezed lemon juice"},
+                    {amount: 1.5, name: "tablespoons red wine vinegar"},
+                    {amount: 1.5, name: "tablespoons chopped fresh oregano"},
+                    {amount: 2, name: "cloves garlic, minced"},
+                    {amount: .5, name: "teaspoon salt"},
+                    {amount: .25, name: "teaspoon ground black pepper"},
+                    {amount: 1.5, name: "pounds boneless leg of plant-based ground lamb, trimmed of all fat and cut into 1-inch cubes"},
+                ],
+                dairyFree: [
+                    {amount: .33, name: "cup olive oil"},
+                    {amount: 1.5, name: "tablespoons freshly squeezed lemon juice"},
+                    {amount: 1.5, name: "tablespoons red wine vinegar"},
+                    {amount: 1.5, name: "tablespoons chopped fresh oregano"},
+                    {amount: 2, name: "cloves garlic, minced"},
+                    {amount: .5, name: "teaspoon salt"},
+                    {amount: .25, name: "teaspoon ground black pepper"},
+                    {amount: 1.5, name: "pounds boneless leg of plant-based ground lamb, trimmed of all fat and cut into 1-inch cubes"},
+                ],
+            },
+            description: "Lamb souvlaki with marinated pieces of lamb, threaded on skewers, and char-grilled to perfection. I like to serve these with rosemary garlic roasted potatoes, a Greek salad, and pita bread.",
+            instructions: [
+                "1. Whisk olive oil, lemon juice, red wine vinegar, oregano, garlic, salt, and pepper together in a medium bowl. Add cubed lamb and stir until lamb is coated with marinade. Cover and refrigerate 3 hours, or overnight.",
+                "2. Preheat an outdoor grill for medium-high heat and lightly oil the grate.",
+                "3. Thread marinated lamb onto skewers, reserving any remaining marinade. Grill skewers until desired doneness, 10 to 12 minutes, basting with the reserved marinade and turning occasionally for even cooking.",
+                
             ]
         }
     };
