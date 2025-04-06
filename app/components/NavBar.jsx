@@ -26,25 +26,25 @@ export default function NavBar() {
       <div className="flex justify-center items-center ml-6 mr-6 cursor-pointer hover:bg-nav-hover rounded-2xl" onClick={() => router.push('/')}>
         <div className="flex flex-col justify-center items-center">
           <Image src={homeIcon} className="w-18 h-18" alt="Home Icon" />
-          {isActive('/') && <Image src={bar} className="w-15 h-1" alt="Home Icon" />}
+          {isActive('/') && <Image src={bar} className="w-15 h-2" alt="Home Icon" />}
         </div>
       </div>
       <div className="flex justify-center items-center ml-6 mr-6 cursor-pointer hover:bg-nav-hover rounded-2xl" onClick={() => router.push('/search')}>
         <div className="flex flex-col justify-center items-center">
           <Image src={searchIcon} className="w-18 h-18" alt="Search Icon" />
-          {isActive('/search') && <Image src={bar} className="w-15 h-1" alt="Home Icon" />}
+          {isActive('/search') && <Image src={bar} className="w-15 h-2" alt="Home Icon" />}
         </div>
       </div>
       <div className="flex justify-center items-center ml-6 mr-6 cursor-pointer hover:bg-nav-hover rounded-2xl" onClick={() => router.push('/message')}>
         <div className="flex flex-col justify-center items-center">
           <Image src={messageIcon} className="w-18 h-18" alt="Message Icon" />
-          {isActive('/message') && <Image src={bar} className="w-15 h-1" alt="Home Icon" />}
+          {isActive('/message') && <Image src={bar} className="w-15 h-2" alt="Home Icon" />}
         </div>
       </div>
       <div className="flex justify-center items-center ml-6 mr-6 cursor-pointer hover:bg-nav-hover rounded-2xl" onClick={() => router.push('/profile')}>
         <div className="flex flex-col justify-center items-center">
-          <Image src={profileIcon} className="w-16 h-16" alt="Profile Icon" />
-          {isActive('/profile') && <Image src={bar} className="w-15 h-1 mt-1" alt="Home Icon" />}
+          <Image src={profileIcon} className="w-16 h-18" alt="Profile Icon" />
+          {isActive('/profile') && <Image src={bar} className="w-15 h-2" alt="Home Icon" />}
         </div>
       </div>
     </div>
