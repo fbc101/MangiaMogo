@@ -8,15 +8,15 @@ export default function Recipe({ name, ingredients, description, username, image
   return (
     <div className="flex flex-row justify-center p-5">
       <Link href={`/search/${sanitizedUsername}/${sanitizedRecipe}`}>
-        <div className="w-[300px] h-[300px]">
+        <div className="w-[175px] h-[175px]">
           <Image
             src={image}
             alt="recipe"
-            className="rounded-xl w-full h-full object-cover object-center cursor-pointer" // Add object-center
+            className="rounded-xl object-cover object-center cursor-pointer" // Add object-center
           />
         </div>
       </Link>
-      <div className="justify-self-start pl-10 w-xl">
+      <div className="justify-self-start pl-5 max-w-xl w-full">
         <Link href={`/search/${sanitizedUsername}/${sanitizedRecipe}`}>
           <h1 className="text-2xl font-bold cursor-pointer">{name}</h1>
         </Link>

@@ -21,7 +21,7 @@ export default function SearchBar({ onSearch }) {
     };
 
     return (
-        <div className="flex w-3/4 p-2">
+        <div className="flex w-full max-w-3xl p-2">
             <h1 className="flex justify-center items-center pl-2 pr-4 text-3xl font-bold text-title">
                 Search
             </h1>
