@@ -11,6 +11,10 @@ export const turnUsernameToUrl = (user) => {
     return user.replace(/\s+/g, '-').toLowerCase();
 }
 
+export const turnRecipeToUrl = (recipe) => {
+    return recipe.replace(/\s+/g, '-').toLowerCase();
+}
+
 export const getUserImage = (username) => {
     if (username === 'Gordon Ramsay') {
       return gordon;
