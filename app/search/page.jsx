@@ -8,7 +8,7 @@ import cookie from "../assets/Choco_cookie.jpg";
 import curry from "../assets/jap-curry.png";
 import friedChicken from "../assets/korean-fried-chicken.png";
 import lamb from "../assets/lamb-skewer.png";
-
+import CostSlider from '../components/CostSlider';
 import { useRouter } from 'next/navigation';
 
 export default function SearchPage() {
@@ -18,6 +18,7 @@ export default function SearchPage() {
     const [allergens, setAllergens] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [country, setCountry] = useState('');
+    const [costSliderRange, setCostSliderRange] = useState([0, 25]);
     const router = useRouter();
 
     const handleRecipeClick = (username, recipeName) => {
@@ -97,14 +98,22 @@ export default function SearchPage() {
         const matchesAllergens = !allergens || !recipe.allergens.includes(allergens);
         const matchesDifficulty = !difficulty || recipe.difficulty === difficulty;
         const matchesCountry = !country || recipe.country.toLowerCase().includes(country.toLowerCase());
+        const matchesCost = recipe.cost >= costSliderRange[0] && recipe.cost <= costSliderRange[1];
 
-        return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry;
+        return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesCost;
     });
+
+    const handleCostRangeChange = (range) => {
+        setCostSliderRange(range);
+    };
 
     return (
         <div className="flex flex-col items-center justify-center flex-grow text-black text-2xl">
             <h1>Search page</h1>
             <SearchBar onSearch={setSearchText} />
+            <div className="flex items-center justify-start flex-grow">
+                {searchText && <p>You searched for: {searchText}</p>}
+            </div>
             
             {/* Filters Section */}
             <div className="flex gap-4 mt-4 mb-6">
@@ -147,10 +156,14 @@ export default function SearchPage() {
                     />
                 </div>
             </div>
+            
+            <CostSlider range={costSliderRange} onChange={handleCostRangeChange} />
 
-            <div className="flex items-center justify-center flex-grow">
-                {searchText && <p>You searched for: {searchText}</p>}
+
+            <div className="flex flex-col w-full max-w-3xl p-2">
+                <div className="flex justify-start items-center pl-2 pr-4 text-3xl font-bold text-title mt-2">Recipes</div>
             </div>
+
             <div className="flex flex-col items-center justify-center flex-grow">
                 {filteredRecipes.map((recipe, index) => (
                     <div key={index} className="flex flex-row items-center justify-center flex-grow">
