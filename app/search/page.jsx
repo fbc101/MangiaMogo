@@ -9,6 +9,8 @@ import curry from "../assets/jap-curry.png";
 import friedChicken from "../assets/korean-fried-chicken.png";
 import lamb from "../assets/lamb-skewer.png";
 import CostSlider from '../components/CostSlider';
+import CostCheckbox from '../components/CostCheckbox';
+
 import { useRouter } from 'next/navigation';
 
 export default function SearchPage() {
@@ -19,6 +21,16 @@ export default function SearchPage() {
     const [difficulty, setDifficulty] = useState('');
     const [country, setCountry] = useState('');
     const [costSliderRange, setCostSliderRange] = useState([0, 25]);
+    const [currentlySelectedRanges, setCurrentlySelectedRanges] = useState([]);
+
+
+    const costRanges = [
+        { id: 'under50', label: 'Under $25', range: [0, 25] },
+        { id: '50to100', label: '$25 - $50', range: [25, 50] },
+        { id: '100to200', label: '$50 - $100', range: [50, 100]},
+        { id: 'over200', label: 'Over $100', range: [100, 200] },
+      ];
+
     const router = useRouter();
 
     const handleRecipeClick = (username, recipeName) => {
@@ -67,7 +79,7 @@ export default function SearchPage() {
             description: "This Korean fried chicken recipe is officially my favorite. I've had every style of fried chicken known to man, so I've always considered myself an expert...",
             username: "Gordon Ramsay",
             image: friedChicken,
-            cost: 15,
+            cost: 21,
             difficulty: "hard",
             country: "Korea",
             allergens: ["eggs"]
@@ -78,7 +90,7 @@ export default function SearchPage() {
             description: "Lamb souvlaki with marinated pieces of lamb, threaded on skewers, and char-grilled to perfection...",
             username: "Gordon Ramsay",
             image: lamb,
-            cost: 20,
+            cost: 25,
             difficulty: "hard",
             country: "Greece",
             allergens: []
@@ -99,13 +111,19 @@ export default function SearchPage() {
         const matchesDifficulty = !difficulty || recipe.difficulty === difficulty;
         const matchesCountry = !country || recipe.country.toLowerCase().includes(country.toLowerCase());
         const matchesCost = recipe.cost >= costSliderRange[0] && recipe.cost <= costSliderRange[1];
-
+        const matchesMultipleCost = true;
         return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesCost;
     });
 
     const handleCostRangeChange = (range) => {
         setCostSliderRange(range);
     };
+
+    const handleSelectionChange = (ranges) => {
+        setCurrentlySelectedRanges(ranges);
+        console.log('Currently Selected Ranges:', ranges);
+        // You can now use the 'currentlySelectedRanges' state to filter data, etc.
+      };
 
     return (
         <div className="flex flex-col items-center justify-center flex-grow text-black text-2xl">
@@ -158,8 +176,10 @@ export default function SearchPage() {
             </div>
             
             <CostSlider range={costSliderRange} onChange={handleCostRangeChange} />
-
-
+            <CostCheckbox ranges={costRanges} onSelectionChange={handleSelectionChange} />
+            {currentlySelectedRanges.length > 0 && (
+                <p>Currently Selected Ranges: {JSON.stringify(currentlySelectedRanges)}</p>
+            )}
             <div className="flex flex-col w-full max-w-3xl p-2">
                 <div className="flex justify-start items-center pl-2 pr-4 text-3xl font-bold text-title mt-2">Recipes</div>
             </div>
