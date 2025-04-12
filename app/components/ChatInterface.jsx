@@ -45,7 +45,7 @@ export default function ChatInterface({ username }) {
           <h1 className="text-xl font-bold text-gray-800">{username}</h1>
         </div>
         <button className="bg-nav rounded-lg p-2 hover:bg-nav-hover cursor-pointer" onClick={() => router.back()}>
-          <Image src={reject} alt="reject" className="w-6 h-6 rounded-full " />
+          <Image src={reject} alt="reject" className="w-12 h-12 rounded-full " />
         </button>
       </div>
 

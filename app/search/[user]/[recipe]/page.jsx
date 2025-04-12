@@ -3,13 +3,13 @@
 import { use, useState } from 'react';
 import Avatar from "../../../components/Avatar";
 import gordon from "../../../assets/Gordon_Ramsay.png";
-import granny from "../../../assets/grandma.jpg";
 import julia from "../../../assets/JuliaChild.jpg";
 import burger from "../../../assets/Burger.svg";
 import cookie from "../../../assets/Choco_cookie.jpg";
 import curry from "../../../assets/jap-curry.png";
 import friedChicken from "../../../assets/korean-fried-chicken.png";
 import lamb from "../../../assets/lamb-skewer.png";
+import reject from '../../../assets/reject.png';
 import Image from "next/image";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
@@ -95,7 +95,7 @@ export default function RecipePage({ params }) {
                     {amount: 2, name: "tbsp vegan mayonnaise"},
                     {amount: null, name: "Salt and pepper to taste"}
                 ],
-                dairyFree: [
+                'dairy-free': [
                     {amount: 1, name: "pound ground chicken"},
                     {amount: 2, name: "large lettuce leaves"},
                     {amount: 2, name: "thick tomato slices"},
@@ -144,7 +144,7 @@ export default function RecipePage({ params }) {
                     {amount: 1, name: "tsp vanilla extract"},
                     {amount: 1, name: "tsp baking soda"}
                 ],
-                dairyFree: [
+                'dairy-free': [
                     {amount: 2, name: "cups all-purpose flour"},
                     {amount: 1, name: "cup almond milk"},
                     {amount: 2, name: "large eggs"},
@@ -207,7 +207,7 @@ export default function RecipePage({ params }) {
                     {amount: 3, name: "medium potatoes, cut into 3-inch chunks"},
                     {amount: 1.5, name: "containers Japanese curry roux, or more to taste"},
                 ],
-                dairyFree: [
+                'dairy-free': [
                     {amount: 2, name: "tablespoon vegetable oil, or more as needed"},
                     {amount: 1.75, name: "pounds plant-based ground chicken, cut into 2-inch cubes"},
                     {amount: 3, name: "onions, quartered"},
@@ -276,7 +276,7 @@ export default function RecipePage({ params }) {
                     {amount: .25, name: "teaspoon salt"},
                     {amount: 1, name: "cup very cold water, or as needed"},
                 ],
-                dairyFree: [
+                'dairy-free': [
                     {amount: 1, name: "pound skinless, boneless chicken thighs, quartered"},
                     {amount: .5, name: "yellow onion, grated"},
                     {amount: 4, name: "cloves garlic, minced"},
@@ -337,7 +337,7 @@ export default function RecipePage({ params }) {
                     {amount: .25, name: "teaspoon ground black pepper"},
                     {amount: 1.5, name: "pounds boneless leg of plant-based ground lamb, trimmed of all fat and cut into 1-inch cubes"},
                 ],
-                dairyFree: [
+                'dairy-free': [
                     {amount: .33, name: "cup olive oil"},
                     {amount: 1.5, name: "tablespoons freshly squeezed lemon juice"},
                     {amount: 1.5, name: "tablespoons red wine vinegar"},
@@ -486,8 +486,16 @@ export default function RecipePage({ params }) {
                             className="bg-white rounded-lg p-4 w-80"
                             onClick={(e) => e.stopPropagation()} 
                         >
-                            <h3 className="text-lg font-semibold mb-3">Choose Diet Type</h3>
-                            {['default', 'vegetarian', 'vegan', 'dairyFree'].map((diet) => (
+                            <div className='flex justify-between items-center'>
+                                <h3 className="text-lg font-semibold">Choose Diet Type</h3>
+                                <button className="rounded-lg  cursor-pointer" onClick={(e) => {
+                                    e.stopPropagation();
+                                    setShowSubstitutions(false);
+                                }}>
+                                    <Image src={reject} alt="reject" className="w-8 h-8 rounded-full " />
+                                </button>
+                            </div>
+                            {['default', 'vegetarian', 'vegan', 'dairy-free'].map((diet) => (
                                 <button
                                     key={diet}
                                     className="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-md capitalize"
@@ -513,11 +521,11 @@ export default function RecipePage({ params }) {
                     ))}
                 </ul>
                 <div className="flex items-center gap-2">
-                    <div className="text-2xl">serving size</div>
+                    <div className="text-2xl">Serving Size</div>
                     <Dropdown options={['1', '2', '3', '1/2', '1/3', '2/3', '3/4']} onChange={handleServingChange} />
                 </div>
                 <button 
-                    className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-full text-2xl hover:bg-blue-600"
                     onClick={() => setShowSubstitutions(!showSubstitutions)}
                 >
                     Dietary Options
@@ -552,6 +560,7 @@ export default function RecipePage({ params }) {
                             {star <= rating ? '★' : '☆'}
                         </button>
                     ))}
+                    <button className="rounded-lg bg-blue-500 p-2 ml-4 text-white text-sm hover:bg-blue-600" onClick={() => setRating(0)}> clear </button>
                 </div>
             </div>
         </div>

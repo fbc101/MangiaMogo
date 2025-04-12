@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Recipe({ name, ingredients, description, username, image, difficulty, country, price }) {
+export default function Recipe({ name, ingredients, description, username, image, difficulty, country, cost }) {
   const sanitizedUsername = username.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
   const sanitizedRecipe = name.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
 
@@ -24,7 +24,7 @@ export default function Recipe({ name, ingredients, description, username, image
           <p className="text-sm pb-4">by {username}</p>
         </Link>
         <p>Ingredients: {ingredients}</p>
-        <p>Price: ${price}</p>
+        <p>Cost: ${cost}</p>
         <p>Difficulty: {difficulty}</p>
         <p>Country: {country}</p>
         <p className="text-lg">{description}</p>

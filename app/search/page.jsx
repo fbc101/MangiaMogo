@@ -33,7 +33,7 @@ export default function SearchPage() {
             description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
             username: "Gordon Ramsay",
             image: burger,
-            price: 10,
+            cost: 10,
             difficulty: "easy",
             country: "USA",
             allergens: []
@@ -44,7 +44,7 @@ export default function SearchPage() {
             description: "A classic chocolate cookie recipe perfected over decades. Rich, chewy, and absolutely delightful.",
             username: "Julia Child",
             image: cookie,
-            price: 8,
+            cost: 8,
             difficulty: "medium",
             country: "France",
             allergens: ["eggs", "milk"]
@@ -55,7 +55,7 @@ export default function SearchPage() {
             description: "Japanese curry is different from Indian or Thai curries. It is more of a brown stew and it can be mild or spicy, depending on your...",
             username: "Julia Child",
             image: curry,
-            price: 12,
+            cost: 12,
             difficulty: "medium",
             country: "Japan",
             allergens: ["milk"]
@@ -66,7 +66,7 @@ export default function SearchPage() {
             description: "This Korean fried chicken recipe is officially my favorite. I've had every style of fried chicken known to man, so I've always considered myself an expert...",
             username: "Gordon Ramsay",
             image: friedChicken,
-            price: 15,
+            cost: 15,
             difficulty: "hard",
             country: "Korea",
             allergens: ["eggs"]
@@ -77,7 +77,7 @@ export default function SearchPage() {
             description: "Lamb souvlaki with marinated pieces of lamb, threaded on skewers, and char-grilled to perfection...",
             username: "Gordon Ramsay",
             image: lamb,
-            price: 20,
+            cost: 20,
             difficulty: "hard",
             country: "Greece",
             allergens: []
@@ -161,13 +161,14 @@ export default function SearchPage() {
                                 description={recipe.description}
                                 username={recipe.username}
                                 image={recipe.image}
-                                price={recipe.price}
+                                cost={recipe.cost}
                                 difficulty={recipe.difficulty}
                                 country={recipe.country}
                             />
                         </div>
                     </div>
                 ))}
+                { filteredRecipes.length == 0 && <div className="font-bold mt-5"> No recipes Found ☹️ </div>}
             </div>
         </div>
     );
