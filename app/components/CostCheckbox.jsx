@@ -42,7 +42,7 @@ export default function CostCheckbox({ ranges, onSelectionChange }) {
   }
 
   return (
-    <div className='flex flex-col bg-nav p-5 rounded-xl'>
+    <div className='flex flex-col bg-nav p-4 rounded-xl'>
       <div>
         Budget Range
       </div>
@@ -65,8 +65,8 @@ export default function CostCheckbox({ ranges, onSelectionChange }) {
           />
         ))}
       </FormGroup>
-      <div className='flex flex-col items-center mt-4'>
-        <button className="border p-2 text-sm rounded-lg " onClick={handleDeselectAll}>
+      <div className='flex flex-col items-center'>
+        <button className="border p-2 text-sm rounded-lg mt-1" onClick={handleDeselectAll}>
           deselect all
         </button>
       </div>

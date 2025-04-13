@@ -137,49 +137,54 @@ export default function SearchPage() {
             </div>
             
             {/* Filters Section */}
-            <div className="flex gap-4 mt-4 mb-6">
-                <div className="flex flex-col">
-                    <label className="text-sm mb-1">Allergens</label>
-                    <select 
-                        className="px-4 py-2 border rounded-md text-base"
-                        value={allergens}
-                        onChange={(e) => setAllergens(e.target.value)}
-                    >
-                        <option value="">None</option>
-                        <option value="eggs">Eggs</option>
-                        <option value="milk">Milk</option>
-                        <option value="treenuts">Tree Nuts</option>
-                    </select>
-                </div>
+            <div className="flex max-w-3xl pl-4">
+                <div className='flex gap-4 mt-4 mb-6 w-full'>
+                    <CostCheckbox ranges={costRanges} onSelectionChange={handleCheckboxSelection} />
+                    <div className="flex flex-col gap-4 mb-6">
+                        <div className="flex flex-col">
+                            <label className="text-sm mb-1">Allergens</label>
+                            <select 
+                                className="px-4 py-2 border rounded-md text-base"
+                                value={allergens}
+                                onChange={(e) => setAllergens(e.target.value)}
+                            >
+                                <option value="">None</option>
+                                <option value="eggs">Eggs</option>
+                                <option value="milk">Milk</option>
+                                <option value="treenuts">Tree Nuts</option>
+                            </select>
+                        </div>
 
-                <div className="flex flex-col">
-                    <label className="text-sm mb-1">Difficulty</label>
-                    <select 
-                        className="px-4 py-2 border rounded-md text-base"
-                        value={difficulty}
-                        onChange={(e) => setDifficulty(e.target.value)}
-                    >
-                        <option value="">All</option>
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                    </select>
-                </div>
+                        <div className="flex flex-col">
+                            <label className="text-sm mb-1">Difficulty</label>
+                            <select 
+                                className="px-4 py-2 border rounded-md text-base"
+                                value={difficulty}
+                                onChange={(e) => setDifficulty(e.target.value)}
+                            >
+                                <option value="">All</option>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
 
-                <div className="flex flex-col">
-                    <label className="text-sm mb-1">Country</label>
-                    <input 
-                        type="text"
-                        className="px-4 py-2 border rounded-md text-base"
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                        placeholder="Enter country"
-                    />
+                        <div className="flex flex-col">
+                            <label className="text-sm mb-1">Country</label>
+                            <input 
+                                type="text"
+                                className="px-4 py-2 border rounded-md text-base"
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                                placeholder="Enter country"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
             
             {/* <CostSlider range={costSliderRange} onChange={handleCostRangeChange} /> */}
-            <CostCheckbox ranges={costRanges} onSelectionChange={handleCheckboxSelection} />
+            
             <div className="flex flex-col w-full max-w-3xl p-2">
                 <div className="flex justify-start items-center pl-2 pr-4 text-3xl font-bold text-title mt-2">Recipes</div>
             </div>
