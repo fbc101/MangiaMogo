@@ -123,11 +123,10 @@ export default function SearchPage() {
         setCostSliderRange(range);
     };
 
-    const handleSelectionChange = (ranges) => {
+    const handleCheckboxSelection = (ranges) => {
         setCurrentlySelectedRanges(ranges);
         console.log('Currently Selected Ranges:', ranges);
-        // You can now use the 'currentlySelectedRanges' state to filter data, etc.
-      };
+    };
 
     return (
         <div className="flex flex-col items-center justify-center flex-grow text-black text-2xl">
@@ -180,7 +179,7 @@ export default function SearchPage() {
             </div>
             
             {/* <CostSlider range={costSliderRange} onChange={handleCostRangeChange} /> */}
-            <CostCheckbox ranges={costRanges} onSelectionChange={handleSelectionChange} />
+            <CostCheckbox ranges={costRanges} onSelectionChange={handleCheckboxSelection} />
             <div className="flex flex-col w-full max-w-3xl p-2">
                 <div className="flex justify-start items-center pl-2 pr-4 text-3xl font-bold text-title mt-2">Recipes</div>
             </div>
