@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <body className={`${hanuman.variable} ${italianno.variable} antialiased`}>
         <div className="flex flex-col items-center h-screen">
           <Header/>
-          <div className="flex-grow overflow-y-auto scrollbar-hide w-full">
+          <div className="flex-grow overflow-y-auto custom-scrollbar-hidden w-full">
             {children}
           </div>
           <NavBar/>

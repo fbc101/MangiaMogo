@@ -113,10 +113,10 @@ export default function SearchPage() {
         );
 
         // For slider budget
-        // return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesCost;
+        return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesCost;
 
         // For checkbox budget
-        return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesMultipleCost;
+        // return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesMultipleCost;
     });
 
     const handleCostRangeChange = (range) => {
@@ -129,7 +129,7 @@ export default function SearchPage() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center flex-grow text-black text-2xl">
+        <div className="flex flex-col items-center justify-center flex-grow text-black text-2xl overflow-y-scroll custom-scrollbar-hidden">
             <h1>Search page</h1>
             <SearchBar onSearch={setSearchText} />
             <div className="flex items-center justify-start flex-grow">
@@ -178,8 +178,7 @@ export default function SearchPage() {
                 </div>
             </div>
             
-            {/* <CostSlider range={costSliderRange} onChange={handleCostRangeChange} /> */}
-            <CostCheckbox ranges={costRanges} onSelectionChange={handleCheckboxSelection} />
+            <CostSlider range={costSliderRange} onChange={handleCostRangeChange} />
             <div className="flex flex-col w-full max-w-3xl p-2">
                 <div className="flex justify-start items-center pl-2 pr-4 text-3xl font-bold text-title mt-2">Recipes</div>
             </div>

@@ -29,3 +29,7 @@ body {
   color: black;
   font-family: var(--font-hanuman);
 }
+
+.custom-scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
