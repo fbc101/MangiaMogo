@@ -15,21 +15,18 @@ import { useRouter } from 'next/navigation';
 
 export default function SearchPage() {
     const [searchText, setSearchText] = useState(''); 
-    const chickenRecipe = ['chicken', 'burger', 'chicken burger'];
-    const cookieRecipe = ['cookie', 'chocolate cookie', 'chocolate'];
     const [allergens, setAllergens] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [country, setCountry] = useState('');
     const [costSliderRange, setCostSliderRange] = useState([0, 25]);
     const [currentlySelectedRanges, setCurrentlySelectedRanges] = useState([]);
 
-
     const costRanges = [
-        { id: 'under50', label: 'Under $25', range: [0, 25] },
-        { id: '50to100', label: '$25 - $50', range: [25, 50] },
-        { id: '100to200', label: '$50 - $100', range: [50, 100]},
-        { id: 'over200', label: 'Over $100', range: [100, 200] },
-      ];
+        { id: 'under50', label: 'Under $10', range: [0, 10] },
+        { id: '50to100', label: '$10 - $20', range: [10, 20] },
+        { id: '100to200', label: '$20 - $30', range: [20, 30]},
+        { id: 'over200', label: 'Over $30', range: [30, 100] },
+    ];
 
     const router = useRouter();
 
@@ -111,8 +108,15 @@ export default function SearchPage() {
         const matchesDifficulty = !difficulty || recipe.difficulty === difficulty;
         const matchesCountry = !country || recipe.country.toLowerCase().includes(country.toLowerCase());
         const matchesCost = recipe.cost >= costSliderRange[0] && recipe.cost <= costSliderRange[1];
-        const matchesMultipleCost = true;
-        return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesCost;
+        const matchesMultipleCost = currentlySelectedRanges.length == 0 ? true : currentlySelectedRanges.some(([min, max]) =>
+            recipe.cost >= min && recipe.cost <= max
+        );
+
+        // For slider budget
+        // return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesCost;
+
+        // For checkbox budget
+        return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesMultipleCost;
     });
 
     const handleCostRangeChange = (range) => {
@@ -175,11 +179,8 @@ export default function SearchPage() {
                 </div>
             </div>
             
-            <CostSlider range={costSliderRange} onChange={handleCostRangeChange} />
+            {/* <CostSlider range={costSliderRange} onChange={handleCostRangeChange} /> */}
             <CostCheckbox ranges={costRanges} onSelectionChange={handleSelectionChange} />
-            {currentlySelectedRanges.length > 0 && (
-                <p>Currently Selected Ranges: {JSON.stringify(currentlySelectedRanges)}</p>
-            )}
             <div className="flex flex-col w-full max-w-3xl p-2">
                 <div className="flex justify-start items-center pl-2 pr-4 text-3xl font-bold text-title mt-2">Recipes</div>
             </div>
