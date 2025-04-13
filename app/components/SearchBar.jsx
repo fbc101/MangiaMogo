@@ -4,7 +4,7 @@ import Image from "next/image";
 import searchIcon from "../assets/Search.svg";
 import { useRef } from 'react'; 
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ onSearch, label }) {
     const inputRef = useRef(null); 
 
     const handleSearch = () => {
@@ -21,13 +21,10 @@ export default function SearchBar({ onSearch }) {
     };
 
     return (
-        <div className="flex w-full max-w-3xl p-2">
-            <h1 className="flex justify-center items-center pl-2 pr-4 text-3xl font-bold text-title">
-                Search
-            </h1>
+        <div className="flex w-full max-w-3xl ">
             <input
                 type="text"
-                placeholder="Type the dish you want to cook"
+                placeholder={label || "Type the dish you want to cook"}
                 className="w-full pl-4 rounded-full border border-gray-300 bg-search"
                 ref={inputRef} 
                 onKeyDown={handleKeyDown}

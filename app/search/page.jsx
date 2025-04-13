@@ -131,7 +131,12 @@ export default function SearchPage() {
     return (
         <div className="flex flex-col items-center justify-center flex-grow text-black text-2xl overflow-y-scroll custom-scrollbar-hidden">
             <h1>Search page</h1>
-            <SearchBar onSearch={setSearchText} />
+            <div className="flex w-full max-w-3xl p-2">
+                <h1 className="flex justify-center items-center pl-2 pr-4 text-3xl font-bold text-title">
+                    Search
+                </h1>
+                <SearchBar onSearch={setSearchText} label="search recipe..."/>
+            </div>
             <div className="flex items-center justify-start flex-grow">
                 {searchText && <p>You searched for: {searchText}</p>}
             </div>
