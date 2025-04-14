@@ -45,17 +45,6 @@ export default function SearchPage() {
 
     const recipes = [
         {
-            name: "Chicken Burger",
-            ingredients: "ground chicken, lettuce, tomato",
-            description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
-            username: "Gordon Ramsay",
-            image: burger,
-            cost: 10,
-            difficulty: "easy",
-            country: "USA",
-            allergens: []
-        },
-        {
             name: "Chocolate Cookie",
             ingredients: "milk, flour, eggs, sugar, cocoa",
             description: "A classic chocolate cookie recipe perfected over decades. Rich, chewy, and absolutely delightful.",
@@ -65,6 +54,17 @@ export default function SearchPage() {
             difficulty: "medium",
             country: "France",
             allergens: ["eggs", "milk"]
+        },
+        {
+            name: "Chicken Burger",
+            ingredients: "ground chicken, lettuce, tomato",
+            description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+            username: "Gordon Ramsay",
+            image: burger,
+            cost: 10,
+            difficulty: "easy",
+            country: "USA",
+            allergens: []
         },
         {
             name: "Japanese Curry",
