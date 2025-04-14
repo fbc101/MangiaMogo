@@ -107,7 +107,7 @@ export default function SearchPage() {
             image: sloppy,
             cost: 5,
             difficulty: "easy",
-            country: "USA",
+            country: "CANADA",
             allergens: []
         },
         {
