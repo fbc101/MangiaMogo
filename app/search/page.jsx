@@ -44,6 +44,17 @@ export default function SearchPage() {
 
     const recipes = [
         {
+            name: "Sloppy Joe",
+            ingredients: "ground beef, tomato sauce, onions, spices",
+            description: "A classic American dish, Sloppy Joes are a messy but delicious sandwich that everyone loves.",
+            username: "Gordon Ramsay",
+            image: sloppy,
+            cost: 5,
+            difficulty: "easy",
+            country: "CANADA",
+            allergens: []
+        },
+        {
             name: "Chocolate Cookie",
             ingredients: "milk, flour, eggs, sugar, cocoa",
             description: "A classic chocolate cookie recipe perfected over decades. Rich, chewy, and absolutely delightful.",
@@ -99,28 +110,6 @@ export default function SearchPage() {
             allergens: []
         },
         {
-            name: "Sloppy Joe",
-            ingredients: "ground beef, tomato sauce, onions, spices",
-            description: "A classic American dish, Sloppy Joes are a messy but delicious sandwich that everyone loves.",
-            username: "Gordon Ramsay",
-            image: sloppy,
-            cost: 5,
-            difficulty: "easy",
-            country: "CANADA",
-            allergens: []
-        },
-        {
-            name: "Shrimp Stir Fry",
-            ingredients: "shrimp, vegetables, soy sauce",
-            description: "A quick and easy shrimp stir fry that is packed with flavor and nutrients.",
-            username: "Gordon Ramsay",
-            image: shrimp,
-            cost: 75,
-            difficulty: "easy",
-            country: "USA",
-            allergens: ["shellfish"]
-        },
-        {
             name: "Cornbread",
             ingredients: "cornmeal, milk, eggs, butter",
             description: "A deliciously moist cornbread that pairs perfectly with chili or soup.",
@@ -137,7 +126,7 @@ export default function SearchPage() {
             description: "A simple yet flavorful dish made with roasted peppers and spices. Perfect as a side or a topping.",
             username: "Gordon Ramsay",
             image: peppers,
-            cost: 55,
+            cost: 45,
             difficulty: "easy",
             country: "USA",
             allergens: []
@@ -152,7 +141,18 @@ export default function SearchPage() {
             difficulty: "easy",
             country: "USA",
             allergens: []
-        }
+        },
+        {
+            name: "Shrimp Stir Fry",
+            ingredients: "shrimp, vegetables, soy sauce",
+            description: "A quick and easy shrimp stir fry that is packed with flavor and nutrients.",
+            username: "Gordon Ramsay",
+            image: shrimp,
+            cost: 75,
+            difficulty: "easy",
+            country: "USA",
+            allergens: ["shellfish"]
+        },
     ];
 
     const filteredRecipes = recipes.filter(recipe => {
