@@ -127,7 +127,7 @@ export default function SearchPage() {
             description: "A deliciously moist cornbread that pairs perfectly with chili or soup.",
             username: "Gordon Ramsay",
             image: cornbread,
-            cost: 25,
+            cost: 35,
             difficulty: "easy",
             country: "USA",
             allergens: ["milk", "eggs"]
@@ -138,7 +138,7 @@ export default function SearchPage() {
             description: "A simple yet flavorful dish made with roasted peppers and spices. Perfect as a side or a topping.",
             username: "Gordon Ramsay",
             image: peppers,
-            cost: 25,
+            cost: 45,
             difficulty: "easy",
             country: "USA",
             allergens: []
@@ -149,7 +149,7 @@ export default function SearchPage() {
             description: "Classic meatballs made with ground beef and spices. Perfect for spaghetti or as an appetizer.",
             username: "Gordon Ramsay",
             image: meatballs,
-            cost: 25,
+            cost: 65,
             difficulty: "easy",
             country: "USA",
             allergens: []
