@@ -8,6 +8,13 @@ import cookie from "../assets/Choco_cookie.jpg";
 import curry from "../assets/jap-curry.png";
 import friedChicken from "../assets/korean-fried-chicken.png";
 import lamb from "../assets/lamb-skewer.png";
+import meatballs from "../assets/meatballs.png";
+import cornbread from "../assets/cornbread.png";
+import peppers from "../assets/peppers.png";
+import porkchop from "../assets/pork-chop.png";
+import shrimp from "../assets/shrimp.png";
+import sloppy from "../assets/sloppy.png";
+
 import CostSlider from '../components/CostSlider';
 import CostCheckbox from '../components/CostCheckbox';
 
@@ -90,6 +97,61 @@ export default function SearchPage() {
             cost: 25,
             difficulty: "hard",
             country: "Greece",
+            allergens: []
+        },
+        {
+            name: "Sloppy Joe",
+            ingredients: "ground beef, tomato sauce, onions, spices",
+            description: "A classic American dish, Sloppy Joes are a messy but delicious sandwich that everyone loves.",
+            username: "Gordon Ramsay",
+            image: sloppy,
+            cost: 5,
+            difficulty: "easy",
+            country: "USA",
+            allergens: []
+        },
+        {
+            name: "Shrimp Stir Fry",
+            ingredients: "shrimp, vegetables, soy sauce",
+            description: "A quick and easy shrimp stir fry that is packed with flavor and nutrients.",
+            username: "Gordon Ramsay",
+            image: shrimp,
+            cost: 20,
+            difficulty: "easy",
+            country: "USA",
+            allergens: ["shellfish"]
+        },
+        {
+            name: "Cornbread",
+            ingredients: "cornmeal, milk, eggs, butter",
+            description: "A deliciously moist cornbread that pairs perfectly with chili or soup.",
+            username: "Gordon Ramsay",
+            image: cornbread,
+            cost: 25,
+            difficulty: "easy",
+            country: "USA",
+            allergens: ["milk", "eggs"]
+        },
+        {
+            name: "peppers",
+            ingredients: "peppers, spices, olive oil",
+            description: "A simple yet flavorful dish made with roasted peppers and spices. Perfect as a side or a topping.",
+            username: "Gordon Ramsay",
+            image: peppers,
+            cost: 25,
+            difficulty: "easy",
+            country: "USA",
+            allergens: []
+        },
+        {
+            name: "Meatballs",
+            ingredients: "ground beef, breadcrumbs, spices",
+            description: "Classic meatballs made with ground beef and spices. Perfect for spaghetti or as an appetizer.",
+            username: "Gordon Ramsay",
+            image: meatballs,
+            cost: 25,
+            difficulty: "easy",
+            country: "USA",
             allergens: []
         }
     ];
