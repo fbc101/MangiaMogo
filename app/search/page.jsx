@@ -115,7 +115,7 @@ export default function SearchPage() {
             description: "A quick and easy shrimp stir fry that is packed with flavor and nutrients.",
             username: "Gordon Ramsay",
             image: shrimp,
-            cost: 20,
+            cost: 75,
             difficulty: "easy",
             country: "USA",
             allergens: ["shellfish"]
