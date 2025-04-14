@@ -22,10 +22,10 @@ export default function SearchPage() {
     const [currentlySelectedRanges, setCurrentlySelectedRanges] = useState([]);
 
     const costRanges = [
-        { id: 'under50', label: 'Under $10', range: [0, 10] },
+        { id: 'under50', label: 'Under $10', range: [0, 9] },
         { id: '50to100', label: '$10 - $20', range: [10, 20] },
         { id: '100to200', label: '$20 - $30', range: [20, 30]},
-        { id: 'over200', label: 'Over $30', range: [30, 100] },
+        { id: 'over200', label: 'Over $30', range: [31, 100] },
     ];
 
     const router = useRouter();
