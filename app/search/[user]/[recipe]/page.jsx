@@ -11,6 +11,7 @@ import Image from "next/image";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Dropdown from "../../../components/Dropdown";
+import ShareButton from "../../../components/Share-btn";
 import { fraction } from 'mathjs';
 
 // app/search/[recipe]/page.jsx
@@ -246,7 +247,10 @@ export default function RecipePage({ params }) {
                 )}
 
                 {/* Recipe Title */}
-                <h1 className="text-2xl font-bold mb-2">{cleanedRecipe}</h1>
+                <div className='flex justify-between items-center mb-2'>
+                    <h1 className="text-2xl font-bold">{cleanedRecipe}</h1>
+                    <ShareButton recipe={cleanedRecipe} />
+                </div>
 
                 {/* Rating Stars Read Only*/}
                 {cleanedRecipe === "Chicken Burger" && <div className="flex justify-start items-center gap-2"> 
