@@ -9,7 +9,7 @@ import reject from '@/app/assets/reject.png';
 import { useRouter } from 'next/navigation';
 import chat from '../../data/chat.json';
 
-export default function ChatInterface({ username }) {
+export default function ChatInterface({ username, message, recipe }) {
   const [messages, setMessages] = useState([
     { type: 'bot', content: 'Hello!' },
     { type: 'bot', content: 'I love your cooking!' },
@@ -19,7 +19,13 @@ export default function ChatInterface({ username }) {
 
   useEffect(() => {
     setMessages(chat[username]);
-  }, [username]);
+    if (recipe) {
+      setMessages(prev => [...prev, { type: 'user', recipe: `${recipe}`, username: username }]);
+      if (message) {
+        setMessages(prev => [...prev, { type: 'user', content: message }]);
+      }
+    }
+  }, [username, message]);
 
   
 
