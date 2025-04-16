@@ -12,7 +12,7 @@ export default function Recipe({ name, ingredients, description, username, image
           <Image
             src={image}
             alt="recipe"
-            className="rounded-xl object-cover object-center cursor-pointer" // Add object-center
+            className="rounded-xl object-cover object-center cursor-pointer w-full h-full" // Add object-center
           />
         </div>
       </Link>
