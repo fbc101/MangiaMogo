@@ -9,6 +9,12 @@ import curry from "../assets/jap-curry.png";
 import friedChicken from "../assets/korean-fried-chicken.png";
 import lamb from "../assets/lamb-skewer.png";
 import CostSlider from '../components/CostSlider';
+import cornbread from "../assets/cornbread.png";
+import shrimp from "../assets/shrimp.png";
+import porkchop from "../assets/pork-chop.png";
+import peppers from "../assets/peppers.png";
+import sloppy from "../assets/sloppy.png";
+import meatballs from "../assets/meatballs.png";
 import CostCheckbox from '../components/CostCheckbox';
 
 import { useRouter } from 'next/navigation';
@@ -38,14 +44,14 @@ export default function SearchPage() {
 
     const recipes = [
         {
-            name: "Chicken Burger",
-            ingredients: "ground chicken, lettuce, tomato",
-            description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+            name: "Sloppy Joe",
+            ingredients: "ground beef, tomato sauce, onions, spices",
+            description: "A classic American dish, Sloppy Joes are a messy but delicious sandwich that everyone loves.",
             username: "Gordon Ramsay",
-            image: burger,
-            cost: 10,
+            image: sloppy,
+            cost: 5,
             difficulty: "easy",
-            country: "USA",
+            country: "CANADA",
             allergens: []
         },
         {
@@ -58,6 +64,17 @@ export default function SearchPage() {
             difficulty: "medium",
             country: "France",
             allergens: ["eggs", "milk"]
+        },
+        {
+            name: "Chicken Burger",
+            ingredients: "ground chicken, lettuce, tomato",
+            description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+            username: "Gordon Ramsay",
+            image: burger,
+            cost: 10,
+            difficulty: "easy",
+            country: "USA",
+            allergens: []
         },
         {
             name: "Japanese Curry",
@@ -91,7 +108,51 @@ export default function SearchPage() {
             difficulty: "hard",
             country: "Greece",
             allergens: []
-        }
+        },
+        {
+            name: "Cornbread",
+            ingredients: "cornmeal, milk, eggs, butter",
+            description: "A deliciously moist cornbread that pairs perfectly with chili or soup.",
+            username: "Gordon Ramsay",
+            image: cornbread,
+            cost: 35,
+            difficulty: "easy",
+            country: "USA",
+            allergens: ["milk", "eggs"]
+        },
+        {
+            name: "peppers",
+            ingredients: "peppers, spices, olive oil",
+            description: "A simple yet flavorful dish made with roasted peppers and spices. Perfect as a side or a topping.",
+            username: "Gordon Ramsay",
+            image: peppers,
+            cost: 45,
+            difficulty: "easy",
+            country: "USA",
+            allergens: []
+        },
+        {
+            name: "Meatballs",
+            ingredients: "ground beef, breadcrumbs, spices",
+            description: "Classic meatballs made with ground beef and spices. Perfect for spaghetti or as an appetizer.",
+            username: "Gordon Ramsay",
+            image: meatballs,
+            cost: 65,
+            difficulty: "easy",
+            country: "USA",
+            allergens: []
+        },
+        {
+            name: "Shrimp Stir Fry",
+            ingredients: "shrimp, vegetables, soy sauce",
+            description: "A quick and easy shrimp stir fry that is packed with flavor and nutrients.",
+            username: "Gordon Ramsay",
+            image: shrimp,
+            cost: 75,
+            difficulty: "easy",
+            country: "USA",
+            allergens: ["shellfish"]
+        },
     ];
 
     const filteredRecipes = recipes.filter(recipe => {
