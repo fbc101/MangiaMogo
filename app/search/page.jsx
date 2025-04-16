@@ -190,6 +190,7 @@ export default function SearchPage() {
     };
 
     return (
+
         <div className="flex flex-col items-center justify-center flex-grow text-black text-2xl overflow-y-scroll custom-scrollbar-hidden">
             <h1>Search page</h1>
             <div className="flex w-full max-w-3xl p-2">
@@ -218,30 +219,33 @@ export default function SearchPage() {
                     </select>
                 </div>
 
-                <div className="flex flex-col">
-                    <label className="text-sm mb-1">Difficulty</label>
-                    <select 
-                        className="px-4 py-2 border rounded-md text-base"
-                        value={difficulty}
-                        onChange={(e) => setDifficulty(e.target.value)}
-                    >
-                        <option value="">All</option>
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                    </select>
+
+                    <div className="flex flex-col">
+                        <label className="text-sm mb-1">Difficulty</label>
+                        <select 
+                            className="px-4 py-2 border rounded-md text-base"
+                            value={difficulty}
+                            onChange={(e) => setDifficulty(e.target.value)}
+                        >
+                            <option value="">All</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+
+                    <div className="flex flex-col">
+                        <label className="text-sm mb-1">Country</label>
+                        <input 
+                            type="text"
+                            className="px-4 py-2 border rounded-md text-base"
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                            placeholder="Enter country"
+                        />
+                    </div>
                 </div>
 
-                <div className="flex flex-col">
-                    <label className="text-sm mb-1">Country</label>
-                    <input 
-                        type="text"
-                        className="px-4 py-2 border rounded-md text-base"
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                        placeholder="Enter country"
-                    />
-                </div>
             </div>
             
             <CostSlider range={costSliderRange} onChange={handleCostRangeChange} />
@@ -267,6 +271,7 @@ export default function SearchPage() {
                     </div>
                 ))}
                 { filteredRecipes.length == 0 && <div className="font-bold mt-5"> No recipes Found ☹️ </div>}
+
             </div>
         </div>
     );

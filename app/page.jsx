@@ -9,6 +9,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
+
     <div className="flex flex-col items-center justify-center flex-grow text-black p-6">
       <h1 className="text-3xl font-bold mb-6">Welcome to Mangia Mogo!</h1>
       
@@ -38,12 +39,13 @@ export default function Home() {
               <span className="mr-2">💬</span>
               Connect with other food lovers!
             </p>
-          </div>
-        </div>
 
-        <p className="text-sm text-gray-600">
-          Good luck chef!
-        </p>
+          </div>
+
+          <p className="text-sm text-gray-600 text-center">
+            Good luck chef!
+          </p>
+        </div>
       </div>
     </div>
   );
