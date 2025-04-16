@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FDF3DE;
-  --foreground: #FEE7C8;
+  --background: #c7efff;
+  --foreground: #c8e8fe;
   --font-hanuman: var(--font-hanuman);
 }
 
@@ -12,14 +12,14 @@
   --font-hanuman: var(--font-hanuman);
   --font-italianno: var(--font-italianno);
   --color-title: #0009BB;
-  --color-nav: #FEE7C8;
-  --color-search: #F1F0F0;
+  --color-nav: #81c2ee;
+  --color-search: rgba(255,255,255,1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #FDF3DE;
-    --foreground: #FEE7C8;
+    --background: #c7efff;
+    --foreground: #81c2ee;
   }
 }
 
