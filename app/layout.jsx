@@ -2,6 +2,8 @@ import { Hanuman, Italianno } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
+import { MessageProvider } from './components/MessageProvider';
+
 const italianno = Italianno({
   variable: '--font-italianno',
   subsets: ['latin'],
@@ -25,9 +27,11 @@ export default function RootLayout({ children }) {
       <body className={`${hanuman.variable} ${italianno.variable} antialiased`}>
         <div className="flex flex-col items-center h-screen">
           <Header/>
-          <div className="flex-grow overflow-y-auto scrollbar-hide w-full">
-            {children}
-          </div>
+          <MessageProvider>
+            <div className="flex-grow overflow-y-auto custom-scrollbar-hidden w-full">
+              {children}
+            </div>
+          </MessageProvider>
           <NavBar/>
         </div>
       </body>
