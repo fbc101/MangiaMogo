@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -29,7 +29,7 @@ export default function ProfilePage() {
             author: "Julia Child"
         },
         {
-            name: "Chocolate Cookie", 
+            name: "Chocolate Cookie",
             image: cookie,
             author: "Julia Child"
         }
@@ -48,11 +48,14 @@ export default function ProfilePage() {
             <div className="bg-white rounded-2xl p-6 shadow-lg w-full max-w-4xl">
                 {/* Profile Header */}
                 <div className="flex items-center gap-6 mb-8">
-                    <Image
-                        src={mockUser.avatar}
-                        alt="Profile picture"
-                        className="w-32 h-32 rounded-full object-cover"
-                    />
+                    <div className="relative w-32 h-32">
+                        <Image
+                            src={mockUser.avatar}
+                            alt="Profile picture"
+                            fill
+                            className="rounded-full object-cover"
+                        />
+                    </div>
                     <div>
                         <h1 className="text-3xl font-bold mb-2">{mockUser.name}</h1>
                         <p className="text-gray-600 mb-4">{mockUser.bio}</p>
@@ -92,19 +95,26 @@ export default function ProfilePage() {
                     </button>
                 </div>
 
-            {/* Recipe Grid */}
-            <div className="grid grid-cols-2 gap-6">
-                {(activeTab === 'saved' ? savedRecipes : recentlyViewed).map((recipe, index) => (
-                    <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onClick={() => router.push(`/search/${turnUsernameToUrl(recipe.author)}/${turnRecipeToUrl(recipe.name)}`)}>
-                        <Image
-                            src={recipe.image}
-                            alt={recipe.name}
-                            className="w-full h-48 object-cover"
-                        />
-                        <div className="p-4">
-                            <h3 className="font-bold text-lg">{recipe.name}</h3>
-                            <p className="text-gray-600">by {recipe.author}</p>
-
+                {/* Recipe Grid */}
+                <div className="grid grid-cols-2 gap-6">
+                    {(activeTab === 'saved' ? savedRecipes : recentlyViewed).map((recipe, index) => (
+                        <div
+                            key={index}
+                            className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
+                            onClick={() => router.push(`/search/${turnUsernameToUrl(recipe.author)}/${turnRecipeToUrl(recipe.name)}`)}
+                        >
+                            <div className="relative w-full h-48">
+                                <Image
+                                    src={recipe.image}
+                                    alt={recipe.name}
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                            <div className="p-4">
+                                <h3 className="font-bold text-lg">{recipe.name}</h3>
+                                <p className="text-gray-600">by {recipe.author}</p>
+                            </div>
                         </div>
                     ))}
                 </div>
