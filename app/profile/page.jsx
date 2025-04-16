@@ -4,10 +4,14 @@ import { useState } from 'react';
 import Image from 'next/image';
 import gordon from '../assets/Gordon_Ramsay.png';
 import burger from '../assets/Burger.svg';
+import curry from '../assets/jap-curry.png';
 import cookie from '../assets/Choco_cookie.jpg';
+import { useRouter } from 'next/navigation';
+import { turnUsernameToUrl, turnRecipeToUrl } from '../utils/utils';
 
 export default function ProfilePage() {
     const [activeTab, setActiveTab] = useState('saved');
+    const router = useRouter();
 
     const mockUser = {
         name: "Gordon Ramsay",
@@ -20,9 +24,9 @@ export default function ProfilePage() {
 
     const savedRecipes = [
         {
-            name: "Chicken Burger",
-            image: burger,
-            author: "Jamie Oliver"
+            name: "Japanese Curry",
+            image: curry,
+            author: "Julia Child"
         },
         {
             name: "Chocolate Cookie", 
@@ -88,19 +92,19 @@ export default function ProfilePage() {
                     </button>
                 </div>
 
-                {/* Recipe Grid */}
-                <div className="grid grid-cols-2 gap-6">
-                    {(activeTab === 'saved' ? savedRecipes : recentlyViewed).map((recipe, index) => (
-                        <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                            <Image
-                                src={recipe.image}
-                                alt={recipe.name}
-                                className="w-full h-48 object-cover"
-                            />
-                            <div className="p-4">
-                                <h3 className="font-bold text-lg">{recipe.name}</h3>
-                                <p className="text-gray-600">by {recipe.author}</p>
-                            </div>
+            {/* Recipe Grid */}
+            <div className="grid grid-cols-2 gap-6">
+                {(activeTab === 'saved' ? savedRecipes : recentlyViewed).map((recipe, index) => (
+                    <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onClick={() => router.push(`/search/${turnUsernameToUrl(recipe.author)}/${turnRecipeToUrl(recipe.name)}`)}>
+                        <Image
+                            src={recipe.image}
+                            alt={recipe.name}
+                            className="w-full h-48 object-cover"
+                        />
+                        <div className="p-4">
+                            <h3 className="font-bold text-lg">{recipe.name}</h3>
+                            <p className="text-gray-600">by {recipe.author}</p>
+
                         </div>
                     ))}
                 </div>

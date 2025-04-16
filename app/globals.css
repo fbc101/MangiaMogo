@@ -12,8 +12,14 @@
   --font-hanuman: var(--font-hanuman);
   --font-italianno: var(--font-italianno);
   --color-title: #0009BB;
+
   --color-nav: #81c2ee;
   --color-search: rgba(255,255,255,1);
+
+  
+  --color-nav-hover: #d4c0a7;
+
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,4 +33,8 @@ body {
   background: var(--background);
   color: black;
   font-family: var(--font-hanuman);
+}
+
+.custom-scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
