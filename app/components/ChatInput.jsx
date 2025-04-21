@@ -16,7 +16,7 @@ export default function ChatInput({ onSendMessage, disabled }) {
   };
 
   return (
-    <div className="pt-5 pb-4 px-4">
+    <div className="py-2 px-4">
       <form onSubmit={handleSubmit} className="flex space-x-2">
         <input
           ref={inputRef} 
