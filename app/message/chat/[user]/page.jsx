@@ -13,17 +13,12 @@ export default function ChatPage({ params }) {
     const [recipe, setRecipe] = useState('');
     const [message, setMessage] = useState('');
 
-    
     useEffect(() => {
         if (messageData) {
             setRecipe(messageData.recipe);
             setMessage(messageData.message);
         }
     }, [messageData]);
-    
-    console.log(user);
-    console.log(recipe);
-    console.log(message);
 
     const userCleaned = cleanUsername(user);
 
@@ -32,7 +27,7 @@ export default function ChatPage({ params }) {
     }, []); 
 
     return (
-        <div className="flex flex-col justify-center items-center space-y-4 h-full ">
+        <div className="h-full">
             <ChatInterface username={userCleaned} recipe={recipe} message={message} />
         </div>
     )
