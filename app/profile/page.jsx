@@ -44,11 +44,11 @@ export default function ProfilePage() {
     ];
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen text-black p-4">
-            <div className="bg-white rounded-2xl p-6 shadow-lg w-full max-w-4xl">
+        <div className="flex flex-col items-center text-black p-4">
+            <div className="bg-white rounded-2xl p-4 shadow-lg w-full">
                 {/* Profile Header */}
-                <div className="flex items-center gap-6 mb-8">
-                    <div className="relative w-32 h-32">
+                <div className="flex flex-col items-center gap-4 mb-6">
+                    <div className="relative w-24 h-24">
                         <Image
                             src={mockUser.avatar}
                             alt="Profile picture"
@@ -56,10 +56,10 @@ export default function ProfilePage() {
                             className="rounded-full object-cover"
                         />
                     </div>
-                    <div>
-                        <h1 className="text-3xl font-bold mb-2">{mockUser.name}</h1>
+                    <div className="text-center">
+                        <h1 className="text-2xl font-bold mb-2">{mockUser.name}</h1>
                         <p className="text-gray-600 mb-4">{mockUser.bio}</p>
-                        <div className="flex gap-6">
+                        <div className="flex justify-center gap-6">
                             <div className="text-center">
                                 <p className="font-bold">{mockUser.followers}</p>
                                 <p className="text-sm text-gray-500">Followers</p>
