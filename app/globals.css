@@ -56,6 +56,13 @@ body {
   background: rgba(0, 0, 0, 0.3);
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.main-container { 
+  overscroll-behavior-y: contain; /* Or 'none' */
+}
 /* Bounce effect */
 @keyframes bounce {
   0% { transform: translateY(0); }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 import { getUserImage } from '@/app/utils/utils';
@@ -14,6 +14,14 @@ export default function ChatInterface({ username, message, recipe }) {
     { type: 'bot', content: 'Hello!' },
     { type: 'bot', content: 'I love your cooking!' },
   ]);
+  const lastMessageRef = useRef(null);
+
+  useEffect(() => {
+    // Scroll to the last message whenever the messages array changes
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView({ behavior: 'smooth' }); // Or 'auto' for instant scroll
+    }
+  }, [messages]); 
 
   const router = useRouter();
 
@@ -44,26 +52,27 @@ export default function ChatInterface({ username, message, recipe }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden w-xl"> {/* Make the main container take full viewport height and hide overflow */}
-      <div className="bg-nav rounded-lg p-4 flex justify-between items-center shadow-md z-10 "> {/* Added shadow and z-index for header */}
+    <div className="flex flex-col h-full"> 
+      <div className="bg-nav rounded-lg p-2 flex justify-between items-center shadow-md z-10 "> {/* Added shadow and z-index for header */}
         <div className="flex justify-start items-center">
           <Image src={getUserImage(username)} alt={username} className="w-12 h-12 rounded-full mr-4" />
           <h1 className="text-xl font-bold text-gray-800">{username}</h1>
         </div>
         <button className="bg-nav rounded-lg p-2 hover:bg-nav-hover cursor-pointer" onClick={() => router.back()}>
-          <Image src={reject} alt="reject" className="w-12 h-12 rounded-full " />
+          <Image src={reject} alt="reject" className="w-8 h-8 rounded-full " />
         </button>
       </div>
+      <div className="flex h-full flex-col overflow-y-auto scrollbar-hide overscroll-contain"> {/* Make the main container take full viewport height and hide overflow */}
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white shadow-inner"> {/* Scrollable message area */}
-        {messages.map((message, index) => (
-          <div key={index}>
-            <ChatMessage message={message} />
-          </div>
-        ))}
+        <div className="flex-1 p-4 space-y-4 bg-white shadow-inner"> {/* Scrollable message area */}
+          {messages.map((message, index) => (
+            <div key={index} ref={index === messages.length - 1 ? lastMessageRef : null}>
+              <ChatMessage message={message} />
+            </div>
+          ))}
+        </div>
       </div>
-
-      <div className="bg-white p-4 shadow-md z-10"> {/* Added shadow and z-index for input */}
+      <div className="bg-white p-4 shadow-md z-10 sticky bottom-0 overscroll-contain ">
         <ChatInput onSendMessage={handleSendMessage} />
       </div>
     </div>

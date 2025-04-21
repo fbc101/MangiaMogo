@@ -200,7 +200,7 @@ export default function SearchPage() {
     };
 
     return (
-        <div className="flex flex-col items-center text-black text-xl pb-24">
+        <div className="flex flex-col items-center text-black text-xl pb-24 ">
             <div className="flex w-full p-2">
                 <h1 className="flex justify-center items-center pl-2 pr-4 text-2xl font-bold text-title">
                     Search
