@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import SearchBar from "../components/SearchBar";
 import Recipe from "../components/Recipe";
+import IngredientsCart from "../components/IngredientsCart";
 import burger from "../assets/Burger.svg";
 import cookie from "../assets/Choco_cookie.jpg";
 import curry from "../assets/jap-curry.png";
@@ -21,10 +22,12 @@ import { useRouter } from 'next/navigation';
 
 export default function SearchPage() {
     const [searchText, setSearchText] = useState(''); 
+    const [searchType, setSearchType] = useState('recipes'); // 'recipes' or 'ingredients'
     const [allergens, setAllergens] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [country, setCountry] = useState('');
     const [costSliderRange, setCostSliderRange] = useState([0, 25]);
+    const [cartItems, setCartItems] = useState([]);
     const [currentlySelectedRanges, setCurrentlySelectedRanges] = useState([]);
 
     const costRanges = [
@@ -155,30 +158,37 @@ export default function SearchPage() {
         },
     ];
 
-    const filteredRecipes = recipes.filter(recipe => {
-        const matchesSearch = !searchText || 
-            recipe.name.toLowerCase().startsWith(searchText.trim().toLowerCase()) ||
-            recipe.name.toLowerCase().includes(searchText.trim().toLowerCase()) ||
-            recipe.name.split(' ').some(word => {
-                return searchText.trim().split(' ').some(searchWord => {
-                  return word.toLowerCase().includes(searchWord.toLowerCase()) || searchWord.toLowerCase().includes(word.toLowerCase());
-                });
-              });
-        
-        const matchesAllergens = !allergens || !recipe.allergens.includes(allergens);
-        const matchesDifficulty = !difficulty || recipe.difficulty === difficulty;
-        const matchesCountry = !country || recipe.country.toLowerCase().includes(country.toLowerCase());
-        const matchesCost = recipe.cost >= costSliderRange[0] && recipe.cost <= costSliderRange[1];
-        const matchesMultipleCost = currentlySelectedRanges.length == 0 ? true : currentlySelectedRanges.some(([min, max]) =>
-            recipe.cost >= min && recipe.cost <= max
+    const ingredients = [
+        { id: 1, name: "Tomatoes", category: "Vegetable", price: 2.99 },
+        { id: 2, name: "Ground Beef", category: "Meat", price: 5.99 },
+        { id: 3, name: "Pasta", category: "Grains", price: 1.99 },
+        { id: 4, name: "Onions", category: "Vegetable", price: 0.99 },
+        { id: 5, name: "Garlic", category: "Vegetable", price: 0.50 },
+        // Add more ingredients as needed
+    ];
+
+    const filteredItems = searchType === 'recipes' ? 
+        recipes.filter(recipe => {
+            const matchesSearch = !searchText || 
+                recipe.name.toLowerCase().includes(searchText.toLowerCase()) ||
+                recipe.ingredients.toLowerCase().includes(searchText.toLowerCase());
+            const matchesAllergens = !allergens || !recipe.allergens.includes(allergens);
+            const matchesDifficulty = !difficulty || recipe.difficulty === difficulty;
+            const matchesCountry = !country || recipe.country.toLowerCase().includes(country.toLowerCase());
+            const matchesCost = recipe.cost >= costSliderRange[0] && recipe.cost <= costSliderRange[1];
+            return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesCost;
+        }) :
+        ingredients.filter(ingredient => 
+            !searchText || ingredient.name.toLowerCase().includes(searchText.toLowerCase())
         );
 
-        // For slider budget
-        return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesCost;
+    const handleAddToCart = (ingredient) => {
+        setCartItems(prev => [...prev, ingredient]);
+    };
 
-        // For checkbox budget
-        // return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesMultipleCost;
-    });
+    const handleRemoveFromCart = (ingredientId) => {
+        setCartItems(prev => prev.filter(item => item.id !== ingredientId));
+    };
 
     const handleCostRangeChange = (range) => {
         setCostSliderRange(range);
@@ -190,83 +200,117 @@ export default function SearchPage() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center flex-grow text-black text-2xl overflow-y-scroll custom-scrollbar-hidden">
-            <h1>Search page</h1>
-            <div className="flex w-full max-w-3xl p-2">
-                <h1 className="flex justify-center items-center pl-2 pr-4 text-3xl font-bold text-title">
+        <div className="flex flex-col items-center text-black text-xl pb-24">
+            <div className="flex w-full p-2">
+                <h1 className="flex justify-center items-center pl-2 pr-4 text-2xl font-bold text-title">
                     Search
                 </h1>
-                <SearchBar onSearch={setSearchText} label="search recipe..."/>
-            </div>
-            <div className="flex items-center justify-start flex-grow">
-                {searchText && <p>You searched for: {searchText}</p>}
-            </div>
-            
-            {/* Filters Section */}
-            <div className="flex gap-4 mt-4 mb-6">
-                <div className="flex flex-col">
-                    <label className="text-sm mb-1">Allergens</label>
-                    <select 
-                        className="px-4 py-2 border rounded-md text-base"
-                        value={allergens}
-                        onChange={(e) => setAllergens(e.target.value)}
-                    >
-                        <option value="">None</option>
-                        <option value="eggs">Eggs</option>
-                        <option value="milk">Milk</option>
-                        <option value="treenuts">Tree Nuts</option>
-                    </select>
+                <div className="flex-1">
+                    <SearchBar onSearch={setSearchText} label={`search ${searchType}...`}/>
                 </div>
-
-                <div className="flex flex-col">
-                    <label className="text-sm mb-1">Difficulty</label>
-                    <select 
-                        className="px-4 py-2 border rounded-md text-base"
-                        value={difficulty}
-                        onChange={(e) => setDifficulty(e.target.value)}
-                    >
-                        <option value="">All</option>
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                    </select>
-                </div>
-
-                <div className="flex flex-col">
-                    <label className="text-sm mb-1">Country</label>
-                    <input 
-                        type="text"
-                        className="px-4 py-2 border rounded-md text-base"
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                        placeholder="Enter country"
+                <div className="relative">
+                    <IngredientsCart 
+                        items={cartItems}
+                        onRemove={handleRemoveFromCart}
                     />
                 </div>
             </div>
-            
-            <CostSlider range={costSliderRange} onChange={handleCostRangeChange} />
-            <div className="flex flex-col w-full max-w-3xl p-2">
-                <div className="flex justify-start items-center pl-2 pr-4 text-3xl font-bold text-title mt-2">Recipes</div>
-            </div>
 
-            <div className="flex flex-col items-center justify-center flex-grow">
-                {filteredRecipes.map((recipe, index) => (
-                    <div key={index} className="flex flex-row items-center justify-center flex-grow">
-                        <div onClick={() => handleRecipeClick(recipe.username, recipe.name)}>
-                            <Recipe 
-                                name={recipe.name}
-                                ingredients={recipe.ingredients}
-                                description={recipe.description}
-                                username={recipe.username}
-                                image={recipe.image}
-                                cost={recipe.cost}
-                                difficulty={recipe.difficulty}
-                                country={recipe.country}
+            <div className="flex gap-2 w-full px-4 mb-4">
+                <button 
+                    className={`flex-1 py-2 px-4 rounded-full ${searchType === 'recipes' ? 'bg-nav text-white' : 'bg-gray-200'}`}
+                    onClick={() => setSearchType('recipes')}
+                >
+                    Recipes
+                </button>
+                <button 
+                    className={`flex-1 py-2 px-4 rounded-full ${searchType === 'ingredients' ? 'bg-nav text-white' : 'bg-gray-200'}`}
+                    onClick={() => setSearchType('ingredients')}
+                >
+                    Ingredients
+                </button>
+            </div>
+            
+            {searchType === 'recipes' && (
+                <>
+                    {/* Filters Section */}
+                    <div className="flex flex-wrap gap-2 mt-4 mb-6 px-2">
+                        <div className="flex flex-col">
+                            <label className="text-sm mb-1">Allergens</label>
+                            <select 
+                                className="px-4 py-2 border rounded-md text-base"
+                                value={allergens}
+                                onChange={(e) => setAllergens(e.target.value)}
+                            >
+                                <option value="">None</option>
+                                <option value="eggs">Eggs</option>
+                                <option value="milk">Milk</option>
+                                <option value="treenuts">Tree Nuts</option>
+                            </select>
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label className="text-sm mb-1">Difficulty</label>
+                            <select 
+                                className="px-4 py-2 border rounded-md text-base"
+                                value={difficulty}
+                                onChange={(e) => setDifficulty(e.target.value)}
+                            >
+                                <option value="">All</option>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label className="text-sm mb-1">Country</label>
+                            <input 
+                                type="text"
+                                className="px-4 py-2 border rounded-md text-base"
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                                placeholder="Enter country"
                             />
                         </div>
                     </div>
-                ))}
-                {filteredRecipes.length === 0 && <div className="font-bold mt-5">No recipes Found ☹️</div>}
+                    <CostSlider range={costSliderRange} onChange={handleCostRangeChange} />
+                </>
+            )}
+
+            <div className="w-full px-4">
+                {searchType === 'recipes' ? (
+                    <div className="space-y-4">
+                        {filteredItems.map((recipe, index) => (
+                            <Recipe key={index} {...recipe} />
+                        ))}
+                        {filteredItems.length === 0 && 
+                            <div className="text-center py-4">No recipes found ☹️</div>
+                        }
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-2 gap-4">
+                        {filteredItems.map((ingredient) => (
+                            <div 
+                                key={ingredient.id}
+                                className="bg-white p-4 rounded-lg shadow-sm flex flex-col"
+                            >
+                                <h3 className="text-lg font-semibold">{ingredient.name}</h3>
+                                <p className="text-sm text-gray-600">{ingredient.category}</p>
+                                <p className="text-sm font-medium">${ingredient.price.toFixed(2)}</p>
+                                <button
+                                    onClick={() => handleAddToCart(ingredient)}
+                                    className="mt-2 bg-nav text-white px-3 py-1 rounded-full text-sm hover:bg-nav-hover"
+                                >
+                                    Add to Cart
+                                </button>
+                            </div>
+                        ))}
+                        {filteredItems.length === 0 && 
+                            <div className="col-span-2 text-center py-4">No ingredients found ☹️</div>
+                        }
+                    </div>
+                )}
             </div>
         </div>
     );
