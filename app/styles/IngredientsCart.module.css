@@ -1,0 +1,131 @@
+.cartContainer {
+    position: relative;
+}
+
+.cartButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cartCount {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #EF4444;
+    color: white;
+    border-radius: 9999px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    width: 288px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
+
+.dropdownContent {
+    padding: 16px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.title {
+    font-weight: 600;
+}
+
+.closeButton {
+    color: #6B7280;
+}
+
+.closeButton:hover {
+    color: #374151;
+}
+
+.emptyMessage {
+    color: #6B7280;
+}
+
+.ingredientsList {
+    max-height: 192px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+}
+
+.ingredientItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+}
+
+.removeButton {
+    color: #EF4444;
+}
+
+.removeButton:hover {
+    color: #DC2626;
+}
+
+.suggestButton {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.suggestButton:disabled {
+    background-color: #9CA3AF;
+    cursor: not-allowed;
+}
+
+.suggestButton:not(:disabled) {
+    background-color: #3B82F6;
+    color: white;
+}
+
+.suggestButton:not(:disabled):hover {
+    background-color: #2563EB;
+}
+
+.suggestionsContainer {
+    margin-top: 16px;
+}
+
+.suggestionsTitle {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.suggestionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.suggestionItem {
+    padding: 8px;
+    background-color: #F9FAFB;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.suggestionItem:hover {
+    background-color: #F3F4F6;
+} 
