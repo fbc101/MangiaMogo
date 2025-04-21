@@ -56,13 +56,13 @@ export default function MessagePage() {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-4xl mx-auto p-4 text-black">
+    <div className="flex flex-col w-full p-4 text-black">
       <div className='flex flex-row justify-between items-center mb-4'>
-        <h1 className="text-2xl font-bold ">Messages</h1>
+        <h1 className="text-2xl font-bold">Messages</h1>
         <NewMessage/>
       </div>
       
-      <div className="flex flex-col space-y-4 w-full min-w-50 cursor-pointer">
+      <div className="flex flex-col space-y-4 w-full cursor-pointer">
           {/* Chat list */}
           {Object.keys(profiles).map((username) => (
             <div key={username} 
