@@ -12,6 +12,7 @@ import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Dropdown from "../../../components/Dropdown";
 import ShareButton from "../../../components/Share-btn";
+import gen from "../../../assets/gen.png";
 import { fraction } from 'mathjs';
 
 // app/search/[recipe]/page.jsx
@@ -110,7 +111,8 @@ export default function RecipePage({ params }) {
                 "3. Toast the burger bun until golden brown",
                 "4. Spread mayonnaise on both bun halves",
                 "5. Assemble burger with lettuce, chicken patty, and tomato slices"
-            ]
+            ],
+            generated: [false, false, false, false, false]
         },
         'Chocolate Cookie': {
             image: cookie,
@@ -162,11 +164,31 @@ export default function RecipePage({ params }) {
                 "4. Combine wet and dry ingredients until well incorporated",
                 "5. Drop spoonfuls onto baking sheet",
                 "6. Bake for 12-15 minutes until edges are set"
-            ]
+            ],
+            generated: [false, false, false, false, false, false]
         }
     };
 
     const recipeDetails = recipeData[cleanedRecipe] || null;
+
+    const [isGenerated, setIsGenerated] = useState(recipeData[cleanedRecipe]?.generated);
+    
+    const handleGenerateClick = (index, event) => {
+        event.stopPropagation();
+        setIsGenerated(prevIsGenerated => {
+            const updatedIsGenerated = [...prevIsGenerated];
+            updatedIsGenerated[index] = !updatedIsGenerated[index]; // Hide the button
+            return updatedIsGenerated;
+        });
+       
+        console.log(recipeDetails?.generated?.[index]); // Log the updated value
+    };
+
+      
+
+    // useEffect(() => {
+    //     console.log("Generated state updated:", isGenerated);
+    // }, [isGenerated]);
 
     if (!recipeDetails) {
         return <div>Recipe not found</div>;
@@ -232,7 +254,7 @@ export default function RecipePage({ params }) {
                         className="w-full h-full object-cover rounded-lg"
                     />
                 </div>
-
+                
                 {/* Video Section */}
                 {recipeDetails.videoUrl && (
                     <div className="w-full aspect-video mb-6">
@@ -330,7 +352,33 @@ export default function RecipePage({ params }) {
                                 <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0">
                                     {index + 1}
                                 </span>
-                                <p className="text-gray-700">{instruction.substring(instruction.indexOf(' ') + 1)}</p>
+                                <div>
+                                    <div className='flex justify-between items-center'>
+                                        <p className="text-gray-700">{instruction.substring(instruction.indexOf(' ') + 1)}</p>
+                                        {!isGenerated[index] && !recipeDetails?.generated?.[index] && (
+                                            <Image
+                                            src={gen}
+                                            alt="gen"
+                                            className='h-8 w-8 cursor-pointer'
+                                            onClick={(e) => handleGenerateClick(index, e)}
+                                            />
+                                        )}
+                                    </div>
+                                    {/* AI VIDEOS */}
+                                    { cleanedRecipe === "Chicken Burger" && isGenerated[index] === true &&  (
+                                        <div className="flex flex-col items-center mt-2">    
+                                            <video controls className="rounded-lg w-full h-full">
+                                                <source src={`/assets/videos/chicken-burger-step-${index + 1}.mp4`} type="video/mp4" />
+                                                Your browser does not support the video tag.
+                                            </video>
+                                            <div className='flex items-center justify-center bg-blue-500 text-white cursor-pointer rounded-lg w-full h-full mt-1' 
+                                            onClick={(e) => handleGenerateClick(index, e)}>
+                                                hide
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                                
                             </div>
                         ))}
                     </div>
