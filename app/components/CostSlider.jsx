@@ -15,26 +15,25 @@ export default function CostSlider({ range, onChange }) {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center '>
-        <div>Budget Range</div>    
-        <Box sx={{ width: 300, height:20 }}>
+    <div className='flex flex-col w-full px-4 py-2'>
+        <div className="text-sm mb-2">Budget Range</div>    
+        <Box sx={{ width: '100%', height: 20 }}>
             <Slider
                 getAriaLabel={() => 'Cost range'}
-                size="medium"
+                size="small"
                 max={100}
                 value={value}
                 onChange={handleChange}
                 valueLabelDisplay="auto"
                 getAriaValueText={valuetext}
                 sx={{
-                    width: 300,
-                    height: 12,
+                    width: '100%',
+                    height: 8,
                     color: '#4F378A',
                 }}
             />
         </Box>
-        <div className='flex flex-col items-center justify-center mt-4 text-md' > Between ${range[0]} and ${range[1]}</div>
-        
+        <div className='text-xs text-gray-600 text-center mt-2'>Between ${range[0]} and ${range[1]}</div>
     </div>
   );
 }

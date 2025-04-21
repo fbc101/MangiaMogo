@@ -24,15 +24,26 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Set viewport to device width for responsiveness */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body className={`${hanuman.variable} ${italianno.variable} antialiased`}>
-        <div className="flex flex-col items-center h-screen">
-          <Header/>
-          <MessageProvider>
-            <div className="flex-grow overflow-y-auto custom-scrollbar-hidden w-full">
-              {children}
+        <div className="flex flex-col items-center min-h-screen bg-gray-100">
+          {/* Container to mimic iPhone 11 screen size */}
+          <div className="w-full max-w-[414px] h-screen bg-white shadow-lg relative flex flex-col">
+            <div className="sticky top-0 z-20 bg-white shadow-sm">
+              <Header />
             </div>
-          </MessageProvider>
-          <NavBar/>
+            <MessageProvider>
+              <main className="flex-1 overflow-y-auto">
+                {children}
+              </main>
+            </MessageProvider>
+            <div className="sticky bottom-0 bg-white">
+              <NavBar />
+            </div>
+          </div>
         </div>
       </body>
     </html>

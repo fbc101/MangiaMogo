@@ -21,18 +21,18 @@ export default function SearchBar({ onSearch, label }) {
     };
 
     return (
-        <div className="flex w-full max-w-3xl ">
+        <div className="flex w-full">
             <input
                 type="text"
                 placeholder={label || "Type the dish you want to cook"}
-                className="w-full pl-4 rounded-full border border-gray-300 bg-search"
+                className="w-full px-4 py-2 rounded-full border border-gray-300 bg-search text-sm"
                 ref={inputRef} 
                 onKeyDown={handleKeyDown}
             />
             <div className="flex justify-center items-center pl-2">
                 <Image
                     src={searchIcon}
-                    className="w-12 h-12 cursor-pointer" 
+                    className="w-8 h-8 cursor-pointer" 
                     alt="Search Icon"
                     style={{ transform: 'scaleX(-1)' }}
                     onClick={handleSearch} 

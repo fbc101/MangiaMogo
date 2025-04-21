@@ -15,11 +15,8 @@
 
   --color-nav: #81c2ee;
   --color-search: rgba(255,255,255,1);
-
   
   --color-nav-hover: #d4c0a7;
-
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,12 +26,43 @@
   }
 }
 
+html {
+  height: 100%;
+}
+
 body {
   background: var(--background);
   color: black;
   font-family: var(--font-hanuman);
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
-.custom-scrollbar-hidden::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+/* Customize scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Bounce effect */
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.bounce {
+  animation: bounce 0.3s ease-in-out;
 }

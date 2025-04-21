@@ -22,30 +22,34 @@ export default function NavBar() {
   };
 
   return (
-    <div className="flex justify-center items-center w-screen bg-nav h-30 flex-shrink-0">
-      <div className="flex justify-center items-center ml-6 mr-6 cursor-pointer hover:bg-nav-hover rounded-2xl" onClick={() => router.push('/')}>
-        <div className="flex flex-col justify-center items-center">
-          <Image src={homeIcon} className="w-18 h-18" alt="Home Icon" />
-          {isActive('/') && <Image src={bar} className="w-15 h-2" alt="Home Icon" />}
-        </div>
+    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[414px] z-50 bg-nav h-20 flex justify-around items-center">
+      <div
+        className="flex flex-col items-center cursor-pointer hover:bg-nav-hover rounded-2xl p-2"
+        onClick={() => router.push('/')}
+      >
+        <Image src={homeIcon} className="w-8 h-8" alt="Home Icon" />
+        {isActive('/') && <Image src={bar} className="w-4 h-1 mt-1" alt="Active Indicator" />}
       </div>
-      <div className="flex justify-center items-center ml-6 mr-6 cursor-pointer hover:bg-nav-hover rounded-2xl" onClick={() => router.push('/search')}>
-        <div className="flex flex-col justify-center items-center">
-          <Image src={searchIcon} className="w-18 h-18" alt="Search Icon" />
-          {isActive('/search') && <Image src={bar} className="w-15 h-2" alt="Home Icon" />}
-        </div>
+      <div
+        className="flex flex-col items-center cursor-pointer hover:bg-nav-hover rounded-2xl p-2"
+        onClick={() => router.push('/search')}
+      >
+        <Image src={searchIcon} className="w-8 h-8" alt="Search Icon" />
+        {isActive('/search') && <Image src={bar} className="w-4 h-1 mt-1" alt="Active Indicator" />}
       </div>
-      <div className="flex justify-center items-center ml-6 mr-6 cursor-pointer hover:bg-nav-hover rounded-2xl" onClick={() => router.push('/message')}>
-        <div className="flex flex-col justify-center items-center">
-          <Image src={messageIcon} className="w-18 h-18" alt="Message Icon" />
-          {isActive('/message') && <Image src={bar} className="w-15 h-2" alt="Home Icon" />}
-        </div>
+      <div
+        className="flex flex-col items-center cursor-pointer hover:bg-nav-hover rounded-2xl p-2"
+        onClick={() => router.push('/message')}
+      >
+        <Image src={messageIcon} className="w-8 h-8" alt="Message Icon" />
+        {isActive('/message') && <Image src={bar} className="w-4 h-1 mt-1" alt="Active Indicator" />}
       </div>
-      <div className="flex justify-center items-center ml-6 mr-6 cursor-pointer hover:bg-nav-hover rounded-2xl" onClick={() => router.push('/profile')}>
-        <div className="flex flex-col justify-center items-center">
-          <Image src={profileIcon} className="w-16 h-18" alt="Profile Icon" />
-          {isActive('/profile') && <Image src={bar} className="w-15 h-2" alt="Home Icon" />}
-        </div>
+      <div
+        className="flex flex-col items-center cursor-pointer hover:bg-nav-hover rounded-2xl p-2"
+        onClick={() => router.push('/profile')}
+      >
+        <Image src={profileIcon} className="w-8 h-8" alt="Profile Icon" />
+        {isActive('/profile') && <Image src={bar} className="w-4 h-1 mt-1" alt="Active Indicator" />}
       </div>
     </div>
   );

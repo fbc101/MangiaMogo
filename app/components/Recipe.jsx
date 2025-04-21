@@ -6,28 +6,31 @@ export default function Recipe({ name, ingredients, description, username, image
   const sanitizedRecipe = name.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
 
   return (
-    <div className="flex flex-row justify-center p-5">
+    <div className="flex flex-col w-full border-b border-gray-200 pb-4 mb-4">
       <Link href={`/search/${sanitizedUsername}/${sanitizedRecipe}`}>
-        <div className="w-[175px] h-[175px]">
+        <div className="w-full aspect-square">
           <Image
             src={image}
             alt="recipe"
-            className="rounded-xl object-cover object-center cursor-pointer w-full h-full" // Add object-center
+            className="rounded-lg object-cover object-center cursor-pointer w-full h-full"
           />
         </div>
       </Link>
-      <div className="justify-self-start pl-5 max-w-xl w-full">
+      <div className="w-full pt-3 px-2">
         <Link href={`/search/${sanitizedUsername}/${sanitizedRecipe}`}>
-          <h1 className="text-2xl font-bold cursor-pointer">{name}</h1>
+          <h1 className="text-lg font-bold cursor-pointer">{name}</h1>
         </Link>
         <Link href={`/${sanitizedUsername}`}>
-          <p className="text-sm pb-4">by {username}</p>
+          <p className="text-sm text-gray-600 pb-2">by {username}</p>
         </Link>
-        <p>Ingredients: {ingredients}</p>
-        <p>Cost: ${cost}</p>
-        <p>Difficulty: {difficulty}</p>
-        <p>Country: {country}</p>
-        <p className="text-lg">{description}</p>
+        <div className="flex flex-wrap gap-2 text-xs text-gray-600 mb-2">
+          <span>Cost: ${cost}</span>
+          <span>•</span>
+          <span>{difficulty}</span>
+          <span>•</span>
+          <span>{country}</span>
+        </div>
+        <p className="text-sm text-gray-700 line-clamp-2">{description}</p>
       </div>
     </div>
   );
