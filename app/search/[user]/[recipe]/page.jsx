@@ -2,14 +2,13 @@
 
 import { use, useState } from 'react';
 import Avatar from "../../../components/Avatar";
-import gordon from "../../../assets/Gordon_Ramsay.png";
-import julia from "../../../assets/JuliaChild.jpg";
 import Image from "next/image";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Dropdown from "../../../components/Dropdown";
 import ShareButton from "../../../components/Share-btn";
 import gen from "../../../assets/gen.png";
+import reject from "../../../assets/reject.png";
 import Assistant from '@/app/components/Assistant';
 import recipeData from '../../../../data/recipes.json';
 import { getRecipeImage, getUserImage } from '@/app/utils/utils';
@@ -79,12 +78,6 @@ export default function RecipePage({ params }) {
         console.log(recipeDetails?.generated?.[index]); // Log the updated value
     };
 
-      
-
-    // useEffect(() => {
-    //     console.log("Generated state updated:", isGenerated);
-    // }, [isGenerated]);
-
     if (!recipeDetails) {
         return <div>Recipe not found</div>;
     }
@@ -104,7 +97,7 @@ export default function RecipePage({ params }) {
 
                 {/* Profile Modal */}
                 {showProfile && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="fixed inset-0 bg-black/75 flex items-center justify-center z-50">
                         <div className="bg-white rounded-lg p-6 w-96">
                             <div className="flex items-center gap-4 mb-4">
                                 <Image
@@ -205,24 +198,38 @@ export default function RecipePage({ params }) {
 
                     {/* Diet Selection Modal */}
                     {showSubstitutions && (
-                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                            <div className="bg-white rounded-lg p-4 w-80">
-                                <h3 className="text-lg font-semibold mb-3">Choose Diet Type</h3>
-                                {['default', 'vegetarian', 'vegan', 'dairyFree'].map((diet) => (
-                                    <button 
-                                        key={diet}
-                                        className="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-md capitalize"
-                                        onClick={() => {
-                                            setSelectedDiet(diet === 'default' ? null : diet);
-                                            setShowSubstitutions(false);
-                                        }}
-                                    >
-                                        {diet === 'default' ? 'Original Recipe' : diet}
-                                    </button>
-                                ))}
+                    <div
+                        className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+                        onClick={() => setShowSubstitutions(false)} 
+                    >
+                        <div
+                            className="bg-white rounded-lg p-4 w-80"
+                            onClick={(e) => e.stopPropagation()} 
+                        >
+                            <div className='flex justify-between items-center'>
+                                <h3 className="text-lg font-semibold">Choose Diet Type</h3>
+                                <button className="rounded-lg  cursor-pointer" onClick={(e) => {
+                                    e.stopPropagation();
+                                    setShowSubstitutions(false);
+                                }}>
+                                    <Image src={reject} alt="reject" className="w-8 h-8 rounded-full " />
+                                </button>
                             </div>
+                            {['default', 'vegetarian', 'vegan', 'dairy-free'].map((diet) => (
+                                <button
+                                    key={diet}
+                                    className="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-md capitalize"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedDiet(diet === 'default' ? null : diet);
+                                        setShowSubstitutions(false);
+                                    }}
+                                >
+                                    {diet === 'default' ? 'Original Recipe' : diet}
+                                </button>
+                            ))}
                         </div>
-                    )}
+                    </div>)}
 
                     <ul className="space-y-2">
                         {currentIngredients.map((ingredient, index) => (
