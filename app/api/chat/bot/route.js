@@ -1,12 +1,12 @@
-import { processUserMessage } from "../../../lib/questionProcessor";
+import { processUserMessageWithBot } from "../../../../lib/questionProcessor";
 
 export async function POST(request) {
   try {
-    const { message, recipe } = await request.json();
+    const { message, bot } = await request.json();
     
     console.log("Received message:", message);
-    console.log("Received recipe:", recipe);
-    const processedQuestion = await processUserMessage(message, JSON.stringify(recipe));
+    console.log("Received bot:", bot);
+    const processedQuestion = await processUserMessageWithBot(JSON.stringify(bot), message);
     
     const response = {
         explanation: processedQuestion.content,

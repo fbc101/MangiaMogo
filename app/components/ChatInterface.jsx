@@ -42,13 +42,38 @@ export default function ChatInterface({ username, message, recipe }) {
     
     setMessages(prev => [...prev, { type: 'user', content: message }]);
     
-    setMessages(prev => [
-      ...prev, 
-      { 
-        type: 'bot', 
-        content: 'I love your cooking!',
+    try {
+      const response = await fetch('/api/chat/bot', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, bot: username })
+        });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setMessages(prev => [
+          ...prev, 
+          { 
+              type: 'bot', 
+              content: data.response.explanation 
+          }]);
+      } else {
+        setMessages(prev => [
+          ...prev, 
+          { 
+              type: 'bot', 
+              content: 'I love your cooking!' 
+          }
+        ]);
       }
-    ]);
+    } catch (error) {
+        console.error("Chat error:", error);
+        setMessages(prev => [
+            ...prev, 
+            { type: 'bot', content: 'I love your cooking!' }
+        ]);
+    } 
   };
 
   return (

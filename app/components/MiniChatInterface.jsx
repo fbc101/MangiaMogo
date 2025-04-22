@@ -6,7 +6,6 @@ import MiniChatInput from './MiniChatInput';
 import { getUserImage } from '@/app/utils/utils';
 import Image from 'next/image';
 import reject from '@/app/assets/reject.png';
-import { useRouter } from 'next/navigation';
 import chat from '../../data/chat.json';
 
 export default function MiniChatInterface({ username, message, recipe, recipeDetails, onClose }) {
@@ -23,8 +22,6 @@ export default function MiniChatInterface({ username, message, recipe, recipeDet
       lastMessageRef.current.scrollIntoView({ behavior: 'smooth' }); // Or 'auto' for instant scroll
     }
   }, [messages]); 
-
-  const router = useRouter();
 
   useEffect(() => {
     setMessages(chat[username]);
@@ -44,7 +41,7 @@ export default function MiniChatInterface({ username, message, recipe, recipeDet
     setIsLoading(true);
 
     try {
-        const response = await fetch('/api/chat', {
+        const response = await fetch('/api/chat/assistant', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message, recipe: recipeDetails })
@@ -77,13 +74,6 @@ export default function MiniChatInterface({ username, message, recipe, recipeDet
     } finally {
         setIsLoading(false);
     }
-    // setMessages(prev => [
-    //   ...prev, 
-    //   { 
-    //     type: 'bot', 
-    //     content: 'I love your cooking!',
-    //   }
-    // ]);
   };
 
   return (
