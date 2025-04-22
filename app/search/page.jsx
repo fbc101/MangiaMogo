@@ -47,14 +47,14 @@ export default function SearchPage() {
 
     const recipes = [
         {
-            name: "Sloppy Joe",
-            ingredients: "ground beef, tomato sauce, onions, spices",
-            description: "A classic American dish, Sloppy Joes are a messy but delicious sandwich that everyone loves.",
+            name: "Chicken Burger",
+            ingredients: "ground chicken, lettuce, tomato",
+            description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
             username: "Gordon Ramsay",
-            image: sloppy,
-            cost: 5,
+            image: burger,
+            cost: 6,
             difficulty: "easy",
-            country: "CANADA",
+            country: "USA",
             allergens: []
         },
         {
@@ -69,14 +69,14 @@ export default function SearchPage() {
             allergens: ["eggs", "milk"]
         },
         {
-            name: "Chicken Burger",
-            ingredients: "ground chicken, lettuce, tomato",
-            description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+            name: "Sloppy Joe",
+            ingredients: "ground beef, tomato sauce, onions, spices",
+            description: "A classic American dish, Sloppy Joes are a messy but delicious sandwich that everyone loves.",
             username: "Gordon Ramsay",
-            image: burger,
+            image: sloppy,
             cost: 10,
             difficulty: "easy",
-            country: "USA",
+            country: "CANADA",
             allergens: []
         },
         {
