@@ -7,6 +7,7 @@ import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Dropdown from "../../../components/Dropdown";
 import ShareButton from "../../../components/Share-btn";
+import SaveButton from '@/app/components/Save-btn';
 import gen from "../../../assets/gen.png";
 import reject from "../../../assets/reject.png";
 import Assistant from '@/app/components/Assistant';
@@ -160,6 +161,7 @@ export default function RecipePage({ params }) {
                 <div className='flex justify-between items-center mb-2'>
                     <h1 className="text-2xl font-bold">{cleanedRecipe}</h1>
                     <ShareButton recipe={cleanedRecipe} />
+                    <SaveButton recipeName={cleanedRecipe} username={cleanedUser} />
                 </div>
 
                 {/* Rating Stars Read Only*/}

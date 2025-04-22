@@ -1,17 +1,16 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import gordon from '../assets/Gordon_Ramsay.png';
-import burger from '../assets/Burger.svg';
-import curry from '../assets/jap-curry.png';
-import cookie from '../assets/Choco_cookie.jpg';
 import { useRouter } from 'next/navigation';
-import { turnUsernameToUrl, turnRecipeToUrl } from '../utils/utils';
+import { turnUsernameToUrl, turnRecipeToUrl, getRecipeImage, getUserImage } from '../utils/utils';
+import { useMessage } from "@/app/components/MessageProvider";
 
 export default function ProfilePage() {
     const [activeTab, setActiveTab] = useState('saved');
     const router = useRouter();
+    const { messageData, setMessageData } = useMessage();
 
     const mockUser = {
         name: "Gordon Ramsay",
@@ -22,26 +21,48 @@ export default function ProfilePage() {
         friends: 425
     };
 
-    const savedRecipes = [
+    const [savedRecipes, setSavedRecipes] = useState([
         {
             name: "Japanese Curry",
-            image: curry,
             author: "Julia Child"
         },
         {
             name: "Chocolate Cookie",
-            image: cookie,
             author: "Julia Child"
         }
-    ];
+    ]);
 
     const recentlyViewed = [
         {
             name: "Chocolate Cookie",
-            image: cookie,
             author: "Julia Child"
         }
     ];
+
+    useEffect(() => {
+        console.log("Message data:", messageData);
+        if (messageData) {
+            setSavedRecipes(prevRecipes => {
+                const isDuplicate = prevRecipes.some(
+                    recipe => recipe.name === messageData.name && recipe.author === messageData.author
+                );
+    
+                if (!isDuplicate) {
+                    return [...prevRecipes, {
+                        name: messageData.name,
+                        author: messageData.author,
+                    }];
+                }
+                return prevRecipes; // Return the existing array if it's a duplicate
+            });
+        }
+        console.log("Updated saved recipes:", savedRecipes);
+    
+    }, [messageData]);
+
+    useEffect(() => {
+        setMessageData(null); 
+    }, []); 
 
     return (
         <div className="flex flex-col items-center text-black p-4">
@@ -50,7 +71,7 @@ export default function ProfilePage() {
                 <div className="flex flex-col items-center gap-4 mb-6">
                     <div className="relative w-24 h-24">
                         <Image
-                            src={mockUser.avatar}
+                            src={getUserImage(mockUser.avatar)}
                             alt="Profile picture"
                             fill
                             className="rounded-full object-cover"
@@ -105,7 +126,7 @@ export default function ProfilePage() {
                         >
                             <div className="relative w-full h-48">
                                 <Image
-                                    src={recipe.image}
+                                    src={getRecipeImage(recipe.name)}
                                     alt={recipe.name}
                                     fill
                                     className="object-cover"
