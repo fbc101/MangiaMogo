@@ -303,7 +303,11 @@ export default function RecipePage({ params }) {
                 </div>
 
                 {/* Assistant Section */}
-                <Assistant />       
+                <Assistant recipeDetails={{
+                    recipe: cleanedRecipe,
+                    ingredients: currentIngredients,
+                    instructions: recipeDetails.instructions
+                }}/>       
             </div>
         </div>
     );

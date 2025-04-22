@@ -9,11 +9,12 @@ import reject from '@/app/assets/reject.png';
 import { useRouter } from 'next/navigation';
 import chat from '../../data/chat.json';
 
-export default function MiniChatInterface({ username, message, recipe, onClose }) {
+export default function MiniChatInterface({ username, message, recipe, recipeDetails, onClose }) {
   const [messages, setMessages] = useState([
     { type: 'bot', content: 'Hello!' },
     { type: 'bot', content: 'I love your cooking!' },
   ]);
+  const [isLoading, setIsLoading] = useState(false);
   const lastMessageRef = useRef(null);
 
   useEffect(() => {
@@ -35,20 +36,54 @@ export default function MiniChatInterface({ username, message, recipe, onClose }
     }
   }, [username, message]);
 
-  
 
   const handleSendMessage = async (message) => {
     if (!message.trim()) return;
     
     setMessages(prev => [...prev, { type: 'user', content: message }]);
-    
-    setMessages(prev => [
-      ...prev, 
-      { 
-        type: 'bot', 
-        content: 'I love your cooking!',
-      }
-    ]);
+    setIsLoading(true);
+
+    try {
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message, recipe: recipeDetails })
+          });
+
+        const data = await response.json();
+
+        if (data.success) {
+          setMessages(prev => [
+            ...prev, 
+            { 
+                type: 'bot', 
+                content: data.response.explanation 
+            }]);
+        } else {
+          setMessages(prev => [
+            ...prev, 
+            { 
+                type: 'bot', 
+                content: 'Sorry, I could not process your request.' 
+            }
+          ]);
+        }
+    } catch (error) {
+        console.error("Chat error:", error);
+        setMessages(prev => [
+            ...prev, 
+            { type: 'bot', content: 'Sorry, there was a problem connecting to the server.' }
+        ]);
+    } finally {
+        setIsLoading(false);
+    }
+    // setMessages(prev => [
+    //   ...prev, 
+    //   { 
+    //     type: 'bot', 
+    //     content: 'I love your cooking!',
+    //   }
+    // ]);
   };
 
   return (
@@ -70,6 +105,7 @@ export default function MiniChatInterface({ username, message, recipe, onClose }
               <ChatMessage message={message} />
             </div>
           ))}
+          {isLoading && <div className="text-center py-2">Thinking...</div>}
         </div>
       </div>
       <div className="bg-white shadow-md sticky top-0 overscroll-contain ">

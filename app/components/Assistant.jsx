@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import assistant from '../assets/burger-assistant-icon.png';
 import MiniChatInterface from './MiniChatInterface';
-import MiniChatInput from './MiniChatInput';
 
-export default function Assistant() {
+export default function Assistant(recipeDetails) {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   const toggleChat = () => {
@@ -24,7 +23,7 @@ export default function Assistant() {
 
       {isChatOpen && (
         <div className="fixed bottom-20 right-0 z-40 w-80 h-96  border rounded-lg shadow-lg overflow-hidden">
-          <MiniChatInterface username="Lil' Chef" onClose={toggleChat}/> 
+          <MiniChatInterface username="Lil' Chef" onClose={toggleChat} recipeDetails={recipeDetails} /> 
         </div>
       )}
     </>
