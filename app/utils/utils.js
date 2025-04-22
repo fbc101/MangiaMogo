@@ -5,7 +5,7 @@ import jack from '../assets/jack-black.png';
 import bigsmoke from '../assets/big-smoke.png';
 import nick from '../assets/nick-cook.png';
 import carmy from '../assets/carmy.png';
-
+import chef from '../assets/burger-assistant-icon.png';
 import burger from "../assets/Burger.svg";
 import cookie from "../assets/Choco_cookie.jpg";
 import curry from "../assets/jap-curry.png";
@@ -47,6 +47,8 @@ export const getUserImage = (username) => {
       return nick;
     } else if (username === 'Carmy Berzatto') {
       return carmy;
+    } else if (username === "Lil' Chef") {
+      return chef; // Add the image path for Lil' Chef here
     } else { // Default case
       return gordon;
     }
