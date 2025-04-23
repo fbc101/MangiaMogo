@@ -35,8 +35,6 @@ export default function ChatInterface({ username, message, recipe }) {
     }
   }, [username, message]);
 
-  
-
   const handleSendMessage = async (message) => {
     if (!message.trim()) return;
     

@@ -27,7 +27,7 @@ export default function ChatPage({ params }) {
     }, []); 
 
     return (
-        <div className="h-full">
+        <div className="flex-1 flex flex-col h-full">
             <ChatInterface username={userCleaned} recipe={recipe} message={message} />
         </div>
     )
