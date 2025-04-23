@@ -1,0 +1,487 @@
+{
+    "Chicken Burger": {
+    "image": "Chicken Burger",
+    "avatar": "Gordon Ramsay",
+    "videoUrl": "https://www.youtube.com/embed/qp8sBE1-XyE",
+    "ingredients": {
+        "default": [
+            {"amount": 1, "name": "pound ground chicken"},
+            {"amount": 2, "name": "large lettuce leaves"},
+            {"amount": 2, "name": "thick tomato slices"},
+            {"amount": 1, "name": "burger bun"},
+            {"amount": 2, "name": "tbsp mayonnaise"},
+            {"amount": null, "name": "Salt and pepper to taste"}
+        ],
+        "vegetarian": [
+            {"amount": 1, "name": "pound plant-based ground meat"},
+            {"amount": 2, "name": "large lettuce leaves"},
+            {"amount": 2, "name": "thick tomato slices"},
+            {"amount": 1, "name": "burger bun"},
+            {"amount": 2, "name": "tbsp vegan mayonnaise"},
+            {"amount": null, "name": "Salt and pepper to taste"}
+        ],
+        "vegan": [
+            {"amount": 1, "name": "pound plant-based ground meat"},
+            {"amount": 2, "name": "large lettuce leaves"},
+            {"amount": 2, "name": "thick tomato slices"},
+            {"amount": 1, "name": "vegan burger bun"},
+            {"amount": 2, "name": "tbsp vegan mayonnaise"},
+            {"amount": null, "name": "Salt and pepper to taste"}
+        ],
+        "dairyFree": [
+            {"amount": 1, "name": "pound ground chicken"},
+            {"amount": 2, "name": "large lettuce leaves"},
+            {"amount": 2, "name": "thick tomato slices"},
+            {"amount": 1, "name": "burger bun"},
+            {"amount": 2, "name": "tbsp dairy-free mayonnaise"},
+            {"amount": null, "name": "Salt and pepper to taste"}
+        ]
+    },
+    "description": "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+    "instructions": [
+        "1. Form ground chicken into a patty and season with salt and pepper",
+        "2. Cook on medium-high heat for 5-6 minutes each side",
+        "3. Toast the burger bun until golden brown",
+        "4. Spread mayonnaise on both bun halves",
+        "5. Assemble burger with lettuce, chicken patty, and tomato slices"
+    ],
+    "generated": [false, false, false, false, false]
+    },
+    "Chocolate Cookie": {
+        "image": "Chocolate Cookie",
+        "avatar": "Julia Child",
+        "videoUrl": "https://www.youtube.com/embed/VrKaZ4LlGdQ",
+        "ingredients": {
+            "default": [
+                {"amount": 2, "name": "cups all-purpose flour"},
+                {"amount": 1, "name": "cup whole milk"},
+                {"amount": 2, "name": "large eggs"},
+                {"amount": 1.5, "name": "cups granulated sugar"},
+                {"amount": 0.5, "name": "cup cocoa powder"},
+                {"amount": 1, "name": "tsp vanilla extract"},
+                {"amount": 1, "name": "tsp baking soda"}
+            ],
+            "vegetarian": [
+                {"amount": 2, "name": "cups all-purpose flour"},
+                {"amount": 1, "name": "cup whole milk"},
+                {"amount": 2, "name": "large eggs"},
+                {"amount": 1.5, "name": "cups granulated sugar"},
+                {"amount": 0.5, "name": "cup cocoa powder"},
+                {"amount": 1, "name": "tsp vanilla extract"},
+                {"amount": 1, "name": "tsp baking soda"}
+            ],
+            "vegan": [
+                {"amount": 2, "name": "cups all-purpose flour"},
+                {"amount": 1, "name": "cup almond milk"},
+                {"amount": 2, "name": "flax eggs (2 tbsp ground flaxseed + 6 tbsp water)"},
+                {"amount": 1.5, "name": "cups granulated sugar"},
+                {"amount": 0.5, "name": "cup cocoa powder"},
+                {"amount": 1, "name": "tsp vanilla extract"},
+                {"amount": 1, "name": "tsp baking soda"}
+            ],
+            "dairyFree": [
+                {"amount": 2, "name": "cups all-purpose flour"},
+                {"amount": 1, "name": "cup almond milk"},
+                {"amount": 2, "name": "large eggs"},
+                {"amount": 1.5, "name": "cups granulated sugar"},
+                {"amount": 0.5, "name": "cup cocoa powder"},
+                {"amount": 1, "name": "tsp vanilla extract"},
+                {"amount": 1, "name": "tsp baking soda"}
+            ]
+        },
+        "description": "A classic chocolate cookie recipe perfected over decades. Rich, chewy, and absolutely delightful.",
+        "instructions": [
+            "1. Preheat oven to 350°F (175°C)",
+            "2. Mix dry ingredients in a large bowl",
+            "3. Whisk wet ingredients separately",
+            "4. Combine wet and dry ingredients until well incorporated",
+            "5. Drop spoonfuls onto baking sheet",
+            "6. Bake for 12-15 minutes until edges are set"
+        ],
+        "generated": [false, false, false, false, false, false]
+    },
+    "Sloppy Joe": {
+        "image": "Sloppy Joe",
+        "avatar": "Gordon Ramsay",
+        "videoUrl": "https://www.youtube.com/embed/qp8sBE1-XyE",
+        "ingredients": {
+            "default": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegetarian": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegan": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "vegan burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "dairyFree": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp dairy-free mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ]
+        },
+        "description": "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+        "instructions": [
+            "1. Form ground chicken into a patty and season with salt and pepper",
+            "2. Cook on medium-high heat for 5-6 minutes each side",
+            "3. Toast the burger bun until golden brown",
+            "4. Spread mayonnaise on both bun halves",
+            "5. Assemble burger with lettuce, chicken patty, and tomato slices"
+        ],
+        "generated": [false, false, false, false, false]
+    },
+    "Japanese Curry": {
+        "image": "Japanese Curry",
+        "avatar": "Gordon Ramsay",
+        "videoUrl": "https://www.youtube.com/embed/qp8sBE1-XyE",
+        "ingredients": {
+            "default": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegetarian": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegan": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "vegan burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "dairyFree": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp dairy-free mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ]
+        },
+        "description": "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+        "instructions": [
+            "1. Form ground chicken into a patty and season with salt and pepper",
+            "2. Cook on medium-high heat for 5-6 minutes each side",
+            "3. Toast the burger bun until golden brown",
+            "4. Spread mayonnaise on both bun halves",
+            "5. Assemble burger with lettuce, chicken patty, and tomato slices"
+        ],
+        "generated": [false, false, false, false, false]
+    },
+    "Korean Fried Chicken": {
+        "image": "Korean Fried Chicken",
+        "avatar": "Gordon Ramsay",
+        "videoUrl": "https://www.youtube.com/embed/qp8sBE1-XyE",
+        "ingredients": {
+            "default": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegetarian": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegan": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "vegan burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "dairyFree": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp dairy-free mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ]
+        },
+        "description": "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+        "instructions": [
+            "1. Form ground chicken into a patty and season with salt and pepper",
+            "2. Cook on medium-high heat for 5-6 minutes each side",
+            "3. Toast the burger bun until golden brown",
+            "4. Spread mayonnaise on both bun halves",
+            "5. Assemble burger with lettuce, chicken patty, and tomato slices"
+        ],
+        "generated": [false, false, false, false, false]
+    },
+    "Lamb Skewer": {
+        "image": "Lamb Skewer",
+        "avatar": "Gordon Ramsay",
+        "videoUrl": "https://www.youtube.com/embed/qp8sBE1-XyE",
+        "ingredients": {
+            "default": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegetarian": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegan": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "vegan burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "dairyFree": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp dairy-free mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ]
+        },
+        "description": "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+        "instructions": [
+            "1. Form ground chicken into a patty and season with salt and pepper",
+            "2. Cook on medium-high heat for 5-6 minutes each side",
+            "3. Toast the burger bun until golden brown",
+            "4. Spread mayonnaise on both bun halves",
+            "5. Assemble burger with lettuce, chicken patty, and tomato slices"
+        ],
+        "generated": [false, false, false, false, false]
+    },
+    "Cornbread": {
+        "image": "Cornbread",
+        "avatar": "Gordon Ramsay",
+        "videoUrl": "https://www.youtube.com/embed/qp8sBE1-XyE",
+        "ingredients": {
+            "default": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegetarian": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegan": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "vegan burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "dairyFree": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp dairy-free mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ]
+        },
+        "description": "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+        "instructions": [
+            "1. Form ground chicken into a patty and season with salt and pepper",
+            "2. Cook on medium-high heat for 5-6 minutes each side",
+            "3. Toast the burger bun until golden brown",
+            "4. Spread mayonnaise on both bun halves",
+            "5. Assemble burger with lettuce, chicken patty, and tomato slices"
+        ],
+        "generated": [false, false, false, false, false]
+    },
+    "Peppers": {
+        "image": "Peppers",
+        "avatar": "Gordon Ramsay",
+        "videoUrl": "https://www.youtube.com/embed/qp8sBE1-XyE",
+        "ingredients": {
+            "default": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegetarian": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegan": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "vegan burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "dairyFree": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp dairy-free mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ]
+        },
+        "description": "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+        "instructions": [
+            "1. Form ground chicken into a patty and season with salt and pepper",
+            "2. Cook on medium-high heat for 5-6 minutes each side",
+            "3. Toast the burger bun until golden brown",
+            "4. Spread mayonnaise on both bun halves",
+            "5. Assemble burger with lettuce, chicken patty, and tomato slices"
+        ],
+        "generated": [false, false, false, false, false]
+    },
+    "Meatballs": {
+        "image": "Meatballs",
+        "avatar": "Gordon Ramsay",
+        "videoUrl": "https://www.youtube.com/embed/qp8sBE1-XyE",
+        "ingredients": {
+            "default": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegetarian": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegan": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "vegan burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "dairyFree": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp dairy-free mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ]
+        },
+        "description": "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+        "instructions": [
+            "1. Form ground chicken into a patty and season with salt and pepper",
+            "2. Cook on medium-high heat for 5-6 minutes each side",
+            "3. Toast the burger bun until golden brown",
+            "4. Spread mayonnaise on both bun halves",
+            "5. Assemble burger with lettuce, chicken patty, and tomato slices"
+        ],
+        "generated": [false, false, false, false, false]
+    },
+    "Shrimp Stir Fry": {
+        "image": "Shrimp",
+        "avatar": "Gordon Ramsay",
+        "videoUrl": "https://www.youtube.com/embed/qp8sBE1-XyE",
+        "ingredients": {
+            "default": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegetarian": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "vegan": [
+                {"amount": 1, "name": "pound plant-based ground meat"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "vegan burger bun"},
+                {"amount": 2, "name": "tbsp vegan mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ],
+            "dairyFree": [
+                {"amount": 1, "name": "pound ground chicken"},
+                {"amount": 2, "name": "large lettuce leaves"},
+                {"amount": 2, "name": "thick tomato slices"},
+                {"amount": 1, "name": "burger bun"},
+                {"amount": 2, "name": "tbsp dairy-free mayonnaise"},
+                {"amount": null, "name": "Salt and pepper to taste"}
+            ]
+        },
+        "description": "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+        "instructions": [
+            "1. Form ground chicken into a patty and season with salt and pepper",
+            "2. Cook on medium-high heat for 5-6 minutes each side",
+            "3. Toast the burger bun until golden brown",
+            "4. Spread mayonnaise on both bun halves",
+            "5. Assemble burger with lettuce, chicken patty, and tomato slices"
+        ],
+        "generated": [false, false, false, false, false]
+    }
+}

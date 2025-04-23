@@ -16,7 +16,7 @@
   --color-nav: #81c2ee;
   --color-search: rgba(255,255,255,1);
   
-  --color-nav-hover: #d4c0a7;
+  --color-nav-hover: #8cd1ff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,6 +56,13 @@ body {
   background: rgba(0, 0, 0, 0.3);
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.main-container { 
+  overscroll-behavior-y: contain; /* Or 'none' */
+}
 /* Bounce effect */
 @keyframes bounce {
   0% { transform: translateY(0); }

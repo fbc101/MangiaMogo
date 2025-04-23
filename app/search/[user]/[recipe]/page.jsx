@@ -2,16 +2,17 @@
 
 import { use, useState } from 'react';
 import Avatar from "../../../components/Avatar";
-import gordon from "../../../assets/Gordon_Ramsay.png";
-import granny from "../../../assets/grandma.jpg";
-import julia from "../../../assets/JuliaChild.jpg";
-import burger from "../../../assets/Burger.svg";
-import cookie from "../../../assets/Choco_cookie.jpg";
 import Image from "next/image";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Dropdown from "../../../components/Dropdown";
 import ShareButton from "../../../components/Share-btn";
+import SaveButton from '@/app/components/Save-btn';
+import gen from "../../../assets/gen.png";
+import reject from "../../../assets/reject.png";
+import Assistant from '@/app/components/Assistant';
+import recipeData from '../../../../data/recipes.json';
+import { getRecipeImage, getUserImage } from '@/app/utils/utils';
 import { fraction } from 'mathjs';
 
 // app/search/[recipe]/page.jsx
@@ -47,7 +48,7 @@ export default function RecipePage({ params }) {
     const profiles = {
         'Gordon Ramsay': {
             name: 'Gordon Ramsay',
-            avatar: gordon,
+            avatar: getUserImage('Gordon Ramsay'),
             bio: 'Celebrity chef and restaurateur. Love creating simple yet delicious recipes that anyone can make at home.',
             followers: 1200,
             following: 350,
@@ -55,7 +56,7 @@ export default function RecipePage({ params }) {
         },
         'Julia Child': {
             name: 'Julia Child',
-            avatar: julia,
+            avatar: getUserImage('Julia Child'),
             bio: 'American cooking teacher and author. Bringing French cuisine to everyday American cooks.',
             followers: 800,
             following: 200,
@@ -63,110 +64,20 @@ export default function RecipePage({ params }) {
         }
     };
 
-    // Get the correct recipe details based on URL params
-    const recipeData = {
-        'Chicken Burger': {
-            image: burger,
-            avatar: gordon,
-            videoUrl: 'https://www.youtube.com/embed/qp8sBE1-XyE',
-            ingredients: {
-                default: [
-                    {amount: 1, name: "pound ground chicken"},
-                    {amount: 2, name: "large lettuce leaves"},
-                    {amount: 2, name: "thick tomato slices"},
-                    {amount: 1, name: "burger bun"},
-                    {amount: 2, name: "tbsp mayonnaise"},
-                    {amount: null, name: "Salt and pepper to taste"}
-                ],
-                vegetarian: [
-                    {amount: 1, name: "pound plant-based ground meat"},
-                    {amount: 2, name: "large lettuce leaves"},
-                    {amount: 2, name: "thick tomato slices"},
-                    {amount: 1, name: "burger bun"},
-                    {amount: 2, name: "tbsp vegan mayonnaise"},
-                    {amount: null, name: "Salt and pepper to taste"}
-                ],
-                vegan: [
-                    {amount: 1, name: "pound plant-based ground meat"},
-                    {amount: 2, name: "large lettuce leaves"},
-                    {amount: 2, name: "thick tomato slices"},
-                    {amount: 1, name: "vegan burger bun"},
-                    {amount: 2, name: "tbsp vegan mayonnaise"},
-                    {amount: null, name: "Salt and pepper to taste"}
-                ],
-                dairyFree: [
-                    {amount: 1, name: "pound ground chicken"},
-                    {amount: 2, name: "large lettuce leaves"},
-                    {amount: 2, name: "thick tomato slices"},
-                    {amount: 1, name: "burger bun"},
-                    {amount: 2, name: "tbsp dairy-free mayonnaise"},
-                    {amount: null, name: "Salt and pepper to taste"}
-                ]
-            },
-            description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
-            instructions: [
-                "1. Form ground chicken into a patty and season with salt and pepper",
-                "2. Cook on medium-high heat for 5-6 minutes each side",
-                "3. Toast the burger bun until golden brown",
-                "4. Spread mayonnaise on both bun halves",
-                "5. Assemble burger with lettuce, chicken patty, and tomato slices"
-            ]
-        },
-        'Chocolate Cookie': {
-            image: cookie,
-            avatar: julia,
-            videoUrl: 'https://www.youtube.com/embed/VrKaZ4LlGdQ',
-            ingredients: {
-                default: [
-                    {amount: 2, name: "cups all-purpose flour"},
-                    {amount: 1, name: "cup whole milk"},
-                    {amount: 2, name: "large eggs"},
-                    {amount: 1.5, name: "cups granulated sugar"},
-                    {amount: 0.5, name: "cup cocoa powder"},
-                    {amount: 1, name: "tsp vanilla extract"},
-                    {amount: 1, name: "tsp baking soda"}
-                ],
-                vegetarian: [
-                    {amount: 2, name: "cups all-purpose flour"},
-                    {amount: 1, name: "cup whole milk"},
-                    {amount: 2, name: "large eggs"},
-                    {amount: 1.5, name: "cups granulated sugar"},
-                    {amount: 0.5, name: "cup cocoa powder"},
-                    {amount: 1, name: "tsp vanilla extract"},
-                    {amount: 1, name: "tsp baking soda"}
-                ],
-                vegan: [
-                    {amount: 2, name: "cups all-purpose flour"},
-                    {amount: 1, name: "cup almond milk"},
-                    {amount: 2, name: "flax eggs (2 tbsp ground flaxseed + 6 tbsp water)"},
-                    {amount: 1.5, name: "cups granulated sugar"},
-                    {amount: 0.5, name: "cup cocoa powder"},
-                    {amount: 1, name: "tsp vanilla extract"},
-                    {amount: 1, name: "tsp baking soda"}
-                ],
-                dairyFree: [
-                    {amount: 2, name: "cups all-purpose flour"},
-                    {amount: 1, name: "cup almond milk"},
-                    {amount: 2, name: "large eggs"},
-                    {amount: 1.5, name: "cups granulated sugar"},
-                    {amount: 0.5, name: "cup cocoa powder"},
-                    {amount: 1, name: "tsp vanilla extract"},
-                    {amount: 1, name: "tsp baking soda"}
-                ]
-            },
-            description: "A classic chocolate cookie recipe perfected over decades. Rich, chewy, and absolutely delightful.",
-            instructions: [
-                "1. Preheat oven to 350°F (175°C)",
-                "2. Mix dry ingredients in a large bowl",
-                "3. Whisk wet ingredients separately",
-                "4. Combine wet and dry ingredients until well incorporated",
-                "5. Drop spoonfuls onto baking sheet",
-                "6. Bake for 12-15 minutes until edges are set"
-            ]
-        }
-    };
-
     const recipeDetails = recipeData[cleanedRecipe] || null;
+
+    const [isGenerated, setIsGenerated] = useState(recipeData[cleanedRecipe]?.generated);
+    
+    const handleGenerateClick = (index, event) => {
+        event.stopPropagation();
+        setIsGenerated(prevIsGenerated => {
+            const updatedIsGenerated = [...prevIsGenerated];
+            updatedIsGenerated[index] = !updatedIsGenerated[index]; // Hide the button
+            return updatedIsGenerated;
+        });
+       
+        console.log(recipeDetails?.generated?.[index]); // Log the updated value
+    };
 
     if (!recipeDetails) {
         return <div>Recipe not found</div>;
@@ -180,18 +91,18 @@ export default function RecipePage({ params }) {
                 {/* Header with Avatar and User */}
                 <div className="flex items-center gap-4 mb-4">
                     <div onClick={() => setShowProfile(true)} className="cursor-pointer">
-                        <Avatar src={recipeDetails.avatar} alt="user avatar" className="w-12 h-12" />
+                        <Avatar src={getUserImage(recipeDetails.avatar)} alt="user avatar" className="w-12 h-12" />
                     </div>
                     <h2 className="text-xl font-semibold">{cleanedUser}</h2>
                 </div>
 
                 {/* Profile Modal */}
                 {showProfile && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="fixed inset-0 bg-black/75 flex items-center justify-center z-50">
                         <div className="bg-white rounded-lg p-6 w-96">
                             <div className="flex items-center gap-4 mb-4">
                                 <Image
-                                    src={profiles[cleanedUser].avatar}
+                                    src={getUserImage(recipeDetails.avatar)}
                                     alt="Profile picture"
                                     className="w-24 h-24 rounded-full object-cover"
                                 />
@@ -227,12 +138,12 @@ export default function RecipePage({ params }) {
                 {/* Recipe Image */}
                 <div className="w-full aspect-square mb-6">
                     <Image 
-                        src={recipeDetails.image} 
+                        src={getRecipeImage(recipeDetails.image)}
                         alt="recipe" 
                         className="w-full h-full object-cover rounded-lg"
                     />
                 </div>
-
+                
                 {/* Video Section */}
                 {recipeDetails.videoUrl && (
                     <div className="w-full aspect-video mb-6">
@@ -250,6 +161,7 @@ export default function RecipePage({ params }) {
                 <div className='flex justify-between items-center mb-2'>
                     <h1 className="text-2xl font-bold">{cleanedRecipe}</h1>
                     <ShareButton recipe={cleanedRecipe} />
+                    <SaveButton recipeName={cleanedRecipe} username={cleanedUser} />
                 </div>
 
                 {/* Rating Stars Read Only*/}
@@ -288,24 +200,38 @@ export default function RecipePage({ params }) {
 
                     {/* Diet Selection Modal */}
                     {showSubstitutions && (
-                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                            <div className="bg-white rounded-lg p-4 w-80">
-                                <h3 className="text-lg font-semibold mb-3">Choose Diet Type</h3>
-                                {['default', 'vegetarian', 'vegan', 'dairyFree'].map((diet) => (
-                                    <button 
-                                        key={diet}
-                                        className="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-md capitalize"
-                                        onClick={() => {
-                                            setSelectedDiet(diet === 'default' ? null : diet);
-                                            setShowSubstitutions(false);
-                                        }}
-                                    >
-                                        {diet === 'default' ? 'Original Recipe' : diet}
-                                    </button>
-                                ))}
+                    <div
+                        className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+                        onClick={() => setShowSubstitutions(false)} 
+                    >
+                        <div
+                            className="bg-white rounded-lg p-4 w-80"
+                            onClick={(e) => e.stopPropagation()} 
+                        >
+                            <div className='flex justify-between items-center'>
+                                <h3 className="text-lg font-semibold">Choose Diet Type</h3>
+                                <button className="rounded-lg  cursor-pointer" onClick={(e) => {
+                                    e.stopPropagation();
+                                    setShowSubstitutions(false);
+                                }}>
+                                    <Image src={reject} alt="reject" className="w-8 h-8 rounded-full " />
+                                </button>
                             </div>
+                            {['default', 'vegetarian', 'vegan', 'dairy-free'].map((diet) => (
+                                <button
+                                    key={diet}
+                                    className="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-md capitalize"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedDiet(diet === 'default' ? null : diet);
+                                        setShowSubstitutions(false);
+                                    }}
+                                >
+                                    {diet === 'default' ? 'Original Recipe' : diet}
+                                </button>
+                            ))}
                         </div>
-                    )}
+                    </div>)}
 
                     <ul className="space-y-2">
                         {currentIngredients.map((ingredient, index) => (
@@ -330,7 +256,33 @@ export default function RecipePage({ params }) {
                                 <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0">
                                     {index + 1}
                                 </span>
-                                <p className="text-gray-700">{instruction.substring(instruction.indexOf(' ') + 1)}</p>
+                                <div>
+                                    <div className='flex justify-between items-center'>
+                                        <p className="text-gray-700">{instruction.substring(instruction.indexOf(' ') + 1)}</p>
+                                        {!isGenerated[index] && !recipeDetails?.generated?.[index] && (
+                                            <Image
+                                            src={gen}
+                                            alt="gen"
+                                            className='h-8 w-8 cursor-pointer'
+                                            onClick={(e) => handleGenerateClick(index, e)}
+                                            />
+                                        )}
+                                    </div>
+                                    {/* AI VIDEOS */}
+                                    { cleanedRecipe === "Chicken Burger" && isGenerated[index] === true &&  (
+                                        <div className="flex flex-col items-center mt-2">    
+                                            <video controls className="rounded-lg w-full h-full">
+                                                <source src={`/assets/videos/chicken-burger-step-${index + 1}.mp4`} type="video/mp4" />
+                                                Your browser does not support the video tag.
+                                            </video>
+                                            <div className='flex items-center justify-center bg-blue-500 text-white cursor-pointer rounded-lg w-full h-full mt-1' 
+                                            onClick={(e) => handleGenerateClick(index, e)}>
+                                                hide
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                                
                             </div>
                         ))}
                     </div>
@@ -351,6 +303,13 @@ export default function RecipePage({ params }) {
                         ))}
                     </div>
                 </div>
+
+                {/* Assistant Section */}
+                <Assistant recipeDetails={{
+                    recipe: cleanedRecipe,
+                    ingredients: currentIngredients,
+                    instructions: recipeDetails.instructions
+                }}/>       
             </div>
         </div>
     );
