@@ -144,18 +144,6 @@ export default function RecipePage({ params }) {
                     />
                 </div>
                 
-                {/* Video Section */}
-                {recipeDetails.videoUrl && (
-                    <div className="w-full aspect-video mb-6">
-                        <iframe
-                            src={`${recipeDetails.videoUrl}?autoplay=1&mute=1&rel=0&controls=1`}
-                            className="w-full h-full rounded-lg"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            loading="eager"
-                        />
-                    </div>
-                )}
 
                 {/* Recipe Title */}
                 <div className='flex justify-between items-center mb-2'>
@@ -242,8 +230,8 @@ export default function RecipePage({ params }) {
                         ))}
                     </ul>
                     <div className="flex items-center gap-2">
-                        <div className="text-2xl">serving size</div>
-                        <Dropdown options={['1', '2', '3', '1/2', '1/3', '2/3', '3/4']} onChange={handleServingChange} />
+                        <div className="text-2xl">Serving Size</div>
+                        <Dropdown options={['1/3', '1/2', '2/3', '3/4', '1', '2', '3']} onChange={handleServingChange} />
                     </div>
                 </div>
 
@@ -287,7 +275,20 @@ export default function RecipePage({ params }) {
                         ))}
                     </div>
                 </div>
-
+                
+                {/* Video Section */}
+                {recipeDetails.videoUrl && (
+                    <div className="w-full aspect-video mb-6">
+                        <iframe
+                            src={`${recipeDetails.videoUrl}?autoplay=1&mute=1&rel=0&controls=1`}
+                            className="w-full h-full rounded-lg"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            loading="eager"
+                        />
+                    </div>
+                )}
+                
                 {/* Rating Stars */}
                 <div className="flex mb-4">
                     <div className="text-2xl flex-col items-center">
@@ -301,6 +302,7 @@ export default function RecipePage({ params }) {
                                 {star <= rating ? '★' : '☆'}
                             </button>
                         ))}
+                        <button className="rounded-lg bg-blue-500 p-2 ml-4 text-white text-sm hover:bg-blue-600" onClick={() => setRating(0)}> clear </button>
                     </div>
                 </div>
 
