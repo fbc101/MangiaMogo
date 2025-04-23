@@ -9,7 +9,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center p-4 pb-20">
+    <div className="flex flex-col justify-center items-center p-4 h-full">
       <h1 className="text-2xl font-bold mb-4">Welcome to Mangia Mogo!</h1>
       
       <div className="w-full text-center mb-4">
@@ -28,7 +28,7 @@ export default function Home() {
       </div>
 
       <div className="w-full">
-        <div className="bg-white rounded-lg p-4 shadow-md">
+        <div className="bg-off-white rounded-lg p-4 shadow-md">
           <h2 className="text-lg font-semibold mb-3">Get Started</h2>
           <div className="space-y-3">
             <p className="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded-lg" onClick={() => router.push('/search')}>

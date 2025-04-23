@@ -87,7 +87,7 @@ export default function RecipePage({ params }) {
 
     return (
         <div className="flex flex-col w-full min-h-screen bg-[#E6F2FF] p-4">
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
+            <div className="bg-off-white rounded-2xl p-6 shadow-lg">
                 {/* Header with Avatar and User */}
                 <div className="flex items-center gap-4 mb-4">
                     <div onClick={() => setShowProfile(true)} className="cursor-pointer">
@@ -99,7 +99,7 @@ export default function RecipePage({ params }) {
                 {/* Profile Modal */}
                 {showProfile && (
                     <div className="fixed inset-0 bg-black/75 flex items-center justify-center z-50">
-                        <div className="bg-white rounded-lg p-6 w-96">
+                        <div className="bg-off-white rounded-lg p-6 w-96">
                             <div className="flex items-center gap-4 mb-4">
                                 <Image
                                     src={getUserImage(recipeDetails.avatar)}
@@ -193,7 +193,7 @@ export default function RecipePage({ params }) {
                         onClick={() => setShowSubstitutions(false)} 
                     >
                         <div
-                            className="bg-white rounded-lg p-4 w-80"
+                            className="bg-off-white rounded-lg p-4 w-80"
                             onClick={(e) => e.stopPropagation()} 
                         >
                             <div className='flex justify-between items-center'>

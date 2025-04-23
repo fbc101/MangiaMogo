@@ -29,7 +29,7 @@ export default function NewMessage() {
                 setOpened(false);
                 setUser('');
             }}>
-                <div className='bg-white rounded-lg p-4 w-96' onClick={e => e.stopPropagation()}>
+                <div className='bg-off-white rounded-lg p-4 w-96' onClick={e => e.stopPropagation()}>
                     <div className='flex flex-col items-center justify-center'>
                         <div className='flex flex-row items-center justify-end w-full '>
                             <button className="rounded-lg hover:bg-gray-200 cursor-pointer" onClick={e => {

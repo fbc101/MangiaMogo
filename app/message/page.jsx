@@ -92,7 +92,7 @@ export default function MessagePage() {
       {/* Profile Modal */}
       {selectedProfile && (
         <div className="fixed inset-0 bg-black/75 flex items-center justify-center z-50" onClick={() => setSelectedProfile(null)}>
-          <div className="bg-white rounded-lg p-6 w-96" onClick={e => e.stopPropagation()}>
+          <div className="bg-off-white rounded-lg p-6 w-96" onClick={e => e.stopPropagation()}>
             <div className="flex items-center gap-6 mb-6">
               <Image
                 src={selectedProfile.avatar}

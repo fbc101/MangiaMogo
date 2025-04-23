@@ -33,8 +33,8 @@ export default function RootLayout({ children }) {
         <body className={`${hanuman.variable} ${italianno.variable} antialiased`}>
           <div className="flex flex-col items-center min-h-screen bg-gray-100 overscroll-contain">
             {/* Container to mimic iPhone 11 screen size */}
-            <div className="w-full max-w-[414px] h-screen bg-white shadow-lg relative flex flex-col">
-              <div className="sticky top-0 z-20 bg-white shadow-sm">
+            <div className="w-full max-w-[414px] h-screen bg-off-white shadow-lg relative flex flex-col">
+              <div className="sticky top-0 z-20 bg-off-white shadow-sm">
                 <Header />
               </div>
               <MessageProvider>

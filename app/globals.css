@@ -13,10 +13,11 @@
   --font-italianno: var(--font-italianno);
   --color-title: #0009BB;
 
-  --color-nav: #81c2ee;
+  --color-nav: #F8C0B3;
+  --color-off-white: #FCF8F3;
   --color-search: rgba(255,255,255,1);
   
-  --color-nav-hover: #8cd1ff;
+  --color-nav-hover: #FFD7C6;
 }
 
 @media (prefers-color-scheme: dark) {

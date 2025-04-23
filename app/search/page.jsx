@@ -328,7 +328,7 @@ export default function SearchPage() {
                         {filteredItems.map((ingredient) => (
                             <div 
                                 key={ingredient.id}
-                                className="bg-white p-4 rounded-lg shadow-sm flex flex-col"
+                                className="bg-off-white p-4 rounded-lg shadow-sm flex flex-col"
                             >
                                 <h3 className="text-lg font-semibold">{ingredient.name}</h3>
                                 <p className="text-sm text-gray-600">{ingredient.category}</p>

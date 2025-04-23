@@ -87,7 +87,7 @@ export default function ChatInterface({ username, message, recipe }) {
       </div>
       <div className="flex h-full flex-col overflow-y-auto scrollbar-hide overscroll-contain"> {/* Make the main container take full viewport height and hide overflow */}
 
-        <div className="flex-1 p-4 space-y-4 bg-white shadow-inner"> {/* Scrollable message area */}
+        <div className="flex-1 p-4 space-y-4 bg-off-white shadow-inner"> {/* Scrollable message area */}
           {messages.map((message, index) => (
             <div key={index} ref={index === messages.length - 1 ? lastMessageRef : null}>
               <ChatMessage message={message} />
@@ -95,7 +95,7 @@ export default function ChatInterface({ username, message, recipe }) {
           ))}
         </div>
       </div>
-      <div className="bg-white p-4 shadow-md z-10 sticky bottom-0 overscroll-contain ">
+      <div className="bg-off-white p-4 shadow-md z-10 sticky bottom-0 overscroll-contain ">
         <ChatInput onSendMessage={handleSendMessage} />
       </div>
     </div>

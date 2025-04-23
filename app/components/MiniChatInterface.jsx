@@ -88,7 +88,7 @@ export default function MiniChatInterface({ username, message, recipe, recipeDet
         </button>
       </div>
       <div className="flex h-screen flex-col overflow-y-auto scrollbar-hide overscroll-contain "> {/* Make the main container take full viewport height and hide overflow */}
-        <div className="flex-1 p-4 space-y-4 bg-white shadow-inner" 
+        <div className="flex-1 p-4 space-y-4 bg-off-white shadow-inner" 
         style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }} > {/* Scrollable message area */}
           {messages.map((message, index) => (
             <div key={index} ref={index === messages.length - 1 ? lastMessageRef : null}>
@@ -98,7 +98,7 @@ export default function MiniChatInterface({ username, message, recipe, recipeDet
           {isLoading && <div className="text-center py-2">Thinking...</div>}
         </div>
       </div>
-      <div className="bg-white shadow-md sticky top-0 overscroll-contain ">
+      <div className="bg-off-white shadow-md sticky top-0 overscroll-contain ">
         <MiniChatInput onSendMessage={handleSendMessage} />
       </div>
     </div>

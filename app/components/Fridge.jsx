@@ -146,7 +146,7 @@ export default function Fridge({ items, onRemove }) {
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg z-50 max-h-[80vh] overflow-hidden">
+                <div className="absolute right-0 mt-2 w-80 bg-off-white rounded-lg shadow-lg z-50 max-h-[80vh] overflow-hidden">
                     <div className="p-4">
                         <h3 className="text-lg font-semibold mb-2">What's in your fridge?</h3>
                         {items.length > 0 ? (

@@ -66,7 +66,7 @@ export default function ProfilePage() {
 
     return (
         <div className="flex flex-col items-center text-black p-4">
-            <div className="bg-white rounded-2xl p-4 shadow-lg w-full">
+            <div className="bg-off-white rounded-2xl p-4 shadow-lg w-full">
                 {/* Profile Header */}
                 <div className="flex flex-col items-center gap-4 mb-6">
                     <div className="relative w-24 h-24">
@@ -121,7 +121,7 @@ export default function ProfilePage() {
                     {(activeTab === 'saved' ? savedRecipes : recentlyViewed).map((recipe, index) => (
                         <div
                             key={index}
-                            className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
+                            className="bg-off-white rounded-lg shadow-md overflow-hidden cursor-pointer"
                             onClick={() => router.push(`/search/${turnUsernameToUrl(recipe.author)}/${turnRecipeToUrl(recipe.name)}`)}
                         >
                             <div className="relative w-full h-48">
