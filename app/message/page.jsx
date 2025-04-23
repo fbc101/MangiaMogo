@@ -121,7 +121,7 @@ export default function MessagePage() {
             </div>
             
             <button 
-              className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
+              className="w-full bg-items text-white py-2 rounded-lg hover:bg-blue-600"
               onClick={() => setSelectedProfile(null)}
             >
               Close

@@ -86,7 +86,7 @@ export default function RecipePage({ params }) {
     const currentIngredients = selectedDiet ? recipeDetails.ingredients[selectedDiet] : recipeDetails.ingredients.default;
 
     return (
-        <div className="flex flex-col w-full min-h-screen bg-[#E6F2FF] p-4">
+        <div className="flex flex-col w-full min-h-screen bg-off-white p-4">
             <div className="bg-off-white rounded-2xl p-6 shadow-lg">
                 {/* Header with Avatar and User */}
                 <div className="flex items-center gap-4 mb-4">
@@ -126,7 +126,7 @@ export default function RecipePage({ params }) {
                                 </div>
                             </div>
                             <button 
-                                className="w-full bg-blue-500 text-white py-2 rounded-lg"
+                                className="w-full bg-items text-white py-2 rounded-lg"
                                 onClick={() => setShowProfile(false)}
                             >
                                 Close
@@ -179,7 +179,7 @@ export default function RecipePage({ params }) {
                     <div className="flex items-center justify-between mb-3">
                         <h2 className="text-lg font-semibold">Ingredients</h2>
                         <button 
-                            className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm"
+                            className="bg-items text-white px-4 py-2 rounded-full text-sm"
                             onClick={() => setShowSubstitutions(!showSubstitutions)}
                         >
                             Dietary Options
@@ -224,7 +224,7 @@ export default function RecipePage({ params }) {
                     <ul className="space-y-2">
                         {currentIngredients.map((ingredient, index) => (
                             <li key={index} className="flex items-center gap-2">
-                                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                <span className="w-2 h-2 bg-items rounded-full"></span>
                                 {fraction(serving * ingredient.amount).toFraction() == "0" ? "" : fraction(serving * ingredient.amount).toFraction()} {ingredient.name}
                             </li>
                         ))}
@@ -241,7 +241,7 @@ export default function RecipePage({ params }) {
                     <div className="space-y-4">
                         {recipeDetails.instructions.map((instruction, index) => (
                             <div key={index} className="flex gap-4 items-start">
-                                <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0">
+                                <span className="bg-items text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0">
                                     {index + 1}
                                 </span>
                                 <div>
@@ -263,7 +263,7 @@ export default function RecipePage({ params }) {
                                                 <source src={`/assets/videos/chicken-burger-step-${index + 1}.mp4`} type="video/mp4" />
                                                 Your browser does not support the video tag.
                                             </video>
-                                            <div className='flex items-center justify-center bg-blue-500 text-white cursor-pointer rounded-lg w-full h-full mt-1' 
+                                            <div className='flex items-center justify-center bg-items text-white cursor-pointer rounded-lg w-full h-full mt-1' 
                                             onClick={(e) => handleGenerateClick(index, e)}>
                                                 hide
                                             </div>
@@ -302,7 +302,7 @@ export default function RecipePage({ params }) {
                                 {star <= rating ? '★' : '☆'}
                             </button>
                         ))}
-                        <button className="rounded-lg bg-blue-500 p-2 ml-4 text-white text-sm hover:bg-blue-600" onClick={() => setRating(0)}> clear </button>
+                        <button className="rounded-lg bg-items p-2 ml-4 text-white text-sm hover:bg-blue-600" onClick={() => setRating(0)}> clear </button>
                     </div>
                 </div>
 
