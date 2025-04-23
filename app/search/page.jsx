@@ -262,9 +262,9 @@ export default function SearchPage() {
             {searchType === 'recipes' && (
                 <>
                     {/* Filters Section */}
-                    <div className="flex flex-row gap-4 mt-4 mb-6 px-2">
+                    <div className="flex flex-row justify-center items-center gap-2 mt-2 mb-6 ">
                         <CostCheckbox ranges={costRanges} onSelectionChange={handleCheckboxSelection} clear={shouldClearCostFilter} currentSelection={currentlySelectedRanges} />
-                        <div className="flex flex-col gap-3 w-1/2">
+                        <div className="flex flex-col gap-2 w-1/2">
                             <div className="flex flex-col">
                                 <label className="text-sm mb-1">Allergens</label>
                                 <select 
