@@ -35,10 +35,6 @@ export default function Home() {
               <span className="mr-3 text-xl">🔍</span>
               <span>Search for recipes!</span>
             </p>
-            <p className="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded-lg" onClick={() => router.push('/message')}> 
-              <span className="mr-3 text-xl">👩‍🍳</span>
-              <span>Follow your favorite chefs!</span>
-            </p>
             <p className="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded-lg" onClick={() => router.push('/message')}>
               <span className="mr-3 text-xl">💬</span>
               <span>Connect with other food lovers!</span>
