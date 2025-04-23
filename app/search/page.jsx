@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import SearchBar from "../components/SearchBar";
 import Recipe from "../components/Recipe";
-import IngredientsCart from "../components/IngredientsCart";
+import Fridge from "../components/Fridge";
+
 import burger from "../assets/Burger.svg";
 import cookie from "../assets/Choco_cookie.jpg";
 import curry from "../assets/jap-curry.png";
@@ -29,6 +30,8 @@ export default function SearchPage() {
     const [costSliderRange, setCostSliderRange] = useState([0, 25]);
     const [cartItems, setCartItems] = useState([]);
     const [currentlySelectedRanges, setCurrentlySelectedRanges] = useState([]);
+    const [shouldClearCostFilter, setShouldClearCostFilter] = useState(false);
+
 
     const costRanges = [
         { id: 'under50', label: 'Under $10', range: [0, 10] },
@@ -48,7 +51,7 @@ export default function SearchPage() {
     const recipes = [
         {
             name: "Chicken Burger",
-            ingredients: "ground chicken, lettuce, tomato",
+            ingredients: ["ground chicken", "lettuce", "tomatoes", "cheese", "bun"],
             description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
             username: "Gordon Ramsay",
             image: burger,
@@ -59,7 +62,7 @@ export default function SearchPage() {
         },
         {
             name: "Chocolate Cookie",
-            ingredients: "milk, flour, eggs, sugar, cocoa",
+            ingredients: ["milk", "flour", "eggs", "sugar", "cocoa"],
             description: "A classic chocolate cookie recipe perfected over decades. Rich, chewy, and absolutely delightful.",
             username: "Julia Child",
             image: cookie,
@@ -70,7 +73,7 @@ export default function SearchPage() {
         },
         {
             name: "Sloppy Joe",
-            ingredients: "ground beef, tomato sauce, onions, spices",
+            ingredients: ["ground beef", "tomato sauce", "onions", "spices"],
             description: "A classic American dish, Sloppy Joes are a messy but delicious sandwich that everyone loves.",
             username: "Gordon Ramsay",
             image: sloppy,
@@ -81,7 +84,7 @@ export default function SearchPage() {
         },
         {
             name: "Japanese Curry",
-            ingredients: "curry, rice, chicken",
+            ingredients: ["curry", "rice", "chicken", "carrots"],
             description: "Japanese curry is different from Indian or Thai curries. It is more of a brown stew and it can be mild or spicy, depending on your...",
             username: "Julia Child",
             image: curry,
@@ -92,7 +95,7 @@ export default function SearchPage() {
         },
         {
             name: "Korean Fried Chicken",
-            ingredients: "chicken, flour, eggs, sugar, cocoa",
+            ingredients: ["chicken", "flour", "eggs", "sugar", "cocoa"],
             description: "This Korean fried chicken recipe is officially my favorite. I've had every style of fried chicken known to man, so I've always considered myself an expert...",
             username: "Gordon Ramsay",
             image: friedChicken,
@@ -103,7 +106,7 @@ export default function SearchPage() {
         },
         {
             name: "Lamb Skewer",
-            ingredients: "lamb, skewers, spices",
+            ingredients: ["lamb", "skewers", "spices", "tomatoes"],
             description: "Lamb souvlaki with marinated pieces of lamb, threaded on skewers, and char-grilled to perfection...",
             username: "Gordon Ramsay",
             image: lamb,
@@ -114,7 +117,7 @@ export default function SearchPage() {
         },
         {
             name: "Cornbread",
-            ingredients: "cornmeal, milk, eggs, butter",
+            ingredients: ["cornmeal", "milk", "eggs", "butter"],
             description: "A deliciously moist cornbread that pairs perfectly with chili or soup.",
             username: "Gordon Ramsay",
             image: cornbread,
@@ -125,7 +128,7 @@ export default function SearchPage() {
         },
         {
             name: "peppers",
-            ingredients: "peppers, spices, olive oil",
+            ingredients: ["peppers", "spices", "olive oil"],
             description: "A simple yet flavorful dish made with roasted peppers and spices. Perfect as a side or a topping.",
             username: "Gordon Ramsay",
             image: peppers,
@@ -136,7 +139,7 @@ export default function SearchPage() {
         },
         {
             name: "Meatballs",
-            ingredients: "ground beef, breadcrumbs, spices",
+            ingredients: ["ground beef", "breadcrumbs", "spices", "pasta", "garlic"],
             description: "Classic meatballs made with ground beef and spices. Perfect for spaghetti or as an appetizer.",
             username: "Gordon Ramsay",
             image: meatballs,
@@ -147,7 +150,7 @@ export default function SearchPage() {
         },
         {
             name: "Shrimp Stir Fry",
-            ingredients: "shrimp, vegetables, soy sauce",
+            ingredients: ["shrimp", "vegetables", "soy sauce"],
             description: "A quick and easy shrimp stir fry that is packed with flavor and nutrients.",
             username: "Gordon Ramsay",
             image: shrimp,
@@ -159,31 +162,46 @@ export default function SearchPage() {
     ];
 
     const ingredients = [
-        { id: 1, name: "Tomatoes", category: "Vegetable", price: 2.99 },
-        { id: 2, name: "Ground Beef", category: "Meat", price: 5.99 },
-        { id: 3, name: "Pasta", category: "Grains", price: 1.99 },
-        { id: 4, name: "Onions", category: "Vegetable", price: 0.99 },
-        { id: 5, name: "Garlic", category: "Vegetable", price: 0.50 },
-        // Add more ingredients as needed
+        { id: 1, name: "Tomatoes", category: "Vegetable" },
+        { id: 2, name: "Ground Beef", category: "Meat"},
+        { id: 3, name: "Pasta", category: "Grains"},
+        { id: 4, name: "Onions", category: "Vegetable"},
+        { id: 5, name: "Garlic", category: "Vegetable"},
+        { id: 6, name: "Ground Chicken", category: "Meat"},
+        { id: 8, name: "Bun", category: "Grains"},
+        { id: 9, name: "Carrots", category: "Vegetable"},
+        { id: 10, name: "Potatoes", category: "Vegetable"},
+        { id: 11, name: "Shrimp", category: "Seafood"},
+        { id: 12, name: "Milk", category: "Dairy"},
     ];
 
     const filteredItems = searchType === 'recipes' ? 
         recipes.filter(recipe => {
             const matchesSearch = !searchText || 
                 recipe.name.toLowerCase().includes(searchText.toLowerCase()) ||
-                recipe.ingredients.toLowerCase().includes(searchText.toLowerCase());
+                recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchText.toLowerCase()));
+            const matchesFridge = cartItems.length > 0 ? recipe.ingredients.some(ingredient => 
+                cartItems.some(cartItem => cartItem.name.toLowerCase() === ingredient.toLowerCase())
+            ) : true;
             const matchesAllergens = !allergens || !recipe.allergens.includes(allergens);
             const matchesDifficulty = !difficulty || recipe.difficulty === difficulty;
             const matchesCountry = !country || recipe.country.toLowerCase().includes(country.toLowerCase());
-            const matchesCost = recipe.cost >= costSliderRange[0] && recipe.cost <= costSliderRange[1];
-            return matchesSearch && matchesAllergens && matchesDifficulty && matchesCountry && matchesCost;
+            const matchesMultipleCost = currentlySelectedRanges.length == 0 ? true : currentlySelectedRanges.some(([min, max]) =>
+                recipe.cost >= min && recipe.cost <= max
+            );
+            return matchesSearch && matchesFridge && matchesAllergens && matchesDifficulty && matchesCountry && matchesMultipleCost;
         }) :
+
         ingredients.filter(ingredient => 
             !searchText || ingredient.name.toLowerCase().includes(searchText.toLowerCase())
         );
 
     const handleAddToCart = (ingredient) => {
-        setCartItems(prev => [...prev, ingredient]);
+        // Check if the ingredient is already in the cart
+        const isAlreadyInCart = cartItems.some(item => item.id === ingredient.id);
+        if (!isAlreadyInCart) {
+            setCartItems(prev => [...prev, ingredient]);
+        }
     };
 
     const handleRemoveFromCart = (ingredientId) => {
@@ -196,7 +214,17 @@ export default function SearchPage() {
 
     const handleCheckboxSelection = (ranges) => {
         setCurrentlySelectedRanges(ranges);
+        setShouldClearCostFilter(false);
         console.log('Currently Selected Ranges:', ranges);
+    };
+
+    const handleClearFilters = () => {
+        setAllergens('');
+        setDifficulty('');
+        setCountry('');
+        setCurrentlySelectedRanges([]); // Directly clear the selected ranges
+        setShouldClearCostFilter(true); // Signal the CostCheckbox to clear (optional, based on CostCheckbox's internal logic)
+        setCartItems([]);
     };
 
     return (
@@ -209,7 +237,7 @@ export default function SearchPage() {
                     <SearchBar onSearch={setSearchText} label={`search ${searchType}...`}/>
                 </div>
                 <div className="relative">
-                    <IngredientsCart 
+                    <Fridge 
                         items={cartItems}
                         onRemove={handleRemoveFromCart}
                     />
@@ -234,47 +262,54 @@ export default function SearchPage() {
             {searchType === 'recipes' && (
                 <>
                     {/* Filters Section */}
-                    <div className="flex flex-wrap gap-2 mt-4 mb-6 px-2">
-                        <div className="flex flex-col">
-                            <label className="text-sm mb-1">Allergens</label>
-                            <select 
-                                className="px-4 py-2 border rounded-md text-base"
-                                value={allergens}
-                                onChange={(e) => setAllergens(e.target.value)}
-                            >
-                                <option value="">None</option>
-                                <option value="eggs">Eggs</option>
-                                <option value="milk">Milk</option>
-                                <option value="treenuts">Tree Nuts</option>
-                            </select>
-                        </div>
+                    <div className="flex flex-row gap-4 mt-4 mb-6 px-2">
+                        <CostCheckbox ranges={costRanges} onSelectionChange={handleCheckboxSelection} clear={shouldClearCostFilter} currentSelection={currentlySelectedRanges} />
+                        <div className="flex flex-col gap-3 w-1/2">
+                            <div className="flex flex-col">
+                                <label className="text-sm mb-1">Allergens</label>
+                                <select 
+                                    className="px-4 py-2 border rounded-md text-base"
+                                    value={allergens}
+                                    onChange={(e) => setAllergens(e.target.value)}
+                                >
+                                    <option value="">None</option>
+                                    <option value="eggs">Eggs</option>
+                                    <option value="milk">Milk</option>
+                                    <option value="treenuts">Tree Nuts</option>
+                                </select>
+                            </div>
 
-                        <div className="flex flex-col">
-                            <label className="text-sm mb-1">Difficulty</label>
-                            <select 
-                                className="px-4 py-2 border rounded-md text-base"
-                                value={difficulty}
-                                onChange={(e) => setDifficulty(e.target.value)}
-                            >
-                                <option value="">All</option>
-                                <option value="easy">Easy</option>
-                                <option value="medium">Medium</option>
-                                <option value="hard">Hard</option>
-                            </select>
-                        </div>
+                            <div className="flex flex-col">
+                                <label className="text-sm mb-1">Difficulty</label>
+                                <select 
+                                    className="px-4 py-2 border rounded-md text-base"
+                                    value={difficulty}
+                                    onChange={(e) => setDifficulty(e.target.value)}
+                                >
+                                    <option value="">All</option>
+                                    <option value="easy">Easy</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="hard">Hard</option>
+                                </select>
+                            </div>
 
-                        <div className="flex flex-col">
-                            <label className="text-sm mb-1">Country</label>
-                            <input 
-                                type="text"
-                                className="px-4 py-2 border rounded-md text-base"
-                                value={country}
-                                onChange={(e) => setCountry(e.target.value)}
-                                placeholder="Enter country"
-                            />
+                            <div className="flex flex-col ">
+                                <label className="text-sm mb-1">Country</label>
+                                <input 
+                                    type="text"
+                                    className="px-4 py-2 border rounded-md text-base"
+                                    value={country}
+                                    onChange={(e) => setCountry(e.target.value)}
+                                    placeholder="Enter country"
+                                />
+                            </div>
+                            <button className='p-2 text-sm rounded-lg bg-nav text-black hover:bg-nav-hover' onClick={handleClearFilters}>
+                                Clear Filters
+                            </button>
                         </div>
+                    
                     </div>
-                    <CostSlider range={costSliderRange} onChange={handleCostRangeChange} />
+                    {/* <CostSlider range={costSliderRange} onChange={handleCostRangeChange} /> */}
                 </>
             )}
 
@@ -297,12 +332,11 @@ export default function SearchPage() {
                             >
                                 <h3 className="text-lg font-semibold">{ingredient.name}</h3>
                                 <p className="text-sm text-gray-600">{ingredient.category}</p>
-                                <p className="text-sm font-medium">${ingredient.price.toFixed(2)}</p>
                                 <button
                                     onClick={() => handleAddToCart(ingredient)}
                                     className="mt-2 bg-nav text-white px-3 py-1 rounded-full text-sm hover:bg-nav-hover"
                                 >
-                                    Add to Cart
+                                    Add to Fridge
                                 </button>
                             </div>
                         ))}
