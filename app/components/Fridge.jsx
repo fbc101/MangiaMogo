@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import fridge from "../assets/fridge.png";
+import Image from "next/image";
 
-export default function IngredientsCart({ items, onRemove }) {
+export default function Fridge({ items, onRemove }) {
     const [isOpen, setIsOpen] = useState(false);
     const [suggestions, setSuggestions] = useState([]);
     const [isGenerating, setIsGenerating] = useState(false);
 
     const totalItems = items.length;
-    const totalCost = items.reduce((sum, item) => sum + item.price, 0);
 
     // Mock function to generate recipe suggestions based on ingredients
     const generateSuggestions = () => {
@@ -33,7 +34,92 @@ export default function IngredientsCart({ items, onRemove }) {
                     name: "Garden Salad",
                     matchedIngredients: ["Tomatoes", "Onions"],
                     missingIngredients: ["Lettuce", "Cucumber", "Dressing"]
-                }
+                },
+                {
+                    id: 4,
+                    name: "Chicken Burger",
+                    matchedIngredients: ["Ground Chicken", "Tomatoes", "Bun"],
+                    missingIngredients: ["Lettuce", "Bun"]
+                },
+                {
+                    id: 5,
+                    name: "Chocolate Cookie",
+                    matchedIngredients: ["Flour", "Sugar", "Milk"],
+                    missingIngredients: ["Eggs", "Butter"]
+                },
+                {
+                    id: 6,
+                    name: "Beef and Potato Stew",
+                    matchedIngredients: ["Ground Beef", "Potatoes", "Carrots", "Onions"],
+                    missingIngredients: ["Beef Broth", "Celery", "Bay Leaf"]
+                },
+                {
+                    id: 7,
+                    name: "Open-Faced Ground Chicken Sandwich",
+                    matchedIngredients: ["Ground Chicken", "Tomatoes", "Onions", "Bun"],
+                    missingIngredients: ["Lettuce", "Mayonnaise", "Pickles"]
+                },
+                {
+                    id: 8,
+                    name: "Quick Tomato Pasta",
+                    matchedIngredients: ["Tomatoes", "Pasta", "Garlic"],
+                    missingIngredients: ["Olive Oil", "Basil", "Parmesan Cheese"]
+                  },
+                  {
+                    id: 9,
+                    name: "Meatball Subs",
+                    matchedIngredients: ["Ground Beef", "Tomatoes", "Bun", "Onions", "Garlic"],
+                    missingIngredients: ["Italian Bread", "Mozzarella Cheese", "Bell Peppers"]
+                  },
+                  {
+                    id: 10,
+                    name: "Chicken and Potato Hash",
+                    matchedIngredients: ["Ground Chicken", "Potatoes", "Onions"],
+                    missingIngredients: ["Bell Peppers", "Butter", "Eggs (optional)"]
+                  },
+                  {
+                    id: 11,
+                    name: "Shrimp Scampi with Pasta",
+                    matchedIngredients: ["Shrimp", "Garlic", "Pasta"],
+                    missingIngredients: ["Butter", "White Wine", "Lemon Juice"]
+                  },
+                  {
+                    id: 12,
+                    name: "Creamy Chicken and Tomato Pasta",
+                    matchedIngredients: ["Ground Chicken", "Tomatoes", "Pasta", "Milk"],
+                    missingIngredients: ["Heavy Cream", "Onion", "Italian Herbs"]
+                  },
+                  {
+                    id: 13,
+                    name: "Beef and Carrot Stir-Fry (Simple)",
+                    matchedIngredients: ["Ground Beef", "Carrots", "Onions"],
+                    missingIngredients: ["Soy Sauce", "Ginger", "Broccoli"]
+                  },
+                  {
+                    id: 14,
+                    name: "Garlic Tomato Bruschetta (DIY)",
+                    matchedIngredients: ["Tomatoes", "Garlic", "Bun"],
+                    missingIngredients: ["Olive Oil", "Basil", "Balsamic Glaze"]
+                  },
+                  {
+                    id: 15,
+                    name: "Chicken Noodle Soup",
+                    matchedIngredients: ["Ground Chicken", "Pasta", "Carrots", "Onions"],
+                    missingIngredients: ["Chicken Broth", "Celery", "Bay Leaf"]
+                  },
+                  {
+                    id: 16,
+                    name: "Potato and Onion Frittata (Basic)",
+                    matchedIngredients: ["Potatoes", "Onions", "Milk"],
+                    missingIngredients: ["Eggs", "Cheese", "Spinach"]
+                  },
+                  {
+                    id: 17,
+                    name: "Shrimp and Tomato Skewers",
+                    matchedIngredients: ["Shrimp", "Tomatoes", "Garlic"],
+                    missingIngredients: ["Olive Oil", "Lemon", "Bell Peppers"]
+                  }
+                
             ].filter(suggestion => 
                 suggestion.matchedIngredients.some(ing => 
                     items.some(item => item.name.includes(ing))
@@ -51,9 +137,7 @@ export default function IngredientsCart({ items, onRemove }) {
                 onClick={() => setIsOpen(!isOpen)}
                 className="relative p-2 hover:bg-gray-100 rounded-full"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+                <Image src={fridge} alt="Fridge" className="w-6 h-6" />
                 {totalItems > 0 && (
                     <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                         {totalItems}
@@ -64,7 +148,7 @@ export default function IngredientsCart({ items, onRemove }) {
             {isOpen && (
                 <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg z-50 max-h-[80vh] overflow-hidden">
                     <div className="p-4">
-                        <h3 className="text-lg font-semibold mb-2">Shopping Cart</h3>
+                        <h3 className="text-lg font-semibold mb-2">What's in your fridge?</h3>
                         {items.length > 0 ? (
                             <>
                                 <div className="max-h-48 overflow-y-auto mb-4">
@@ -72,7 +156,6 @@ export default function IngredientsCart({ items, onRemove }) {
                                         <div key={item.id} className="flex justify-between items-center py-2">
                                             <div>
                                                 <p className="text-sm font-medium">{item.name}</p>
-                                                <p className="text-xs text-gray-500">${item.price.toFixed(2)}</p>
                                             </div>
                                             <button
                                                 onClick={() => onRemove(item.id)}
@@ -86,10 +169,6 @@ export default function IngredientsCart({ items, onRemove }) {
                                     ))}
                                 </div>
                                 <div className="border-t pt-4">
-                                    <div className="flex justify-between text-sm font-medium mb-4">
-                                        <span>Total:</span>
-                                        <span>${totalCost.toFixed(2)}</span>
-                                    </div>
                                     <button
                                         onClick={generateSuggestions}
                                         disabled={isGenerating}
@@ -121,7 +200,7 @@ export default function IngredientsCart({ items, onRemove }) {
                                 )}
                             </>
                         ) : (
-                            <p className="text-sm text-gray-500">Your cart is empty</p>
+                            <p className="text-sm text-gray-500">Your fridge is empty</p>
                         )}
                     </div>
                 </div>

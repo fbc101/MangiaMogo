@@ -59,7 +59,7 @@ export const getRecipeImage = (recipe) => {
         return burger;
     } else if (recipe === 'Cornbread') {
         return cornbread;
-    } else if (recipe === 'Shrimp') {
+    } else if (recipe === 'Shrimp' || recipe === 'Shrimp Stir Fry') {
         return shrimp;
     } else if (recipe === 'Pork Chop') {
         return porkchop;
