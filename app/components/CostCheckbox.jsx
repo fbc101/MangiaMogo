@@ -77,7 +77,7 @@ export default function CostCheckbox({ ranges, onSelectionChange, clear, current
   };
 
   return (
-    <div className='flex flex-col bg-nav p-4 rounded-xl'>
+    <div className='flex flex-col bg-nav p-4 ml-2 rounded-xl'>
       <div>
         Budget Range
       </div>
