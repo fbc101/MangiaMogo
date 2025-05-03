@@ -31,6 +31,7 @@ export default function SearchPage() {
     const [cartItems, setCartItems] = useState([]);
     const [currentlySelectedRanges, setCurrentlySelectedRanges] = useState([]);
     const [shouldClearCostFilter, setShouldClearCostFilter] = useState(false);
+    const [shouldClearSearchText, setShouldClearSearchText] = useState(false);
 
 
     const costRanges = [
@@ -50,17 +51,6 @@ export default function SearchPage() {
 
     const recipes = [
         {
-            name: "Chicken Burger",
-            ingredients: ["ground chicken", "lettuce", "tomatoes", "cheese", "bun"],
-            description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
-            username: "Gordon Ramsay",
-            image: burger,
-            cost: 6,
-            difficulty: "easy",
-            country: "USA",
-            allergens: []
-        },
-        {
             name: "Chocolate Cookie",
             ingredients: ["milk", "flour", "eggs", "sugar", "cocoa"],
             description: "A classic chocolate cookie recipe perfected over decades. Rich, chewy, and absolutely delightful.",
@@ -79,7 +69,7 @@ export default function SearchPage() {
             image: sloppy,
             cost: 10,
             difficulty: "easy",
-            country: "CANADA",
+            country: "USA",
             allergens: []
         },
         {
@@ -92,6 +82,17 @@ export default function SearchPage() {
             difficulty: "medium",
             country: "Japan",
             allergens: ["milk"]
+        },
+        {
+            name: "Chicken Burger",
+            ingredients: ["ground chicken", "lettuce", "tomatoes", "cheese", "bun"],
+            description: "Perfect for a quick lunch. It's easy to make and tastes great. My grandma used to make this when I was a kid.",
+            username: "Gordon Ramsay",
+            image: burger,
+            cost: 13,
+            difficulty: "easy",
+            country: "USA",
+            allergens: []
         },
         {
             name: "Korean Fried Chicken",
@@ -219,13 +220,19 @@ export default function SearchPage() {
     };
 
     const handleClearFilters = () => {
+        setSearchText('');
         setAllergens('');
         setDifficulty('');
         setCountry('');
         setCurrentlySelectedRanges([]); // Directly clear the selected ranges
         setShouldClearCostFilter(true); // Signal the CostCheckbox to clear (optional, based on CostCheckbox's internal logic)
+        setShouldClearSearchText(true); // Signal the SearchBar to clear (optional, based on SearchBar's internal logic)
         setCartItems([]);
     };
+
+    const handleSearchOnChange = () => {
+        setShouldClearSearchText(false);
+    }
 
     return (
         <div className="flex flex-col items-center text-black text-xl pb-24 ">
@@ -234,7 +241,7 @@ export default function SearchPage() {
                     Search
                 </h1>
                 <div className="flex-1">
-                    <SearchBar onSearch={setSearchText} label={`search ${searchType}...`}/>
+                    <SearchBar onSearch={setSearchText} label={`search ${searchType}...`} clear={shouldClearSearchText} onChange={handleSearchOnChange} />
                 </div>
                 <div className="relative">
                     <Fridge 

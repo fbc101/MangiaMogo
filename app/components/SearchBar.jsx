@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import searchIcon from "../assets/Search.svg";
-import { useRef } from 'react'; 
+import { useRef, useEffect } from 'react'; 
 
-export default function SearchBar({ onSearch, label }) {
+export default function SearchBar({ onSearch, label, clear, onChange }) {
     const inputRef = useRef(null); 
 
     const handleSearch = () => {
@@ -13,6 +13,15 @@ export default function SearchBar({ onSearch, label }) {
             console.log(inputRef.current.value);
         }
     };
+
+    
+    useEffect(() => {
+        // Reset the input value when the clear prop is true
+        if (clear && inputRef.current) {
+            inputRef.current.value = '';
+        }
+    }
+    , [clear]);
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -28,6 +37,7 @@ export default function SearchBar({ onSearch, label }) {
                 className="w-full px-4 py-2 rounded-full border border-gray-300 bg-search text-sm"
                 ref={inputRef} 
                 onKeyDown={handleKeyDown}
+                onChange={onChange}
             />
             <div className="flex justify-center items-center pl-2">
                 <Image
